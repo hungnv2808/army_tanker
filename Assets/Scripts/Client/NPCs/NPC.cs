@@ -26,7 +26,6 @@ public class NPC : Tank
     private float m_timer = 0.0f;
     private Callback DectecPlayerCallback;
     private bool m_hasEnemy = false;
-    private AbTurrent m_currentTurrent;
     private int m_turrentLevel = 0;
     private bool m_hasInited = false;
     private void Awake() {
@@ -61,8 +60,6 @@ public class NPC : Tank
     private void Start() {
         this.InitTankTurrents();
         m_rigidbody = gameObject.GetComponent<Rigidbody>();
-        this.m_turrentLevel = UnityEngine.Random.Range(1, 5);
-        m_currentTurrent = m_turrents["Turrent Level " + m_turrentLevel];
         m_currHealthy = m_maxHealthy;
         m_currentEnergy = m_maxEnergy; 
     }
@@ -148,7 +145,7 @@ public class NPC : Tank
         if (m_enemyTarget != null) {
             m_tankTurret.LookAt(this.m_enemyTarget.transform);
             m_tankTurret.eulerAngles = new Vector3(-90, m_tankTurret.eulerAngles.y, m_tankTurret.eulerAngles.z);
-            this.m_currentTurrent.ShootAndSync(this.m_turrentLevel, m_fireTransform,m_tankTurret, (m_enemyTarget.Position - m_transform.position).normalized, m_team, m_playerName, this.photonView.ViewID);
+            this.m_currentTurrent.ShootAndSync(m_fireTransform,m_tankTurret, (m_enemyTarget.Position - m_transform.position).normalized, m_team, m_playerName, this.photonView.ViewID);
         }
         
     }

@@ -808,7 +808,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7576275ab240e8048af3f872daed0ddd, type: 2}
   - {fileID: 2100000, guid: 6c878649239c5f042b9179540623597e, type: 2}
   m_iconInvisible: {fileID: 8692437292421960984}
-  m_dynamicCameraPos: {fileID: 0}
   BombPowPoint: {fileID: 2595661000599451333}
   m_leftTrail: {fileID: 5334076824937577934}
   m_rightTrail: {fileID: 6984240097184008184}

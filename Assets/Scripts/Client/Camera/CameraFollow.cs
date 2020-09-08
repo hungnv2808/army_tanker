@@ -46,7 +46,6 @@ public class CameraFollow : MonoBehaviour
     public void InitCameraFollow() {
         isStopedFollowing = false;
         this.ChangeFollowing(FollowFixed, Tank.LocalPlayerInstance.transform);
-        // this.ChangeFollowing(FollowDynamic, Tank.LocalPlayerInstance.DynamicCameraPos);
         
         m_offset = new Vector3(0, 45.0f, -29.0f);
         // m_stopMovementOnStartGamePosition = m_target.position + m_offset;
@@ -85,10 +84,6 @@ public class CameraFollow : MonoBehaviour
     public void ChangeFollowing(Callback method, Transform target) {
         m_target = target;
         this.m_methodExcute = method;
-    }
-    public void FollowDynamic() {
-        m_transform.localPosition = m_target.position;
-        m_transform.localEulerAngles = m_target.eulerAngles;
     }
     private IEnumerator CameraMovementOnStartGameCoroutine() {
         if (Vector3.Distance(m_transform.position, m_stopMovementOnStartGamePosition) > 0.0f) {

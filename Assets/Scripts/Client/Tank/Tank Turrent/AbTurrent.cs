@@ -10,14 +10,15 @@ public abstract class AbTurrent : MonoBehaviour
     protected float m_lerpRatio;
     protected float m_energyConsumption = 0;
     protected Tank m_TankParentScript;
-    protected Vector3 originalTankTurrentPosition = new Vector3(0, 1.57f, 0); /*vị trí ban đầu của nòng súng trước khi chạy animation*/
-    public abstract void ShootAndSync(int lvTurrent, Transform fireTransform, Transform tankTurren, Vector3 turentDirection, int label, string playerName, int whoViewID); /*bắt buộc class con phải implement*/
+    // protected Vector3 m_originalTankTurrentPosition = new Vector3(0, 1.57f, 0); /*vị trí ban đầu của nòng súng trước khi chạy animation*/
+    protected Vector3 m_originalTankTurrentPosition;/*vị trí ban đầu của nòng súng trước khi chạy animation*/
+    public abstract void ShootAndSync(Transform fireTransform, Transform tankTurren, Vector3 turentDirection, int label, string playerName, int whoViewID); /*bắt buộc class con phải implement*/
     public virtual void Shoot(Transform fireTransform, Transform tankTurren, Vector3 turentDirection, int label, string playerName, int whoViewID) {}// class con tùy chọn để implement
     public virtual void Shoot(Transform fireTransform, Transform tankTurren, Vector3 turrentDirection, bool isShooted, int label, string playerName, int whoViewID) {}// class con tùy chọn để implement
     public virtual void RecoilGun(Transform tankTurren, Vector3 turrentDirection) { // class con tùy chọn để implement
         m_timerTo = 0;
         m_timerBack = 0;
-        StartCoroutine(RecoilGunCoroutine(originalTankTurrentPosition, tankTurren, turrentDirection));
+        StartCoroutine(RecoilGunCoroutine(m_originalTankTurrentPosition, tankTurren, turrentDirection));
     }
     protected IEnumerator RecoilGunCoroutine(Vector3 originalPosition, Transform tankTurren, Vector3 turrentDirection)
     {
@@ -62,6 +63,11 @@ public abstract class AbTurrent : MonoBehaviour
             //TODO: run animation run out energy
             m_TankParentScript.EnergyScript.PlayRunOutEnergyAnimation();
             return false;
+        }
+    }
+    public Vector3 OriginalTankTurrentPosition {
+        set {
+            m_originalTankTurrentPosition = value;
         }
     }
 }

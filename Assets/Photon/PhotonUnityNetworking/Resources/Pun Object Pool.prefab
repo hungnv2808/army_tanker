@@ -48,6 +48,7 @@ MonoBehaviour:
   - Tank1
   - Tank1 Bot
   - Drone
+  - Tank2
   m_localObjectPoolNames:
   - Tank Normal Bullet
   - Tank Radiating Bullet
@@ -60,7 +61,6 @@ MonoBehaviour:
   - ExplosionFireballFire
   - HealOnce
   - LightningFloorYellowTrail
-  - IceFloorTrail
   - gold
   - diamond
   - Target Icon
@@ -70,6 +70,8 @@ MonoBehaviour:
   - Bomb
   - Bomb Explosion
   - DroneTrail
+  - IceFloorTrail
+  - FireFloorTrail
 --- !u!114 &-2547313730440297515
 MonoBehaviour:
   m_ObjectHideFlags: 0

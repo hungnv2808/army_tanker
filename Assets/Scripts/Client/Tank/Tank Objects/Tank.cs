@@ -21,7 +21,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     [SerializeField] protected TextMesh m_displayNameText;
     [SerializeField] protected Material[] m_tankMaterials;
     [SerializeField] protected GameObject m_iconInvisible;
-    [SerializeField] protected Transform m_dynamicCameraPos;
+    [SerializeField] protected MeshRenderer[] m_meshs;
     public Transform BombPowPoint;
     private Transform m_autoTargetIcon;
     private Transform m_transformParentAutoTargetIcon;
@@ -44,7 +44,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     protected Vector3 m_movementDirection = Vector3.zero; /* hướng dịch chuyển của xe tăng*/
     protected Vector3 m_turretDirection = Vector3.zero; /* hướng của nòng súng xe tăng*/
     protected float m_moveSpeed = 7.0f;  /* speed là 15 đơn vị/giây (1 đơn vị = 100px)*/
-    protected Dictionary<string, AbTurrent> m_turrents; 
+    protected AbTurrent m_currentTurrent; 
     [SerializeField] protected Transform m_leftTrail;
     [SerializeField] protected Transform m_rightTrail;
     protected TankTrail m_rightTrailEffect;
@@ -100,8 +100,8 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         StartCoroutine(LoopDectectPlayerCoroutine());
     }
     protected virtual void CreatTrail() {
-        m_leftTrailEffect = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/LightningFloorYellowTrail", "LightningFloorYellowTrail", m_leftTrail.position, Quaternion.identity).GetComponent<TankTrail>();
-        m_rightTrailEffect = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/LightningFloorYellowTrail", "LightningFloorYellowTrail", m_rightTrail.position, Quaternion.identity).GetComponent<TankTrail>();
+        m_leftTrailEffect = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/IceFloorTrail", "IceFloorTrail", m_leftTrail.position, Quaternion.identity).GetComponent<TankTrail>();
+        m_rightTrailEffect = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/IceFloorTrail", "IceFloorTrail", m_rightTrail.position, Quaternion.identity).GetComponent<TankTrail>();
         m_leftTrailEffect.Init(m_leftTrail);
         m_rightTrailEffect.Init(m_rightTrail);
     }
@@ -115,38 +115,12 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         
     }
     protected void InitTankTurrents() {
-        this.m_turrents = new Dictionary<string, AbTurrent>();
         GameObject lv1Turrent = new GameObject();
         lv1Turrent.name = "Turrent Level 1";
         lv1Turrent.AddComponent<Lv1Turrent>();
         lv1Turrent.transform.SetParent(m_transform);
-        this.m_turrents.Add("Turrent Level 1", lv1Turrent.GetComponent<Lv1Turrent>());
-
-        GameObject lv2Turrent = new GameObject();
-        lv2Turrent.name = "Turrent Level 2";
-        lv2Turrent.AddComponent<Lv2Turrent>();
-        lv2Turrent.transform.SetParent(m_transform);
-        this.m_turrents.Add("Turrent Level 2", lv2Turrent.GetComponent<Lv2Turrent>());
-
-        GameObject lv3Turrent = new GameObject();
-        lv3Turrent.name = "Turrent Level 3";
-        lv3Turrent.AddComponent<Lv3Turrent>();
-        lv3Turrent.transform.SetParent(m_transform);
-        this.m_turrents.Add("Turrent Level 3", lv3Turrent.GetComponent<Lv3Turrent>());
-
-        GameObject lv4Turrent = new GameObject();
-        lv4Turrent.name = "Turrent Level 4";
-        lv4Turrent.AddComponent<Lv4Turrent>();
-        lv4Turrent.transform.SetParent(m_transform);
-        this.m_turrents.Add("Turrent Level 4", lv4Turrent.GetComponent<Lv4Turrent>());
-
-        GameObject lv5Turrent = new GameObject();
-        lv5Turrent.name = "Turrent Level 5";
-        lv5Turrent.AddComponent<Lv5Turrent>();
-        lv5Turrent.transform.SetParent(m_transform);
-        this.m_turrents.Add("Turrent Level 5", lv5Turrent.GetComponent<Lv5Turrent>());
-
-        
+        this.m_currentTurrent = lv1Turrent.GetComponent<Lv1Turrent>();
+        this.m_currentTurrent.OriginalTankTurrentPosition = this.m_tankTurret.localPosition;
     }
     
     public virtual void MoveOnPC(float inputHorizontal, float inputVertical) {
@@ -179,8 +153,8 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
                 this.m_predictedTrajectoryPathBullet.SetPosition(0, Vector3.zero);
                 this.m_predictedTrajectoryPathBullet.SetPosition(1, Vector3.zero);
                 
-                this.m_turrents["Turrent Level 4"].MaxCooldown = 0;
-                this.m_turrents["Turrent Level 4"].ShootAndSync(4, m_fireTransform, m_tankTurret, m_turretDirection, m_team, m_playerName, this.photonView.ViewID);
+                this.m_currentTurrent.MaxCooldown = 0;
+                this.m_currentTurrent.ShootAndSync(m_fireTransform, m_tankTurret, m_turretDirection, m_team, m_playerName, this.photonView.ViewID);
                 m_joystickCrossHairsState = JoytickState.None;
             }
         }
@@ -289,7 +263,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         ClientManagement.Instance.PersonalScores[this.photonView.ViewID].UpdateDeathLabel();
         ClientManagement.Instance.PersonalScores[whoViewID].UpdateKillingLabel();
         ArenaUI.Instance.ShowKillingNotificationLabel(whoDamage, m_playerName);
-        this.SendDispatch(TankEvent.EVENT_SEND_DISPATCH_DEATH, whoDamage, whoViewID); // dù client hay remote thì cũng đều phải send dispatch khi chết để đồng bộ 2 bên 
+        this.SendDispatchDeath(TankEvent.EVENT_SEND_DISPATCH_DEATH, whoDamage, whoViewID); // dù client hay remote thì cũng đều phải send dispatch khi chết để đồng bộ 2 bên 
         PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/ElectricDeath", "ElectricDeath", m_transform.position + Vector3.up*2 , Quaternion.identity);
         this.DisableTrail();
         PunObjectPool.Instance.SetLocalPool(this.gameObject);
@@ -341,27 +315,27 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         }
     }
     
-    public void SendDispatchShooted(byte eventCode, int lvTurrent) {
-        object[] eventContent = new object[] { this.photonView.ViewID, lvTurrent, m_fireTransform.position, m_tankTurret.eulerAngles, m_turretDirection};
+    public void SendDispatchShooted(byte eventCode) {
+        object[] eventContent = new object[] { this.photonView.ViewID, m_fireTransform.position, m_tankTurret.eulerAngles, m_turretDirection};
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
         PhotonNetwork.RaiseEvent(eventCode, eventContent, raiseEventOptions, SendOptions.SendUnreliable);
     }
-    public void SendDispatchShootedNoCountdown(byte eventCode, int lvTurrent, bool isShooted) {
+    public void SendDispatchShootedNoCountdown(byte eventCode, bool isShooted) {
         switch (eventCode) {
             case TankEvent.EVENT_SEND_DISPATCH_TURRENT_SHOOTED_NO_COUNTDOWN:
-                object[] eventContent_1 = new object[] { this.photonView.ViewID, lvTurrent, m_fireTransform.position, m_tankTurret.eulerAngles, m_turretDirection, isShooted};
+                object[] eventContent_1 = new object[] { this.photonView.ViewID, m_fireTransform.position, m_tankTurret.eulerAngles, m_turretDirection, isShooted};
                 RaiseEventOptions raiseEventOptions_1 = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(eventCode, eventContent_1, raiseEventOptions_1, SendOptions.SendUnreliable);
             break;
             case TankEvent.EVENT_SEND_DISPATCH_TURRENT_SHOOTED_NO_COUNTDOWN_STOP:
-                object[] eventContent_2 = new object[] { this.photonView.ViewID, lvTurrent, isShooted};
+                object[] eventContent_2 = new object[] { this.photonView.ViewID, isShooted};
                 RaiseEventOptions raiseEventOptions_2 = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(eventCode, eventContent_2, raiseEventOptions_2, SendOptions.SendUnreliable);
             break;
         }
         
     }
-    public void SendDispatch(byte eventCode, string whoDamage, int whoViewID) {
+    public void SendDispatchDeath(byte eventCode, string whoDamage, int whoViewID) {
         object[] eventContent = new object[] { this.photonView.ViewID, whoDamage, whoViewID };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
         PhotonNetwork.RaiseEvent(eventCode, eventContent, raiseEventOptions, SendOptions.SendUnreliable);
@@ -371,23 +345,23 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
             case TankEvent.EVENT_SEND_DISPATCH_TURRENT_SHOOTED:
                 m_syncData = (object[])photonEnvent.CustomData;
                 if (this.photonView.ViewID != (int)m_syncData[0]) return;
-                m_fireTransform.position = (Vector3)m_syncData[2];
-                m_tankTurret.eulerAngles = (Vector3)m_syncData[3];
-                m_turretDirection = (Vector3)m_syncData[4];
-                this.m_turrents["Turrent Level " + (int)m_syncData[1]].Shoot(m_fireTransform, m_tankTurret, m_turretDirection, m_team, m_playerName, this.photonView.ViewID);
+                m_fireTransform.position = (Vector3)m_syncData[1];
+                m_tankTurret.eulerAngles = (Vector3)m_syncData[2];
+                m_turretDirection = (Vector3)m_syncData[3];
+                this.m_currentTurrent.Shoot(m_fireTransform, m_tankTurret, m_turretDirection, m_team, m_playerName, this.photonView.ViewID);
                 break;
             case TankEvent.EVENT_SEND_DISPATCH_TURRENT_SHOOTED_NO_COUNTDOWN:
                 m_syncData = (object[])photonEnvent.CustomData;
                 if (this.photonView.ViewID != (int)m_syncData[0]) return;
-                m_fireTransform.position = (Vector3)m_syncData[2];
-                m_tankTurret.eulerAngles = (Vector3)m_syncData[3];
-                m_turretDirection = (Vector3)m_syncData[4];
-                this.m_turrents["Turrent Level " + (int)m_syncData[1]].Shoot(m_fireTransform, m_tankTurret, m_turretDirection, (bool)m_syncData[5], m_team, m_playerName, this.photonView.ViewID);
+                m_fireTransform.position = (Vector3)m_syncData[1];
+                m_tankTurret.eulerAngles = (Vector3)m_syncData[2];
+                m_turretDirection = (Vector3)m_syncData[3];
+                this.m_currentTurrent.Shoot(m_fireTransform, m_tankTurret, m_turretDirection, (bool)m_syncData[4], m_team, m_playerName, this.photonView.ViewID);
                 break;
             case TankEvent.EVENT_SEND_DISPATCH_TURRENT_SHOOTED_NO_COUNTDOWN_STOP:
                 m_syncData = (object[])photonEnvent.CustomData;
                 if (this.photonView.ViewID != (int)m_syncData[0]) return;
-                this.m_turrents["Turrent Level " + (int)m_syncData[1]].Shoot(m_fireTransform, m_tankTurret, m_turretDirection, (bool)m_syncData[2], m_team, m_playerName, this.photonView.ViewID);
+                this.m_currentTurrent.Shoot(m_fireTransform, m_tankTurret, m_turretDirection, (bool)m_syncData[1], m_team, m_playerName, this.photonView.ViewID);
                 break;
             case TankEvent.EVENT_SEND_DISPATCH_DEATH:
                 m_syncData = (object[])photonEnvent.CustomData;
@@ -402,14 +376,18 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     #endregion
     public virtual void Invisible() {
         m_iconInvisible.SetActive(true);
-        m_tankChassis.GetComponent<MeshRenderer>().material = m_tankMaterials[1];
-        m_tankTurret.GetComponent<MeshRenderer>().material = m_tankMaterials[1];
+        for (int i = 0; i < m_meshs.Length; i++)
+        {
+            m_meshs[i].material = m_tankMaterials[1];
+        }
         this.photonView.RPC("RPC_Invisible",RpcTarget.Others,this.photonView.ViewID);
     }
     public virtual void Visible() {
         m_iconInvisible.SetActive(false);
-        m_tankChassis.GetComponent<MeshRenderer>().material = m_tankMaterials[0];
-        m_tankTurret.GetComponent<MeshRenderer>().material = m_tankMaterials[0];
+        for (int i = 0; i < m_meshs.Length; i++)
+        {
+            m_meshs[i].material = m_tankMaterials[0];
+        }
         this.photonView.RPC("RPC_Visible",RpcTarget.Others,this.photonView.ViewID);
     }
     [PunRPC]
@@ -542,11 +520,6 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     public float MaxEnergy {
         get {
             return m_maxEnergy;
-        }
-    }
-    public Transform DynamicCameraPos {
-        get {
-            return m_dynamicCameraPos;
         }
     }
     #endregion

@@ -41,7 +41,7 @@ public class Lv5Turrent : AbTurrent
         
         m_layerMask = ~(1 << LayerMask.NameToLayer("HealField") | 1 << LayerMask.NameToLayer("Player Bullet") | 1 << LayerMask.NameToLayer("Grass")); // bỏ qua thằng layer heal field
     }
-    public override void ShootAndSync(int lvTurrent, Transform fireTransform, Transform tankTurren, Vector3 turrentDirection, int label, string whoDamage, int whoViewID) {
+    public override void ShootAndSync(Transform fireTransform, Transform tankTurren, Vector3 turrentDirection, int label, string whoDamage, int whoViewID) {
         if (!this.CheckEnergy()) return;
         m_whoDamage = whoDamage;
         m_whoViewID = whoViewID;
@@ -52,7 +52,7 @@ public class Lv5Turrent : AbTurrent
         }
         m_curCooldown -= Time.deltaTime;
         if (m_curCooldown <= 0) {
-            m_TankParentScript.SendDispatchShootedNoCountdown(TankEvent.EVENT_SEND_DISPATCH_TURRENT_SHOOTED_NO_COUNTDOWN, lvTurrent, true);
+            m_TankParentScript.SendDispatchShootedNoCountdown(TankEvent.EVENT_SEND_DISPATCH_TURRENT_SHOOTED_NO_COUNTDOWN, true);
             m_curCooldown = MaxCooldown;
         }
     }
@@ -79,7 +79,7 @@ public class Lv5Turrent : AbTurrent
     public void StopShooted() {
         if (m_isShooted) {
             this.HideLazer();
-            m_TankParentScript.SendDispatchShootedNoCountdown(TankEvent.EVENT_SEND_DISPATCH_TURRENT_SHOOTED_NO_COUNTDOWN_STOP, 5, false);
+            m_TankParentScript.SendDispatchShootedNoCountdown(TankEvent.EVENT_SEND_DISPATCH_TURRENT_SHOOTED_NO_COUNTDOWN_STOP, false);
         }
     }
     public void HideLazer() {

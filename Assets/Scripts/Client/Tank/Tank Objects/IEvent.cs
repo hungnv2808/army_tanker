@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IEvent 
 {
-    void SendDispatchShooted(byte eventCode, int lvTurrent);
+    void SendDispatchShooted(byte eventCode);
+    void SendDispatchDeath(byte eventCode, string whoDamage, int whoViewID);
+    void SendDispatchShootedNoCountdown(byte eventCode, bool isShooted);
 }

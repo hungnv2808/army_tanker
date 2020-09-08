@@ -12,13 +12,13 @@ public class Lv3Turrent : AbTurrent
         m_energyConsumption = 50.0f;
         MaxCooldown = 0.9f;
     }
-    public override void ShootAndSync(int lvTurrent, Transform fireTransform, Transform tankTurren, Vector3 turrentDirection, int label, string playerName, int whoViewID) {
+    public override void ShootAndSync(Transform fireTransform, Transform tankTurren, Vector3 turrentDirection, int label, string playerName, int whoViewID) {
         m_curCooldown -= Time.deltaTime;
         if (m_curCooldown <= 0)
         {
             if (!this.CheckEnergy()) return;
             this.CreatTrippleBullet(fireTransform, tankTurren, turrentDirection, label, playerName, whoViewID);
-            m_TankParentScript.SendDispatchShooted(TankEvent.EVENT_SEND_DISPATCH_TURRENT_SHOOTED, lvTurrent);
+            m_TankParentScript.SendDispatchShooted(TankEvent.EVENT_SEND_DISPATCH_TURRENT_SHOOTED);
             this.RecoilGun(tankTurren, turrentDirection);
             m_TankParentScript.Recoil(8);
             m_curCooldown = MaxCooldown;
