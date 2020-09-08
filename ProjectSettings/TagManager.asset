@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Robot
+  - SmallRobot
+  - Pun Object Pool
+  - HealField0
+  - HealField1
+  - Team0
+  - Team1
+  - Rock
+  - MainCanvas
+  - Tree
+  - Grass
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - Grass
+  - Rock
+  - Tree
+  - Plane
+  - Player Bullet
+  - Robot
+  - Robot Bullet
+  - HealField
+  - Player Lighting Bullet
+  - Bomb
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Effect
+    uniqueID: 231649563
+    locked: 0

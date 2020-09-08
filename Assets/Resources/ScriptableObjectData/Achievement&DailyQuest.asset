@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66740a1f5eeec8043b81ca3ced9e2b6a, type: 3}
+  m_Name: Achievement&DailyQuest
+  m_EditorClassIdentifier: 
+  AchievementNames:
+  - Name: "Ho\xE0n th\xE0nh introduction c\u1EE7a game"
+    GoldAward: 1000
+    DiamondAward: 10
+    OtherAward: 
+  - Name: "Ch\u01A1i 1 tr\u1EADn \u0111\u1EA5u \u0111\u1EA7u ti\xEAn"
+    GoldAward: 500
+    DiamondAward: 5
+    OtherAward: 
+  - Name: "Ho\xE0n th\xE0nh 3 tr\u1EADn \u0111\u1EA7u ti\xEAn"
+    GoldAward: 1000
+    DiamondAward: 5
+    OtherAward: 
+  - Name: "Th\u1EAFng 5 tr\u1EADn li\xEAn t\u1EE5c"
+    GoldAward: 500
+    DiamondAward: 15
+    OtherAward: Bonus1
+  - Name: "Th\u1EAFng 10 tr\u1EADn li\xEAn t\u1EE5c"
+    GoldAward: 1000
+    DiamondAward: 25
+    OtherAward: 
+  - Name: "Th\u1EAFng 15 tr\u1EADn li\xEAn t\u1EE5c"
+    GoldAward: 10000
+    DiamondAward: 50
+    OtherAward: 
+  - Name: "H\u1EA1 g\u1EE5c 1 \u0111\u1ED1i th\u1EE7 trong 1 tr\u1EADn"
+    GoldAward: 200
+    DiamondAward: 0
+    OtherAward: 
+  - Name: "H\u1EA1 g\u1EE5c 3 \u0111\u1ED1i th\u1EE7 trong 1 tr\u1EADn"
+    GoldAward: 400
+    DiamondAward: 0
+    OtherAward: 
+  - Name: "H\u1EA1 g\u1EE5c 5 \u0111\u1ED1i th\u1EE7 trong 1 tr\u1EADn"
+    GoldAward: 500
+    DiamondAward: 0
+    OtherAward: 
+  - Name: "H\u1EA1 g\u1EE5c 10 \u0111\u1ED1i th\u1EE7 trong 1 tr\u1EADn"
+    GoldAward: 1000
+    DiamondAward: 5
+    OtherAward: 
+  - Name: "H\u1EA1 g\u1EE5c 15 \u0111\u1ED1i th\u1EE7 trong 1 tr\u1EADn"
+    GoldAward: 2000
+    DiamondAward: 15
+    OtherAward: 
+  - Name: "H\u1EA1 g\u1EE5c t\u1ED5ng s\u1ED1 10 \u0111\u1ED1i th\u1EE7"
+    GoldAward: 200
+    DiamondAward: 0
+    OtherAward: 
+  - Name: "H\u1EA1 g\u1EE5c t\u1ED5ng s\u1ED1 15 \u0111\u1ED1i th\u1EE7"
+    GoldAward: 500
+    DiamondAward: 0
+    OtherAward: 
+  - Name: "H\u1EA1 g\u1EE5c t\u1ED5ng s\u1ED1 30 \u0111\u1ED1i th\u1EE7"
+    GoldAward: 100
+    DiamondAward: 0
+    OtherAward: 
+  - Name: "H\u1EA1 g\u1EE5c t\u1ED5ng s\u1ED1 50 \u0111\u1ED1i th\u1EE7"
+    GoldAward: 1000
+    DiamondAward: 10
+    OtherAward: 
+  - Name: "H\u1EA1 g\u1EE5c t\u1ED5ng s\u1ED1 100 \u0111\u1ED1i th\u1EE7"
+    GoldAward: 2000
+    DiamondAward: 30
+    OtherAward: 
+  - Name: "L\xEAn rank b\u1EA1c \u0111o\xE0n"
+    GoldAward: 1000
+    DiamondAward: 10
+    OtherAward: 
+  - Name: "L\xEAn rank v\xE0ng \u0111o\xE0n"
+    GoldAward: 1000
+    DiamondAward: 15
+    OtherAward: 
+  - Name: "L\xEAn rank b\u1EA1ch kim \u0111o\xE0n"
+    GoldAward: 2000
+    DiamondAward: 15
+    OtherAward: 
+  - Name: "L\xEAn rank kim c\u01B0\u01A1ng"
+    GoldAward: 5000
+    DiamondAward: 25
+    OtherAward: 
+  - Name: "L\xEAn rank cao th\u1EE7"
+    GoldAward: 7000
+    DiamondAward: 50
+    OtherAward: 
+  - Name: "L\xEAn rank th\xE1ch \u0111\u1EA5u"
+    GoldAward: 20000
+    DiamondAward: 100
+    OtherAward: 
+  QuestNames:
+  - Name: "Tham gia tr\u1EADn \u0111\u1EA7u ti\xEAn trong ng\xE0y"
+    GoldAward: 400
+    DiamondAward: 2
+    OtherAward: 
+  - Name: "Xem qu\u1EA3ng 3 qu\u1EA3ng c\xE1o trong ng\xE0y"
+    GoldAward: 500
+    DiamondAward: 5
+    OtherAward: 
+  - Name: "Ho\u1EA1t \u0111\u1ED9ng 30 ph\xFAt trong game"
+    GoldAward: 500
+    DiamondAward: 3
+    OtherAward: 
+  - Name: "M\u1EDDi b\u1EA1n b\xE8 c\xF9ng ch\u01A1i trong ng\xE0y"
+    GoldAward: 200
+    DiamondAward: 2
+    OtherAward: 
+  - Name: "Th\u1EAFng 2 tr\u1EADn trong ng\xE0y"
+    GoldAward: 300
+    DiamondAward: 2
+    OtherAward: 
+  - Name: "Th\u1EAFng 5 tr\u1EADn trong ng\xE0y"
+    GoldAward: 300
+    DiamondAward: 4
+    OtherAward: 
