@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class BombPow : MonoBehaviour, IAssistanceSkill
+public class BombPow : AbAssistanceSkill
 {
     private float m_launchPow = 45; // lực ban đầu
     private float m_anglePow; // góc ném ban đầu theo radian
@@ -12,13 +12,7 @@ public class BombPow : MonoBehaviour, IAssistanceSkill
     private LineRenderer m_predictedTrajectoryPathBomb;
     private int lineSegment = 20;
     private float m_totalTime = 0.0f;
-    private float m_timeCountdown = 60.0f; //30s;
-    private float m_lerpTime = 0.0f;
-    private JoytickState m_joystickState;
-    private Tank m_tankLocalPlayer;
-    private bool m_hasSkillReady = true;
-    [SerializeField] private Image m_refreshImage;
-    [SerializeField] private Text m_secondLabel;
+    
  
     // biết vận tốc ban đầu, biết góc ném (góc giữ Oxz và Oy) => thòi gian, khoảng cách xa nhất...
  
@@ -28,6 +22,7 @@ public class BombPow : MonoBehaviour, IAssistanceSkill
         m_predictedTrajectoryPathBomb = PunObjectPool.Instance.GetLocalPool("Prefabs/Predicted Trajectory Path Bomb","Predicted Trajectory Path Bomb", Vector3.zero, Quaternion.identity).GetComponent<LineRenderer>();
         m_iconRange = PunObjectPool.Instance.GetLocalPool("Prefabs/Bomb Range","Bomb Range", Vector3.zero, Quaternion.identity).transform;
         m_iconRange.eulerAngles = new Vector3(90, 0, 0);
+        m_timeCountdown = 60.0f;
         m_iconRange.gameObject.SetActive(false);
         m_predictedTrajectoryPathBomb.positionCount = lineSegment;
         m_hasSkillReady = true;
@@ -35,38 +30,19 @@ public class BombPow : MonoBehaviour, IAssistanceSkill
         m_joystickState = JoytickState.None;
     }
  
-    public void RefreshSkill() {
-        Debug.Log("RefreshSkill");
-        m_lerpTime = m_timeCountdown;
-        m_hasSkillReady = false;
-        m_refreshImage.gameObject.SetActive(true);
-        m_refreshImage.fillAmount = 1;
-        m_secondLabel.text = "" + m_lerpTime;
-        StartCoroutine(RefreshSkillLoopCoroutine());
-    }
-    private IEnumerator RefreshSkillLoopCoroutine() {
-        yield return new WaitForSeconds(1.0f);
-        m_lerpTime -= 1;
-        m_secondLabel.text = "" + m_lerpTime;
-        m_refreshImage.fillAmount = m_lerpTime/m_timeCountdown;
-        if (m_lerpTime <= 0) {
-            m_hasSkillReady = true;
-            m_refreshImage.gameObject.SetActive(false);
-            yield break;
-        } else {
-            StartCoroutine(RefreshSkillLoopCoroutine());
-        }
-    }
 
-    public void Work(Joystick joystickAssistanceSkill)
+    public override void Work(Joystick joystickAssistanceSkill)
     {   
         if (!m_hasSkillReady) return;
 
-        if (Tank.LocalPlayerInstance == null) return;
-        m_tankLocalPlayer = Tank.LocalPlayerInstance.GetComponent<Tank>();
-        if (shootPoint == null) shootPoint = m_tankLocalPlayer.BombPowPoint;
+        
 
         if (joystickAssistanceSkill.GetJoystickState()) {
+
+            if (Tank.LocalPlayerInstance == null) return;
+            m_tankLocalPlayer = m_tankLocalPlayer ?? Tank.LocalPlayerInstance.GetComponent<Tank>();
+            shootPoint = shootPoint ?? m_tankLocalPlayer.BombPowPoint;
+
             m_joystickState = JoytickState.PointDown;
             Vector2 directionXZ = new Vector2(joystickAssistanceSkill.Horizontal, joystickAssistanceSkill.Vertical);
 

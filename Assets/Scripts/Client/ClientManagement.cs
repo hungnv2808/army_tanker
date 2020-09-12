@@ -112,7 +112,7 @@ public class ClientManagement : MonoBehaviourPun
             Debug.LogFormat("We are Instantiating LocalPlayer ");
             // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
             ArenaUI.Instance.HideNotificationPanel();
-            var tankClone = PunObjectPool.Instance.GetPunPool("Drone", Vector3.zero, Quaternion.identity);
+            var tankClone = PunObjectPool.Instance.GetPunPool("Tank2", Vector3.zero, Quaternion.identity);
             var script = tankClone.GetComponent<Tank>();
             script.photonView.RPC("Disable", RpcTarget.All, script.photonView.ViewID);
             script.IsPlayer = true;

@@ -16,7 +16,7 @@ public class GameControler : MonoBehaviour
     
     private Joystick m_joystickAssistanceSkill; //kỹ năng tương trợ
     private Tank m_tankPlayer;
-    private IAssistanceSkill m_assistanceSkill;
+    private AbAssistanceSkill m_assistanceSkill;
     // Start is called before the first frame update
     void Start()
     {

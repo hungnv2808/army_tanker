@@ -62,6 +62,7 @@ public class NPC : Tank
         m_rigidbody = gameObject.GetComponent<Rigidbody>();
         m_currHealthy = m_maxHealthy;
         m_currentEnergy = m_maxEnergy; 
+        m_heatlthyLabel.text = m_currHealthy + "";
     }
 
     

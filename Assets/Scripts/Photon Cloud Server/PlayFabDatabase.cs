@@ -4,6 +4,7 @@ using UnityEngine;
 using PlayFab.ClientModels;
 using PlayFab;
 using System.Threading.Tasks;
+using System;
 public class PlayFabDatabase : MonoBehaviour
 {
     private static PlayFabDatabase s_instance;
@@ -43,6 +44,36 @@ public class PlayFabDatabase : MonoBehaviour
             m_myDataID = value;
         }
     }
+    public List<AchievementData> m_achievementDatas;
+    public List<AchievementData> m_dailyQuestDatas;
+    private List<TankerStat> m_tankerChampions;
+    private List<AssistanceSkill> m_assistanceSkills;
+    private int m_indexTankerChampionSelected;
+    private int m_indexAssistanceSkillSelected;
+    private InfoTank m_infoTank;
+    public InfoTank InfoTank {
+        get {
+            return m_infoTank;
+        }
+    }
+    public List<TankerStat> TankerChampions {
+        get {
+            return m_tankerChampions;
+        }
+    }
+    public List<AssistanceSkill> AssistanceSkills {
+        get {
+            return m_assistanceSkills;
+        }
+    }
+    public int IndexTankerChampionSelected {
+        get {
+            return m_indexTankerChampionSelected;
+        }
+        set {
+            m_indexTankerChampionSelected = value;
+        }
+    }
     public static PlayFabDatabase Instance {
         get {
             return s_instance;
@@ -55,123 +86,171 @@ public class PlayFabDatabase : MonoBehaviour
         s_instance = this;
         DontDestroyOnLoad(s_instance);
     }
-    public void InitUserData() {
-        this.SetUserData(new Dictionary<string, string>() {
-            {"avatar", "Avatar/1"},
-            {"goldStar", "0"},
-            {"violetStar", "0"},
-            {"rank", "1"},
-            {"rankIcon", "Avatar/rank_7"},
-            {"pointRank", "0"},
-            {"competitorKilledCount", "0"},
-
-            {"achievement1", "false"},
-            {"achievement2", "false"},
-            {"achievement3", "false"},
-            {"achievement4", "false"},
-            {"achievement5", "false"},
-            {"achievement6", "false"},
-            {"achievement7", "false"},
-            {"achievement8", "false"},
-            {"achievement9", "false"},
-            {"achievement10", "false"},
-            {"achievement11", "false"},
-            {"achievement12", "false"},
-            {"achievement13", "false"},
-            {"achievement14", "false"},
-            {"achievement15", "false"},
-            {"achievement16", "false"},
-            {"achievement17", "false"},
-            {"achievement18", "false"},
-            {"achievement19", "false"},
-            {"achievement20", "false"},
-            {"achievement21", "false"},
-            {"achievement22", "false"},
-            {"dailyQuest1", "false"},
-            {"dailyQuest2", "false"},
-            {"dailyQuest3", "false"},
-            {"dailyQuest4", "false"},
-            {"dailyQuest5", "false"},
-            {"dailyQuest6", "false"},
-            {"isCompleteAchivementGroup_1", "false"},
-            {"isCompleteAchivementGroup_2", "false"},                                  
-            {"isCompleteAchivementGroup_3", "false"},                                  
-            {"isCompleteAchivementGroup_4", "false"},                                  
-            {"isCompleteAchivementGroup_5", "false"},
-        });
+    public void InitDatabase() {
+        Debug.Log("Start creat database...");
+        this.InitData();
+        this.UpdateDataServer();
+        this.UpdateDataClient();
     }
-    public async Task GetData() {
-        var data = await PlayFabDatabase.Instance.GetUserData(PlayFabDatabase.Instance.MyDataID, new List<string>() {
-                        {"avatar"},
-                        {"goldStar"},
-                        {"violetStar"},
-                        {"rank"},
-                        {"rankIcon"},
-                        {"pointRank"},
-                        {"competitorKilledCount"},
+    public void InitData() {
+        m_infoTank = new InfoTank("Avatar/1", 1, 0, 0, 0, 0, 0);
+        this.m_pathAvatar = m_infoTank.PathAvatar;
+        m_tankerChampions = new List<TankerStat>();
+        m_tankerChampions.Add(new TankerStat(0, true, 1000, 7, 100));//tank1
+        m_tankerChampions.Add(new TankerStat(1, false, 1000, 9, 70));//tank2
+        m_tankerChampions.Add(new TankerStat(2, false, 1000, 10, 100));//drone
 
-                        {"achievement1"},
-                        // nhóm phần thưởng sau khi hoàn thành số trận đầu tiên nhất định (nhóm 1)
-                        {"achievement2"},
-                        {"achievement3"},
-                        // nhóm phần thưởng khi thắng số trận liên tục (nhóm 2)
-                        {"achievement4"},
-                        {"achievement5"},
-                        {"achievement6"},
-                        // nhóm phần thưởng khi hạ gục số đối thủ nhất định trong 1 trận (nhóm 3)
-                        {"achievement7"},
-                        {"achievement8"},
-                        {"achievement9"},
-                        {"achievement10"},
-                        {"achievement11"},
-                        // nhóm phần thưởng khi tổng số hạ gục đối thủ nhất định (nhóm 4)
-                        {"achievement12"},
-                        {"achievement13"},
-                        {"achievement14"},
-                        {"achievement15"},
-                        {"achievement16"},
-                        // nhóm phần thưởng khi lên rank (nhóm 5)
-                        {"achievement17"},
-                        {"achievement18"},
-                        {"achievement19"},
-                        {"achievement20"},
-                        {"achievement21"},
-                        {"achievement22"},
-                        // nhóm phần thưởng cho nhiệm vụ hàng ngày
-                        {"dailyQuest1"},
-                        {"dailyQuest2"},
-                        {"dailyQuest3"},
-                        {"dailyQuest4"},
-                        {"dailyQuest5"},
-                        {"dailyQuest6"},
-                        // biến này để check xem nhóm mission đã hoàn thành chưa, trong DB cũng phải lưu giá trị này để, mỗi lần check mission thì check biến này trước 
-                        {"isCompleteAchivementGroup_1"},
-                        {"isCompleteAchivementGroup_2"},                                  
-                        {"isCompleteAchivementGroup_3"},                                  
-                        {"isCompleteAchivementGroup_4"},                                  
-                        {"isCompleteAchivementGroup_5"},
+        m_assistanceSkills = new List<AssistanceSkill>();
+        m_assistanceSkills.Add(new AssistanceSkill(0, true));// phép bổ trợ tăng máu,
+        m_assistanceSkills.Add(new AssistanceSkill(1, false));// phép bổ tăng tốc,
+        m_assistanceSkills.Add(new AssistanceSkill(2, false));// phép bổ tăng sát thương,
+        m_assistanceSkills.Add(new AssistanceSkill(3, false));// phép bổ trợ ném bom,
+        
+        m_achievementDatas = new List<AchievementData>();
+        m_achievementDatas.Add(new AchievementData(1, false, 0));
+        m_achievementDatas.Add(new AchievementData(2, false, 0));
+        m_achievementDatas.Add(new AchievementData(3, false, 0));
+        m_achievementDatas.Add(new AchievementData(4, false, 0));
+        m_achievementDatas.Add(new AchievementData(5, false, 0));
+        m_achievementDatas.Add(new AchievementData(6, false, 0));
+        m_achievementDatas.Add(new AchievementData(7, false, 0));
+        m_achievementDatas.Add(new AchievementData(8, false, 0));
+        m_achievementDatas.Add(new AchievementData(9, false, 0));
+        m_achievementDatas.Add(new AchievementData(10, false, 0));
+        m_achievementDatas.Add(new AchievementData(11, false, 0));
+        m_achievementDatas.Add(new AchievementData(12, false, 0));
+        m_achievementDatas.Add(new AchievementData(13, false, 0));
+        m_achievementDatas.Add(new AchievementData(14, false, 0));
+        m_achievementDatas.Add(new AchievementData(15, false, 0));
+        m_achievementDatas.Add(new AchievementData(16, false, 0));
+        m_achievementDatas.Add(new AchievementData(17, false, 0));
+        m_achievementDatas.Add(new AchievementData(18, false, 0));
+        m_achievementDatas.Add(new AchievementData(19, false, 0));
+        m_achievementDatas.Add(new AchievementData(20, false, 0));
+        m_achievementDatas.Add(new AchievementData(21, false, 0));
+        m_achievementDatas.Add(new AchievementData(22, false, 0));
+
+        m_dailyQuestDatas = new List<AchievementData>();
+        m_dailyQuestDatas.Add(new AchievementData(1, false, 0));
+        m_dailyQuestDatas.Add(new AchievementData(2, false, 0));
+        m_dailyQuestDatas.Add(new AchievementData(3, false, 0));
+        m_dailyQuestDatas.Add(new AchievementData(4, false, 0));
+        m_dailyQuestDatas.Add(new AchievementData(5, false, 0));
+        m_dailyQuestDatas.Add(new AchievementData(6, false, 0));
+    }
+    public async Task GetAllData() {
+        var data = await PlayFabDatabase.Instance.GetUserData(PlayFabDatabase.Instance.MyDataID, new List<string>() {
+                        {"date"},
+                        {"infoTank"},
+                        // {"competitorKilledCount", "0"},
+                        {"tankerChampion"},
+                        {"assistanceSkill"},
+                        {"achievement"},
+                        {"dailyQuest"},
                     });
-        if (data.ContainsKey("goldStar")) CurrencyManagement.Instance.GoldStar = int.Parse(data["goldStar"].Value);
-        if (data.ContainsKey("violetStar")) CurrencyManagement.Instance.VioletStar = int.Parse(data["violetStar"].Value);
-        if (data.ContainsKey("competitorKilledCount")) MissionMangement.Instance.CompetitorKilledCount = int.Parse(data["competitorKilledCount"].Value);
-        for (int i = 1; i <= 22; i++)
-        {
-            if (data.ContainsKey("achievement"+i)) {
-                MissionMangement.Instance.Misstions["achievement"+i] = bool.Parse(data["achievement"+i].Value);
-            }
+        
+        DateTime timeDataServer = DateTime.Parse(data["date"].Value);
+        if (!PlayerPrefs.HasKey("date")) {
+            Debug.Log("load dữ liệu từ server");
+            this.HandleDataServer(data);
+            return;
         }
-        for (int i = 1; i <= 6; i++)
-        {
-            if (data.ContainsKey("dailyQuest"+i)) {
-                MissionMangement.Instance.Misstions["dailyQuest"+i] = bool.Parse(data["dailyQuest"+i].Value);
-            }
+        DateTime timeDataLocal = DateTime.Parse(PlayerPrefs.GetString("date"));
+        int resultDateTimeCompare = DateTime.Compare(timeDataServer, timeDataLocal);
+        if (resultDateTimeCompare < 0) { // time save server is earlier than time save local
+            //load dữ liệu từ local và đồng bộ dữ liệu từ local lên server
+            Debug.Log("load dữ liệu từ local");
+            this.HandleDataLocal(data);
+        } else {
+            // load dữ liệu từ server
+            Debug.Log("load dữ liệu từ server");
+            this.HandleDataServer(data);
+            
         }
-        for (int i = 1; i <= 5; i++)
-        {
-            if (data.ContainsKey("isCompleteAchivementGroup_"+i)) {
-                MissionMangement.Instance.Misstions["isCompleteAchivementGroup_"+i] = bool.Parse(data["isCompleteAchivementGroup_"+i].Value);
-            }
+        
+        // if (data.ContainsKey("competitorKilledCount")) MissionMangement.Instance.CompetitorKilledCount = int.Parse(data["competitorKilledCount"].Value);
+        // for (int i = 1; i <= 22; i++)
+        // {
+        //     if (data.ContainsKey("achievement"+i)) {
+        //         MissionMangement.Instance.Misstions["achievement"+i] = bool.Parse(data["achievement"+i].Value);
+        //     }
+        // }
+        // for (int i = 1; i <= 6; i++)
+        // {
+        //     if (data.ContainsKey("dailyQuest"+i)) {
+        //         MissionMangement.Instance.Misstions["dailyQuest"+i] = bool.Parse(data["dailyQuest"+i].Value);
+        //     }
+        // }
+        // for (int i = 1; i <= 5; i++)
+        // {
+        //     if (data.ContainsKey("isCompleteAchivementGroup_"+i)) {
+        //         MissionMangement.Instance.Misstions["isCompleteAchivementGroup_"+i] = bool.Parse(data["isCompleteAchivementGroup_"+i].Value);
+        //     }
+        // }
+        
+    }
+    private void HandleDataServer(Dictionary<string, UserDataRecord> data) {
+        if (data.ContainsKey("infoTank")) { 
+            this.m_infoTank = JsonHelper.FormJon<InfoTank>(data["infoTank"].Value);
+            this.m_pathAvatar = m_infoTank.PathAvatar;
+            this.m_indexTankerChampionSelected = m_infoTank.IndexTankerChampionSelected;
+            this.m_indexAssistanceSkillSelected = m_infoTank.IndexAssistanceSkillSelected;
+            CurrencyManagement.Instance.VioletStar = m_infoTank.VioletStar;
+            CurrencyManagement.Instance.GoldStar = m_infoTank.GoldStar;
         }
+        if (data.ContainsKey("tankerChampion")) m_tankerChampions = JsonHelper.FormJon<List<TankerStat>>(data["tankerChampion"].Value);
+        if (data.ContainsKey("assistanceSkill")) m_assistanceSkills = JsonHelper.FormJon<List<AssistanceSkill>>(data["assistanceSkill"].Value);
+        //TODO : load dữ liệu của achievement và daily quest
+    }
+    private void HandleDataLocal(Dictionary<string, UserDataRecord> data) {
+        if (!PlayerPrefs.HasKey("infoTank") || !PlayerPrefs.HasKey("tankerChampion") || !PlayerPrefs.HasKey("assistanceSkill")) {
+            Debug.Log("Dữ liệu local đã bị mất, đang load dữ liệu từ server");
+            this.HandleDataServer(data);
+        }
+        if (PlayerPrefs.HasKey("infoTank")) { 
+            this.m_infoTank = JsonHelper.FormJon<InfoTank>(PlayerPrefs.GetString("infoTank"));
+            this.m_pathAvatar = m_infoTank.PathAvatar;
+            this.m_indexTankerChampionSelected = m_infoTank.IndexTankerChampionSelected;
+            this.m_indexAssistanceSkillSelected = m_infoTank.IndexAssistanceSkillSelected;
+            CurrencyManagement.Instance.VioletStar = m_infoTank.VioletStar;
+            CurrencyManagement.Instance.GoldStar = m_infoTank.GoldStar;
+        }
+        if (PlayerPrefs.HasKey("tankerChampion")) m_tankerChampions = JsonHelper.FormJon<List<TankerStat>>(PlayerPrefs.GetString("tankerChampion"));
+        if (PlayerPrefs.HasKey("assistanceSkill")) m_assistanceSkills = JsonHelper.FormJon<List<AssistanceSkill>>(PlayerPrefs.GetString("assistanceSkill"));
+        //TODO : load dữ liệu của achievement và daily quest
+    }
+    public void UpdateDataServer() {
+        string infoTankJson = JsonHelper.ToJson<InfoTank>(m_infoTank);
+        string tankerChampionJson = JsonHelper.ToJson<List<TankerStat>>(m_tankerChampions);
+        string assistanceSkillJson = JsonHelper.ToJson<List<AssistanceSkill>>(m_assistanceSkills);
+        string achievementDataJson = JsonHelper.ToJson<List<AchievementData>>(m_achievementDatas);
+        string dailyQuestDataJson = JsonHelper.ToJson<List<AchievementData>>(m_dailyQuestDatas);
+        this.SetUserData(new Dictionary<string, string>() {
+            //giới hạn update chỉ update đc 10 key, get data tối đa đc 12
+            {"date", DateTime.Now.ToString()},
+            {"infoTank", infoTankJson},
+            // {"competitorKilledCount", "0"},
+            {"tankerChampion", tankerChampionJson},
+            {"assistanceSkill", assistanceSkillJson},
+            {"achievement", achievementDataJson},
+            {"dailyQuest", dailyQuestDataJson},
+        });
+        Debug.Log("Update success data server!");
+    }
+    public void UpdateDataClient() {
+        string infoTankJson = JsonHelper.ToJson<InfoTank>(m_infoTank);
+        string tankerChampionJson = JsonHelper.ToJson<List<TankerStat>>(m_tankerChampions);
+        string assistanceSkillJson = JsonHelper.ToJson<List<AssistanceSkill>>(m_assistanceSkills);
+        string achievementDataJson = JsonHelper.ToJson<List<AchievementData>>(m_achievementDatas);
+        string dailyQuestDataJson = JsonHelper.ToJson<List<AchievementData>>(m_dailyQuestDatas);
+        PlayerPrefs.SetString("date", DateTime.Now.ToString());
+        PlayerPrefs.SetString("infoTank", infoTankJson);
+        PlayerPrefs.SetString("tankerChampion", tankerChampionJson);
+        PlayerPrefs.SetString("assistanceSkill", assistanceSkillJson);
+        PlayerPrefs.SetString("achievement", achievementDataJson);
+        PlayerPrefs.SetString("dailyQuest", dailyQuestDataJson);
+        Debug.Log("Update success data local!");
+
     }
     public void SetUserData(Dictionary<string, string> data) {
         // return;
@@ -229,5 +308,18 @@ public class PlayFabDatabase : MonoBehaviour
             Debug.LogError("lỗi get player profile: " + errorCallback.GenerateErrorReport());
         });
         return displayerName;
+    }
+    // private void OnApplicationFocus(bool focusStatus) {
+    //     Debug.Log("App focus");
+    //     this.UpdateDataClient();
+    //     this.UpdateDataServer();
+    // }
+    // private void OnApplicationPause(bool pauseStatus) {
+        
+    // }
+    private void OnApplicationQuit() {
+        Debug.Log("App Quit");
+        this.UpdateDataClient();
+        this.UpdateDataServer();
     }
 }

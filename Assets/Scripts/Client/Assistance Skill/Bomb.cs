@@ -37,9 +37,9 @@ public class Bomb : MonoBehaviour
         
         Invoke("Disable", 1.2f);
     }
-    private void OnDrawGizmos() {
-        Gizmos.DrawWireSphere(m_transform.position, 9.0f);
-    }
+    // private void OnDrawGizmos() {
+    //     Gizmos.DrawWireSphere(m_transform.position, 9.0f);
+    // }
     private void ReduceEnemyBlood() {
         var enemies = Physics.OverlapSphere(m_transform.position, 9.0f);
         for (int i=0; i<enemies.Length; i++) 

@@ -49,8 +49,6 @@ public class AvatarInventoryUI : MonoBehaviour
         this.UpdateAvatar("Avatar/" + index);
     }
     public void UpdateAvatar(string value) {
-        PlayFabDatabase.Instance.SetUserData(new Dictionary<string, string>() {
-                {"pathAvatar", value}
-        });
+        PlayFabDatabase.Instance.InfoTank.PathAvatar = value;
     }
 }

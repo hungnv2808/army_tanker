@@ -15,3 +15,15 @@ public class AchievementObject {
     public int DiamondAward;
     public string OtherAward;
 }
+[System.Serializable]
+public class AchievementData {
+    public int Index;
+    public bool IsComplete;
+    public int Progress; 
+
+    public AchievementData(int index, bool isComplete, int progress) {
+        this.Index = index;
+        this.IsComplete = isComplete;
+        this.Progress = progress;
+    }
+}

@@ -6,6 +6,51 @@ using Photon.Realtime;
 using ExitGames.Client.Photon;
 using System;
 
+[Serializable]
+public class InfoTank {
+    public string PathAvatar;
+    public int RankIndex;
+    public int RankPoint;
+    public int VioletStar;
+    public int GoldStar;
+    public int IndexTankerChampionSelected;
+    public int IndexAssistanceSkillSelected;
+
+    public InfoTank(string pathAvatar, int rankIndex, int rankPoint, int violetStar, int goldStar, int indexTankerChampionSelected, int indexAssistanceSkillSelected) {
+        this.PathAvatar = pathAvatar;
+        this.RankIndex = rankIndex;
+        this.RankPoint = rankPoint;
+        this.VioletStar = violetStar;
+        this.GoldStar = goldStar;
+        this.IndexTankerChampionSelected = indexTankerChampionSelected;
+        this.IndexAssistanceSkillSelected = indexAssistanceSkillSelected;
+    }
+
+}
+[Serializable]
+public class TankerStat {
+    public int Index;
+    public bool HasUnlock;
+    public float Healthy;
+    public float MoveSpeed;
+    public float Damage;
+    public TankerStat(int index, bool hasUnlock, float healthy, float moveSpeed, float damage) {
+        this.Index = index;
+        this.HasUnlock = hasUnlock;
+        this.Healthy = healthy;
+        this.MoveSpeed = moveSpeed;
+        this.Damage = damage;
+    }
+}
+[Serializable]
+public class AssistanceSkill {
+    public int Index;
+    public bool HasUnlock;
+    public AssistanceSkill(int index, bool hasUnlock) {
+        this.Index = index;
+        this.HasUnlock = hasUnlock;
+    }
+}
 public class Tank : MonoBehaviourPun, IEvent, IPunObservable
 {
     
@@ -17,6 +62,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     [SerializeField] protected Collider m_boxCollider;
     [SerializeField] protected TankHealthyBar m_healthyBar;
     [SerializeField] protected SpriteRenderer m_healthyBarSpr;
+    [SerializeField] protected TextMesh m_heatlthyLabel;
     [SerializeField] protected EnergyBar m_energyScript;
     [SerializeField] protected TextMesh m_displayNameText;
     [SerializeField] protected Material[] m_tankMaterials;
@@ -70,7 +116,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         Invoke("InitAutoTarget", 2.0f);
     }
     
-    private void Start()
+    protected virtual void Start()
     {
         
         // m_joytickSkill1 = UltimateJoystick.GetUltimateJoystick("Skill_1 Joystick");
@@ -81,6 +127,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         this.InitTankTurrents();
         m_isPlayer = true;
         m_currHealthy = m_maxHealthy;
+        m_heatlthyLabel.text = m_currHealthy + "";
         m_currentEnergy = m_maxEnergy;
 
 
@@ -100,8 +147,8 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         StartCoroutine(LoopDectectPlayerCoroutine());
     }
     protected virtual void CreatTrail() {
-        m_leftTrailEffect = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/IceFloorTrail", "IceFloorTrail", m_leftTrail.position, Quaternion.identity).GetComponent<TankTrail>();
-        m_rightTrailEffect = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/IceFloorTrail", "IceFloorTrail", m_rightTrail.position, Quaternion.identity).GetComponent<TankTrail>();
+        m_leftTrailEffect = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/FireFloorTrail", "FireFloorTrail", m_leftTrail.position, Quaternion.identity).GetComponent<TankTrail>();
+        m_rightTrailEffect = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/FireFloorTrail", "FireFloorTrail", m_rightTrail.position, Quaternion.identity).GetComponent<TankTrail>();
         m_leftTrailEffect.Init(m_leftTrail);
         m_rightTrailEffect.Init(m_rightTrail);
     }
@@ -114,7 +161,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         }
         
     }
-    protected void InitTankTurrents() {
+    protected virtual void InitTankTurrents() {
         GameObject lv1Turrent = new GameObject();
         lv1Turrent.name = "Turrent Level 1";
         lv1Turrent.AddComponent<Lv1Turrent>();
@@ -217,10 +264,10 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     public void ReduceBlood(float damage, string whoDamage, int whoViewID)
     {
         m_currHealthy -= damage;
-        if (m_currHealthy > 0) 
+        if (m_currHealthy > 0) {
             m_healthyBar.ReduceHealthyBar(damage, m_maxHealthy);
-        else
-        {
+            m_heatlthyLabel.text = m_currHealthy + "";
+        } else {
             this.DeathAndSync(whoDamage, whoViewID);
         }
     }
@@ -247,6 +294,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
                 m_currHealthy += 5;
                 m_healthyBar.IncreaseHealthyBar(5, m_maxHealthy);
             }
+            m_heatlthyLabel.text = m_currHealthy + "";
         }
     }
     protected void DeathAndSync(string whoDamage, int whoViewID) {
@@ -272,6 +320,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         if (this.photonView.IsMine) PunObjectPool.Instance.SendDispatch(TankEvent.EVENT_SEND_DISPATCH_REVIVAL, this.photonView.ViewID);
         m_currHealthy = m_maxHealthy;
         m_currentEnergy = m_maxEnergy;
+        m_heatlthyLabel.text = m_currHealthy + "";
         m_energyScript.FillUpMaxEnergyBar();
         m_healthyBar.FillUpMaxHealthyBar();
         this.Visible();
@@ -295,6 +344,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         } else {
             m_currHealthy = (float)stream.ReceiveNext();
             m_healthyBar.SetCurrentHealthy(m_currHealthy, m_maxHealthy);
+            m_heatlthyLabel.text = m_currHealthy + "";
         }
     }
     
@@ -503,6 +553,9 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         get {
             return m_currHealthy;
         }
+        set {
+            m_currHealthy = value;
+        }
     }
     public float CurrentEnergy {
         get {
@@ -520,6 +573,24 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     public float MaxEnergy {
         get {
             return m_maxEnergy;
+        }
+    }
+    public float MaxHealthy {
+        get {
+            return m_maxHealthy;
+        }
+    }
+    public TankHealthyBar HealthyBarScript {
+        get {
+            return m_healthyBar;
+        }
+    }
+    public float MoveSpeed {
+        get {
+            return m_moveSpeed;
+        }
+        set {
+            m_moveSpeed = value;
         }
     }
     #endregion

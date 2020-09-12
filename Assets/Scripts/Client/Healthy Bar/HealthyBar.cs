@@ -25,8 +25,8 @@ public class HealthyBar : MonoBehaviour
     public virtual void MinHealthy() {
         m_barSprite.size = new Vector2(0, m_barSprite.size.y);
     }
-    public virtual void SetCurrentHealthy(float curHealthy, float healthy) {
-        m_barSprite.size = new Vector2(m_originalHeathyBarWidth * curHealthy / healthy, m_barSprite.size.y);
+    public virtual void SetCurrentHealthy(float curHealthy, float maxHealthy) {
+        m_barSprite.size = new Vector2(m_originalHeathyBarWidth * curHealthy / maxHealthy, m_barSprite.size.y);
     }
     public virtual void ReduceHealthyBar(float damage, float healthy) {
         m_barSprite.size = new Vector2(m_barSprite.size.x - m_originalHeathyBarWidth * damage / healthy, m_barSprite.size.y);

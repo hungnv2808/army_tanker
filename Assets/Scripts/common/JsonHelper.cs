@@ -13,7 +13,7 @@ public class JsonHelper
     }
     public static string ToJson<T>(T obj) {
         Wrap<T> wrap = new Wrap<T>(obj);
-        return JsonUtility.ToJson(wrap, true);
+        return JsonUtility.ToJson(wrap, false);
     }
     public static T FormJon<T> (string json) {
         var temp = JsonUtility.FromJson<Wrap<T>>(json);

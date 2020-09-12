@@ -59,6 +59,10 @@ public class LobbyUI : MonoBehaviour
         SceneManager.LoadScene("Waiting Scene");
     }
     public void OnBackClick() {
+        this.m_animator.SetBool("isOpenedSelectMap", false);
+        Invoke("LoadMenuScene", 0.7f);
+    }
+    private void LoadMenuScene() {
         SceneManager.LoadScene("Menu Scene");
     }
 }

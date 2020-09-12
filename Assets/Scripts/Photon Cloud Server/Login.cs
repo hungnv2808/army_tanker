@@ -150,10 +150,7 @@ public class Login : MonoBehaviour
             DisplayName = m_inputField.text
         }, resultCallback => {
             PlayFabDatabase.Instance.DisPlayName = m_inputField.text;
-            PlayFabDatabase.Instance.PathAvatar = "Avatar/1";
-            PlayFabDatabase.Instance.SetUserData(new Dictionary<string, string>() {
-                {"pathAvatar", "Avatar/1"}
-            });
+            PlayFabDatabase.Instance.InitDatabase();
             Debug.Log("Setting name successly");
             SceneManager.LoadScene("Menu Scene");
         }, errorCallback => {
@@ -172,12 +169,8 @@ public class Login : MonoBehaviour
             } else {
                 PlayFabDatabase.Instance.DisPlayName = resultCallback.PlayerProfile.DisplayName;
                 Debug.Log("GetUserData pathAvatar");
-                var result = await PlayFabDatabase.Instance.GetUserData(PlayFabDatabase.Instance.MyDataID, new List<string>() {
-                    {"pathAvatar"}
-                });
-                PlayFabDatabase.Instance.PathAvatar = result["pathAvatar"].Value;
+                await PlayFabDatabase.Instance.GetAllData();
                 Debug.Log(PlayFabDatabase.Instance.PathAvatar);
-                await PlayFabDatabase.Instance.GetData();
                 SceneManager.LoadScene("Menu Scene");
             }
             Debug.Log("check display name :" + resultCallback.PlayerProfile.DisplayName);

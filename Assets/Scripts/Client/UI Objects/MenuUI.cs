@@ -16,8 +16,11 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private GameObject m_achievementPanel;
     [SerializeField] private Button m_mailBoxButton;
     [SerializeField] private Button m_shopButton;
+    [SerializeField] private Button m_closeShopButton;
+    [SerializeField] private GameObject m_shopPanel;
     [SerializeField] private GameObject m_mailBoxPanel;
     [SerializeField] private Animator m_animator;
+    [SerializeField] private Animator m_displayModelAnimator;
     [SerializeField] private Text m_goldStarLabel;
     [SerializeField] private Text m_violetStarLabel;
     public RectTransform UI_GoldPosition;
@@ -47,8 +50,11 @@ public class MenuUI : MonoBehaviour
         m_achievementButton.onClick.AddListener(OnAchievementClick);
         m_mailBoxButton.onClick.AddListener(OnMailBoxClick);
         m_shopButton.onClick.AddListener(OnShopClick);
+        m_closeShopButton.onClick.AddListener(OnCloseShopClick);
         this.ShowPlayerNameLabel(PlayFabDatabase.Instance.DisPlayName, PlayFabDatabase.Instance.PathAvatar);
-        m_animator.SetBool("isOpenedMenuScene", true);
+        m_animator.SetBool("isOpenShop", false);
+        m_animator.SetBool("isOpenSelectMap", false);
+        m_displayModelAnimator.SetBool("isDisplayRight", false);
     }
     private void OnAvatarClick() {
         isAvatarClicked = !isAvatarClicked;
@@ -85,10 +91,29 @@ public class MenuUI : MonoBehaviour
         m_mailBoxPanel.SetActive(m_isOpenMailBox);
     }
     private void OnFightClick() {
+        m_animator.SetBool("isOpenSelectMap", true);
+        Invoke("LoadSelectMapScene", 0.7f);
+    }
+    private void LoadSelectMapScene() {
         SceneManager.LoadScene("Lobby Scene");
     }
     private void OnShopClick() {
-        m_animator.SetBool("isOpenedMenuScene", false);
+        m_displayModelAnimator.SetBool("isDisplayRight", true);
+        m_animator.SetBool("isOpenShop", true);
+        // AnimatorHelper.RunActionSequence(m_animator, ShowShop);
+    }
+    private void OnCloseShopClick() {
+        ShopUI.Instance.CloseClickHandle();
+        m_animator.SetBool("isOpenShop", false);
+        AnimatorHelper.RunActionSequence(m_animator, () => {
+            m_displayModelAnimator.SetBool("isDisplayRight", false);
+        });
+    }
+    private void ShowShop() {
+        m_shopPanel.SetActive(true);
+    }
+    private void HiddenShop() {
+        m_shopPanel.SetActive(false);
     }
     public void UpdateCurrencyUI() {
         m_goldStarLabel.text = CurrencyManagement.Instance.GoldStar + "";

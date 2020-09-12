@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 namespace Tank3d.PhotonServer
 {
@@ -31,19 +32,16 @@ namespace Tank3d.PhotonServer
         #region MonoBehaviour Callbacks 
         private void Awake()
         {
-            /*đảm bảo rằng khi sử dụng PhotonNetwork.LoadLevel() trên 1 thằng client thì tất cả những client khác trong cùng phòng sẽ tự động đồng bộ level
-            của thằng kia*/
+            
             if (s_instance != null && s_instance != this)
             {
                 DestroyImmediate(this.gameObject);
                 return;
             }
             s_instance = this;
-            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.AutomaticallySyncScene = true; /*đảm bảo rằng khi sử dụng PhotonNetwork.LoadLevel() trên 1 thằng client thì tất cả những client khác trong cùng phòng sẽ tự động đồng bộ level
+            của thằng kia*/
             DontDestroyOnLoad(this);
-        }
-        private void Start() {
-            this.Connect2MasterServer();
         }
         #endregion
         
@@ -56,6 +54,8 @@ namespace Tank3d.PhotonServer
             if (PhotonNetwork.IsConnected)
             {
                 Debug.Log("Connected MasterServer successly :)");
+                Debug.Log("Count Of Rooms: "+ PhotonNetwork.CountOfRooms);
+                Invoke("JoinRandomRoom", 0f);
                 /*we need at this point to attempt joining a random room. If it fails, we will get notified in OnJoinRandomFailed() and we will creat one*/
             }
             else
@@ -68,9 +68,7 @@ namespace Tank3d.PhotonServer
             }
         }
         public void JoinRoom() {
-            // this.Connect2MasterServer();\
-            Invoke("JoinRandomRoom", 1f);
-            if (!PhotonNetwork.IsConnected) this.Connect2MasterServer();
+            this.Connect2MasterServer();// connect to server and join room
         }
         #endregion 
         private void JoinRandomRoom() {
@@ -81,13 +79,9 @@ namespace Tank3d.PhotonServer
         {
             /*khi mình rời phòng thì thằng callback OnLeftRoom() sẽ chạy sau khi mà thằng PhotonNetwork.LeaveRoom() chạy xong, tiếp đến thì nó sẽ gọi vào hàm này*/
             Debug.Log("Connected MasterServer successly :)");
-            // if (PhotonNetwork.CountOfRooms >= 1) {
-            //     for (int i = 0; i < PhotonNetwork.CountOfRooms; i++)
-            //     {
-            //         PhotonNetwork.
-            //     }
-            // }
             Debug.Log("Count Of Rooms: "+ PhotonNetwork.CountOfRooms);
+            Invoke("JoinRandomRoom", 0f);
+
         }
         public override void OnDisconnected(DisconnectCause cause)
         {
