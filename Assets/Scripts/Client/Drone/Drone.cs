@@ -28,23 +28,20 @@ public class Drone : Tank
         m_crosshairIcon.gameObject.SetActive(false);
         m_crosshairRange.SetActive(false);
 
-        m_moveSpeed = 10.0f;
-        m_leftTrail.localPosition = Vector3.zero;
-        m_rightTrail.localPosition = Vector3.zero;
         Invoke("InitAutoTarget", 2.0f);
     }
     protected override void CreatTrail()
     {
-        m_leftTrailEffect = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/DroneTrail", "DroneTrail", m_leftTrail.position, Quaternion.identity).GetComponent<TankTrail>();
-        m_rightTrailEffect = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/DroneTrail", "DroneTrail", m_rightTrail.position, Quaternion.identity).GetComponent<TankTrail>();
-        m_leftTrailEffect.Init(m_leftTrail);
-        m_rightTrailEffect.Init(m_rightTrail);
+        // m_leftTrailEffect = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/DroneTrail", "DroneTrail", m_leftTrail.position, Quaternion.identity).GetComponent<TankTrail>();
+        // m_rightTrailEffect = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/DroneTrail", "DroneTrail", m_rightTrail.position, Quaternion.identity).GetComponent<TankTrail>();
+        // m_leftTrailEffect.Init(m_leftTrail);
+        // m_rightTrailEffect.Init(m_rightTrail);
     }
     public override void MoveOnPC(float inputHorizontal, float inputVertical) {
         if (inputHorizontal != 0 || inputVertical != 0)
         {
             m_movementDirection = new Vector3(inputHorizontal, 0, inputVertical);
-            m_tankChassis.forward = Vector3.MoveTowards(m_tankChassis.forward, m_movementDirection.normalized, Time.deltaTime*7);
+            m_tankChassis.forward = Vector3.MoveTowards(m_tankChassis.forward, m_movementDirection.normalized, Time.deltaTime*m_moveSpeed);
             if (!m_joystickMovementState.Equals(JoytickState.PointDown)) {
                 m_joystickMovementState = JoytickState.PointDown;
                 m_animator.SetBool("isMoved", true);
@@ -65,7 +62,7 @@ public class Drone : Tank
            
 
             m_movementDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
-            m_tankChassis.forward = Vector3.MoveTowards(m_tankChassis.forward, m_movementDirection.normalized, Time.deltaTime*7);
+            m_tankChassis.forward = Vector3.MoveTowards(m_tankChassis.forward, m_movementDirection.normalized, Time.deltaTime*m_moveSpeed);
             if (!m_joystickMovementState.Equals(JoytickState.PointDown)) {
                 m_joystickMovementState = JoytickState.PointDown;
                 m_animator.SetBool("isMoved", true);

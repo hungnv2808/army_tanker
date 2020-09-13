@@ -10,6 +10,7 @@ public abstract class AbTurrent : MonoBehaviour
     protected float m_lerpRatio;
     protected float m_energyConsumption = 0;
     protected Tank m_TankParentScript;
+    protected float m_damage;
     // protected Vector3 m_originalTankTurrentPosition = new Vector3(0, 1.57f, 0); /*vị trí ban đầu của nòng súng trước khi chạy animation*/
     protected Vector3 m_originalTankTurrentPosition;/*vị trí ban đầu của nòng súng trước khi chạy animation*/
     public abstract void ShootAndSync(Transform fireTransform, Transform tankTurren, Vector3 turentDirection, int label, string playerName, int whoViewID); /*bắt buộc class con phải implement*/
@@ -68,6 +69,14 @@ public abstract class AbTurrent : MonoBehaviour
     public Vector3 OriginalTankTurrentPosition {
         set {
             m_originalTankTurrentPosition = value;
+        }
+    }
+    public float Damage {
+        get {
+            return m_damage;
+        }
+        set {
+            m_damage = value;
         }
     }
 }

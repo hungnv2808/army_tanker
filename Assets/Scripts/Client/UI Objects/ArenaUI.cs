@@ -34,6 +34,9 @@ public class ArenaUI : MonoBehaviour
     public Joystick JoytickMovement;
     public Joystick JoytickCrossHairs;
     public Joystick JoytickAssistanceSkill;
+    public Image RefreshImage;
+    public Text SecondLabel;
+    public Image AssistanceSkillImage;
     private bool isRotateLoadingImageStopped = false;
     private bool isStopedCheckingFPS;
     private float m_deltaTime = 0.0f;

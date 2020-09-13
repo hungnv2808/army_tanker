@@ -428,6 +428,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 423136571968573448, guid: 7ec72dd12356d514e82ee223364c19b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4045540271717920763, guid: 7ec72dd12356d514e82ee223364c19b4,
         type: 3}
       propertyPath: m_Name
@@ -496,6 +501,12 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 4045540271609346944}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &4045540271609346946 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 289805733, guid: 7ec72dd12356d514e82ee223364c19b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4045540271609346944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4321842157063847817 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 278908692661191689, guid: 7ec72dd12356d514e82ee223364c19b4,
@@ -527,6 +538,20 @@ PrefabInstance:
       propertyPath: m_tankModels.Array.data[2]
       value: 
       objectReference: {fileID: 2928385826445733248}
+    - target: {fileID: 884220522, guid: 5cd55383ae9f0b747a9b712491f91078, type: 3}
+      propertyPath: m_currentAssistanceSkill
+      value: 
+      objectReference: {fileID: 4045540271609346946}
+    - target: {fileID: 3408089502291974497, guid: 5cd55383ae9f0b747a9b712491f91078,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 911
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213330217064833441, guid: 5cd55383ae9f0b747a9b712491f91078,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 910
+      objectReference: {fileID: 0}
     - target: {fileID: 6213330217369443088, guid: 5cd55383ae9f0b747a9b712491f91078,
         type: 3}
       propertyPath: m_Camera
@@ -646,6 +671,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Menu UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233391488225844191, guid: 5cd55383ae9f0b747a9b712491f91078,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 911
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cd55383ae9f0b747a9b712491f91078, type: 3}

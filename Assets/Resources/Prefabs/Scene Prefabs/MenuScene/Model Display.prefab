@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 289805732}
   - component: {fileID: 289805733}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Assistance Skill Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

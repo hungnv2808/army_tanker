@@ -1558,6 +1558,7 @@ Transform:
   - {fileID: 4333250430458011601}
   - {fileID: 336656989}
   - {fileID: 1178517097}
+  - {fileID: 2285931578066092844}
   m_Father: {fileID: 7392086953114470001}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -1598,6 +1599,36 @@ MonoBehaviour:
   m_SynchronizePosition: 0
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!1 &1111615606913077880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2285931578066092844}
+  m_Layer: 8
+  m_Name: Position Speedy Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2285931578066092844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111615606913077880}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: -0, z: 1.84}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4173375727514364529}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!1 &1438438576147472914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,6 +1962,7 @@ MonoBehaviour:
   BombPowPoint: {fileID: 961120243}
   m_leftTrail: {fileID: 336656989}
   m_rightTrail: {fileID: 1178517097}
+  PositionEffect: {fileID: 2285931578066092844}
 --- !u!54 &1331829760
 Rigidbody:
   m_ObjectHideFlags: 0

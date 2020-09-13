@@ -47,7 +47,7 @@ MonoBehaviour:
   m_punObjectPoolNames:
   - Tank1
   - Tank1 Bot
-  - Drone
+  - Tank3
   - Tank2
   m_localObjectPoolNames:
   - Tank Normal Bullet
@@ -72,6 +72,7 @@ MonoBehaviour:
   - DroneTrail
   - IceFloorTrail
   - FireFloorTrail
+  - WindlinesSpeedy
 --- !u!114 &-2547313730440297515
 MonoBehaviour:
   m_ObjectHideFlags: 0

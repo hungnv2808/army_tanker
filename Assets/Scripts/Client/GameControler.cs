@@ -13,18 +13,35 @@ public class GameControler : MonoBehaviour
 {
     private Joystick m_joytickMovement; /* joystick di chuyển*/
     private Joystick m_joytickCrossHairs; /* joystick tâm ngắm*/
-    
     private Joystick m_joystickAssistanceSkill; //kỹ năng tương trợ
     private Tank m_tankPlayer;
-    private AbAssistanceSkill m_assistanceSkill;
+    private AbAssistanceSkill m_currentAssistanceSkillScript;
+    [SerializeField] private Sprite[] m_assistanceSkillImage;
     // Start is called before the first frame update
     void Start()
     {
         m_joytickMovement = ArenaUI.Instance.JoytickMovement;
         m_joytickCrossHairs = ArenaUI.Instance.JoytickCrossHairs;
         m_joystickAssistanceSkill = ArenaUI.Instance.JoytickAssistanceSkill;
-        m_assistanceSkill = m_joystickAssistanceSkill.gameObject.GetComponent<BombPow>();
-
+        this.AddAssistanceSkillScript();
+    }
+    private void AddAssistanceSkillScript() {
+        switch (PlayFabDatabase.Instance.IndexAssistanceSkillSelected) {
+            case 0:
+                m_currentAssistanceSkillScript = m_joystickAssistanceSkill.gameObject.AddComponent<UpHealthy>();
+                break;
+            case 1:
+                m_currentAssistanceSkillScript = m_joystickAssistanceSkill.gameObject.AddComponent<UpSpeed>();
+                break;
+            case 2:
+                m_currentAssistanceSkillScript = m_joystickAssistanceSkill.gameObject.AddComponent<UpDamage>();
+                break;
+            case 3:
+                m_currentAssistanceSkillScript = m_joystickAssistanceSkill.gameObject.AddComponent<BombPow>();
+                break;
+                
+        }
+        ArenaUI.Instance.AssistanceSkillImage.sprite = m_assistanceSkillImage[PlayFabDatabase.Instance.IndexAssistanceSkillSelected];
     }
 
     // Update is called once per frame
@@ -39,7 +56,7 @@ public class GameControler : MonoBehaviour
         #endif
         m_tankPlayer.Move(m_joytickMovement);
         m_tankPlayer.Attack(m_joytickCrossHairs);
-        m_assistanceSkill.Work(m_joystickAssistanceSkill);
+        m_currentAssistanceSkillScript.Work(m_joystickAssistanceSkill);
 
     }
     

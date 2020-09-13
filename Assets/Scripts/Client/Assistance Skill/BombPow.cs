@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+/// <summary>
+/// sát thương của bomb bằng 1.5 lần sát thương lớn nhất mà tanker có thể gây ra bằng vũ khí trang bị
+/// </summary>
 public class BombPow : AbAssistanceSkill
 {
     private float m_launchPow = 45; // lực ban đầu
@@ -17,8 +21,9 @@ public class BombPow : AbAssistanceSkill
     // biết vận tốc ban đầu, biết góc ném (góc giữ Oxz và Oy) => thòi gian, khoảng cách xa nhất...
  
     // Start is called before the first frame update
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         m_predictedTrajectoryPathBomb = PunObjectPool.Instance.GetLocalPool("Prefabs/Predicted Trajectory Path Bomb","Predicted Trajectory Path Bomb", Vector3.zero, Quaternion.identity).GetComponent<LineRenderer>();
         m_iconRange = PunObjectPool.Instance.GetLocalPool("Prefabs/Bomb Range","Bomb Range", Vector3.zero, Quaternion.identity).transform;
         m_iconRange.eulerAngles = new Vector3(90, 0, 0);
@@ -26,7 +31,6 @@ public class BombPow : AbAssistanceSkill
         m_iconRange.gameObject.SetActive(false);
         m_predictedTrajectoryPathBomb.positionCount = lineSegment;
         m_hasSkillReady = true;
-        m_refreshImage.gameObject.SetActive(false);
         m_joystickState = JoytickState.None;
     }
  

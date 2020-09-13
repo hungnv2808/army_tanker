@@ -57,15 +57,23 @@ public class NPC : Tank
         Debug.Log("Root" + m_root);
         GetNextNode();
     }
-    private void Start() {
+    protected override void Start() {
         this.InitTankTurrents();
         m_rigidbody = gameObject.GetComponent<Rigidbody>();
-        m_currHealthy = m_maxHealthy;
-        m_currentEnergy = m_maxEnergy; 
-        m_heatlthyLabel.text = m_currHealthy + "";
+        this.InitTankerStat();
     }
 
-    
+    protected override void InitTankerStat()
+    {
+        m_maxEnergy = 100.0f;
+        m_maxHealthy = 1000.0f;
+        m_moveSpeed = 7.0f;
+        m_currentTurrent.Damage = 150.0f;
+
+        m_currentEnergy = m_maxEnergy;
+        m_currHealthy = m_maxHealthy;
+        m_heatlthyLabel.text = m_currHealthy + "";
+    }
     private void Update() {
         if (PhotonNetwork.IsMasterClient) {
             if (this.m_hasEnemy) {

@@ -6,7 +6,8 @@ using UnityEngine;
 /// </summary>
 public class UpHealthy : AbAssistanceSkill
 {
-    private void Start() {
+    protected override void Start() {
+        base.Start();
         m_timeCountdown = 60.0f;
     }
     public override void Work(Joystick joystickAssistanceSkill)
@@ -18,8 +19,11 @@ public class UpHealthy : AbAssistanceSkill
             if (Tank.LocalPlayerInstance == null) return;
             m_tankLocalPlayer = m_tankLocalPlayer ?? Tank.LocalPlayerInstance.GetComponent<Tank>();
 
+            var effectHealOnce = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/HealOnce", "HealOnce", m_tankLocalPlayer.BombPowPoint.position, Quaternion.identity).transform;
+            effectHealOnce.localEulerAngles = new Vector3(-90, 0, 0);
             m_tankLocalPlayer.CurrentHealthy = m_tankLocalPlayer.CurrentHealthy + 0.5f * m_tankLocalPlayer.MaxHealthy;
-            m_tankLocalPlayer.HealthyBarScript.SetCurrentHealthy(m_tankLocalPlayer.CurrentHealthy, m_tankLocalPlayer.MaxHealthy);
+            if (m_tankLocalPlayer.CurrentHealthy > m_tankLocalPlayer.MaxHealthy) m_tankLocalPlayer.CurrentHealthy = m_tankLocalPlayer.MaxHealthy;
+            m_tankLocalPlayer.ChangeBlood(m_tankLocalPlayer.CurrentHealthy, m_tankLocalPlayer.MaxHealthy);
             this.RefreshSkill();
         }
     }

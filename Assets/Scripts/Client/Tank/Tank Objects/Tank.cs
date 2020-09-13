@@ -75,8 +75,8 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     protected string m_playerName;
     protected string m_pathAvatar;
     protected bool m_isPlayer = false;
-    protected float m_maxHealthy = 100.0f;
-    protected float m_maxEnergy = 100.0f;
+    protected float m_maxHealthy;
+    protected float m_maxEnergy;
     protected float m_currentEnergy;
     protected float m_currHealthy;
     protected bool isIncreasedBlood = false;
@@ -89,12 +89,13 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     protected float m_minHPenemy;
     protected Vector3 m_movementDirection = Vector3.zero; /* hướng dịch chuyển của xe tăng*/
     protected Vector3 m_turretDirection = Vector3.zero; /* hướng của nòng súng xe tăng*/
-    protected float m_moveSpeed = 7.0f;  /* speed là 15 đơn vị/giây (1 đơn vị = 100px)*/
+    protected float m_moveSpeed;  /* speed là 15 đơn vị/giây (1 đơn vị = 100px)*/
     protected AbTurrent m_currentTurrent; 
     [SerializeField] protected Transform m_leftTrail;
     [SerializeField] protected Transform m_rightTrail;
     protected TankTrail m_rightTrailEffect;
     protected TankTrail m_leftTrailEffect;
+    public Transform PositionEffect;
     protected object[] m_syncData;
     private void Awake()
     {
@@ -118,17 +119,12 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     
     protected virtual void Start()
     {
-        
-        // m_joytickSkill1 = UltimateJoystick.GetUltimateJoystick("Skill_1 Joystick");
-        // m_joytickSkill2 = UltimateJoystick.GetUltimateJoystick("Skill_2 Joystick");
         m_rigidbody = gameObject.GetComponent<Rigidbody>();
         m_playerName = PlayFabDatabase.Instance.DisPlayName;
         m_displayNameText.text = m_playerName;
         this.InitTankTurrents();
         m_isPlayer = true;
-        m_currHealthy = m_maxHealthy;
-        m_heatlthyLabel.text = m_currHealthy + "";
-        m_currentEnergy = m_maxEnergy;
+        this.InitTankerStat();
 
 
         // if (photonView.IsMine) {
@@ -138,6 +134,16 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         //     // eff.transform.localPosition = new Vector3(0, 1.8f, -0.2f);
         //     // eff.transform.localScale = new Vector3(4, 4, 3.3f);
         // }
+    }
+    protected virtual void InitTankerStat() {
+        m_maxEnergy = 100.0f;
+        m_maxHealthy = PlayFabDatabase.Instance.CurrentTankerStat.Healthy;
+        m_moveSpeed = PlayFabDatabase.Instance.CurrentTankerStat.MoveSpeed;
+        m_currentTurrent.Damage = PlayFabDatabase.Instance.CurrentTankerStat.Damage;
+
+        m_currentEnergy = m_maxEnergy;
+        m_currHealthy = m_maxHealthy;
+        m_heatlthyLabel.text = m_currHealthy + "";
     }
     protected void InitAutoTarget() {
         m_autoTargetIcon = PunObjectPool.Instance.GetLocalPool("Prefabs/Target Icon", "Target Icon", Vector3.zero, Quaternion.identity).transform;
@@ -184,7 +190,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         if (joystickMovement.GetJoystickState())
         {
             m_movementDirection = new Vector3(joystickMovement.Horizontal, 0, joystickMovement.Vertical);
-            m_tankChassis.up = Vector3.MoveTowards(m_tankChassis.up, -m_movementDirection.normalized, Time.deltaTime*7);
+            m_tankChassis.up = Vector3.MoveTowards(m_tankChassis.up, -m_movementDirection.normalized, Time.deltaTime*m_moveSpeed);
             m_tankChassis.eulerAngles = new Vector3(-90, m_tankChassis.eulerAngles.y, m_tankChassis.eulerAngles.z);
             if (m_tankChassis.up == -m_movementDirection.normalized) m_transform.Translate(m_movementDirection.normalized * m_moveSpeed * Time.deltaTime, Space.World);/* mỗi 1 frame dịch chuyển được m_moveSpeed * Time.deltaTime đơn vị unity */
         }
@@ -271,6 +277,10 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
             this.DeathAndSync(whoDamage, whoViewID);
         }
     }
+    public void ChangeBlood(float currentHealthy, float maxHealthy) {
+        m_healthyBar.SetCurrentHealthy(currentHealthy, maxHealthy);
+        m_heatlthyLabel.text = currentHealthy + "";
+    }
     /// <summary>
     /// xe tăng bị giật lùi
     /// </summary>
@@ -282,20 +292,6 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         Debug.Log("m_rigidbody.velocity" + m_rigidbody.velocity);
         yield return new WaitForSeconds(2);
         m_rigidbody.velocity = Vector3.zero;
-    }
-    protected IEnumerator IncreaseBloodCoroutine() {
-        while (isIncreasedBlood) {
-            yield return new WaitForSeconds(0.5f);
-            if (m_currHealthy >= m_maxHealthy) {
-                m_currHealthy = m_maxHealthy;
-                m_healthyBar.FillUpMaxHealthyBar();
-                // yield break;
-            } else {
-                m_currHealthy += 5;
-                m_healthyBar.IncreaseHealthyBar(5, m_maxHealthy);
-            }
-            m_heatlthyLabel.text = m_currHealthy + "";
-        }
     }
     protected void DeathAndSync(string whoDamage, int whoViewID) {
         if (this.photonView.IsMine && m_isPlayer) {
@@ -467,10 +463,6 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     }
     protected void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("HealField" + m_team)) {
-            isIncreasedBlood = true;
-            StartCoroutine(IncreaseBloodCoroutine());
-        }
         if (other.tag.Equals("Grass")) {
             this.Invisible();
         }
@@ -591,6 +583,14 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         }
         set {
             m_moveSpeed = value;
+        }
+    }
+    public float Damage {
+        get {
+            return this.m_currentTurrent.Damage;
+        }
+        set {
+            this.m_currentTurrent.Damage = value;
         }
     }
     #endregion

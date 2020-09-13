@@ -18,6 +18,7 @@ public class Bomb : MonoBehaviour
         m_transform = m_transform ?? transform;
         m_rig = m_rig ?? gameObject.GetComponent<Rigidbody>();
         m_collisionCount = 1;
+        m_damage = 1.5f * Tank.LocalPlayerInstance.GetComponent<Tank>().Damage;
     }
     public void InfoBomb(string whoseBomb, int whichTeam, int viewID) {
         this.m_whoseBomb = whoseBomb;

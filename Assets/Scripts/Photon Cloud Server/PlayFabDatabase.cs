@@ -72,6 +72,16 @@ public class PlayFabDatabase : MonoBehaviour
         }
         set {
             m_indexTankerChampionSelected = value;
+            m_infoTank.IndexTankerChampionSelected = value;
+        }
+    }
+    public int IndexAssistanceSkillSelected {
+        get {
+            return m_indexAssistanceSkillSelected;
+        }
+        set {
+            m_indexAssistanceSkillSelected = value;
+            m_infoTank.IndexAssistanceSkillSelected = value;
         }
     }
     public static PlayFabDatabase Instance {
@@ -96,9 +106,9 @@ public class PlayFabDatabase : MonoBehaviour
         m_infoTank = new InfoTank("Avatar/1", 1, 0, 0, 0, 0, 0);
         this.m_pathAvatar = m_infoTank.PathAvatar;
         m_tankerChampions = new List<TankerStat>();
-        m_tankerChampions.Add(new TankerStat(0, true, 1000, 7, 100));//tank1
-        m_tankerChampions.Add(new TankerStat(1, false, 1000, 9, 70));//tank2
-        m_tankerChampions.Add(new TankerStat(2, false, 1000, 10, 100));//drone
+        m_tankerChampions.Add(new TankerStat(0, true, 1000, 7, 250));//tank1
+        m_tankerChampions.Add(new TankerStat(1, false, 1000, 9, 500));//tank2
+        m_tankerChampions.Add(new TankerStat(2, false, 1000, 10, 700));//drone
 
         m_assistanceSkills = new List<AssistanceSkill>();
         m_assistanceSkills.Add(new AssistanceSkill(0, true));// phép bổ trợ tăng máu,
@@ -164,6 +174,7 @@ public class PlayFabDatabase : MonoBehaviour
         } else {
             // load dữ liệu từ server
             Debug.Log("load dữ liệu từ server");
+            Debug.Log(data["tankerChampion"].Value);
             this.HandleDataServer(data);
             
         }
@@ -321,5 +332,10 @@ public class PlayFabDatabase : MonoBehaviour
         Debug.Log("App Quit");
         this.UpdateDataClient();
         this.UpdateDataServer();
+    }
+    public TankerStat CurrentTankerStat {
+        get {
+            return this.m_tankerChampions[this.m_indexTankerChampionSelected];
+        }
     }
 }

@@ -242,6 +242,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &947071776421352547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5560621531085862485}
+  m_Layer: 8
+  m_Name: Position Speedy Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5560621531085862485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947071776421352547}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.010700001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2835005827724592221}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!1 &1148518785545369356
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +843,7 @@ MonoBehaviour:
   BombPowPoint: {fileID: 2595661000599451333}
   m_leftTrail: {fileID: 5334076824937577934}
   m_rightTrail: {fileID: 6984240097184008184}
+  PositionEffect: {fileID: 5560621531085862485}
 --- !u!65 &8296172667629111131
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1846,6 +1877,7 @@ Transform:
   m_Children:
   - {fileID: 5334076824937577934}
   - {fileID: 6984240097184008184}
+  - {fileID: 5560621531085862485}
   m_Father: {fileID: 837868344574786611}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
