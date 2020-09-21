@@ -106,9 +106,9 @@ public class PlayFabDatabase : MonoBehaviour
         m_infoTank = new InfoTank("Avatar/1", 1, 0, 0, 0, 0, 0);
         this.m_pathAvatar = m_infoTank.PathAvatar;
         m_tankerChampions = new List<TankerStat>();
-        m_tankerChampions.Add(new TankerStat(0, true, 1000, 7, 250));//tank1
-        m_tankerChampions.Add(new TankerStat(1, false, 1000, 9, 500));//tank2
-        m_tankerChampions.Add(new TankerStat(2, false, 1000, 10, 700));//drone
+        m_tankerChampions.Add(new TankerStat(0, 0, true, 1000, 7, 250));//tank1
+        m_tankerChampions.Add(new TankerStat(1, 300, false, 1000, 9, 500));//tank2
+        m_tankerChampions.Add(new TankerStat(2, 500, false, 1000, 10, 700));//drone
 
         m_assistanceSkills = new List<AssistanceSkill>();
         m_assistanceSkills.Add(new AssistanceSkill(0, true));// phép bổ trợ tăng máu,

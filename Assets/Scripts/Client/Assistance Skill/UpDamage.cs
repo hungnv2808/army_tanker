@@ -8,6 +8,7 @@ public class UpDamage : AbAssistanceSkill
 {
     private float m_currentDamage;
     private float m_timerUpDamage;
+    private GameObject m_effectUpDamage;
     protected override void Start() {
         base.Start();
         m_timeCountdown = 100.0f;
@@ -21,6 +22,13 @@ public class UpDamage : AbAssistanceSkill
             if (Tank.LocalPlayerInstance == null) return;
             m_tankLocalPlayer = m_tankLocalPlayer ?? Tank.LocalPlayerInstance.GetComponent<Tank>();
 
+            m_effectUpDamage = PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/PowerupGlow","PowerupGlow", Vector3.zero, Quaternion.identity);
+            var effectUpDamageTransform = m_effectUpDamage.transform;
+            effectUpDamageTransform.SetParent(m_tankLocalPlayer.PositionUPDamageEffect);
+            effectUpDamageTransform.localScale = Vector3.one;
+            effectUpDamageTransform.localEulerAngles = Vector3.zero;
+            effectUpDamageTransform.localPosition = Vector3.zero;
+
             m_currentDamage = m_tankLocalPlayer.Damage;
             m_tankLocalPlayer.Damage = m_currentDamage * 1.5f;
             this.RefreshSkill();
@@ -33,6 +41,14 @@ public class UpDamage : AbAssistanceSkill
             yield return new WaitForSeconds(1.0f);
             m_timerUpDamage -= 1;
         }
+
+        m_effectUpDamage.SetActive(false);
+        var effectUpDamageTransform = m_effectUpDamage.transform;
+        effectUpDamageTransform.SetParent(PunObjectPool.Instance.ObjecParent);
+        effectUpDamageTransform.localEulerAngles = Vector3.zero;
+        effectUpDamageTransform.localScale = Vector3.one;
+        PunObjectPool.Instance.SetLocalPool(m_effectUpDamage);
+
         m_tankLocalPlayer.Damage = m_currentDamage;
     }
 }

@@ -6,8 +6,10 @@ using Photon.Pun;
 public class DetailScoreUI : MonoBehaviour
 {
     private bool m_isInited = false;
-    [SerializeField] private Vector3[] m_positionPersonalScoreTeam0;
-    [SerializeField] private Vector3[] m_positionPersonalScoreTeam1;
+
+    [SerializeField] private PersonalScoreUI[] m_personalScoreTeam0;
+    [SerializeField] private PersonalScoreUI[] m_personalScoreTeam1;
+
     [SerializeField] private RectTransform m_transform;
     private static DetailScoreUI m_instance;
     [SerializeField] private Button m_closeButton;
@@ -34,24 +36,22 @@ public class DetailScoreUI : MonoBehaviour
         {
             Debug.Log("item: " + item);
             var tank = PhotonView.Find(item);
-            var personalScoreClone = Instantiate(Resources.Load("Prefabs/Personal Score")) as GameObject;
             if (tank != null) {
-                personalScores.Add(item, personalScoreClone.GetComponent<PersonalScoreUI>());
-                personalScoreClone.GetComponent<PersonalScoreUI>().Tank = tank.gameObject.GetComponent<Tank>();
-                if (personalScores[item].Tank.Team == 0) {
-                    personalScoreClone.transform.SetParent(m_transform);
-                    personalScoreClone.GetComponent<PersonalScoreUI>().Position = m_positionPersonalScoreTeam0[indexTeam0];
+                var tankScript = tank.gameObject.GetComponent<Tank>();
+                if (tankScript.Team == 0) {
+                    personalScores.Add(item, m_personalScoreTeam0[indexTeam0]);
+                    m_personalScoreTeam0[indexTeam0].gameObject.SetActive(true);
+                    m_personalScoreTeam0[indexTeam0].Tank = tankScript;
                     indexTeam0 += 1;
                     Debug.Log("team0");
                 } else {
-                    personalScoreClone.transform.SetParent(m_transform);
-                    personalScoreClone.GetComponent<PersonalScoreUI>().Position = m_positionPersonalScoreTeam1[indexTeam1];
+                    personalScores.Add(item, m_personalScoreTeam1[indexTeam1]);
+                    m_personalScoreTeam1[indexTeam1].gameObject.SetActive(true);
+                    m_personalScoreTeam1[indexTeam1].Tank = tankScript;
                     indexTeam1 += 1;
                     Debug.Log("team1");
 
                 }
-            } else {
-                Destroy(personalScoreClone);
             }
             
         }

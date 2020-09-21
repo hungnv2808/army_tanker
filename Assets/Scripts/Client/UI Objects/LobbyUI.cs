@@ -18,6 +18,8 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] private GameObject m_testButton;
     [SerializeField] private GameObject m_backButton;
     [SerializeField] private Animator m_animator;
+    [SerializeField] private Text m_goldStarLabel;
+    [SerializeField] private Text m_violetStarLabel;
 
     private void Awake() {
         if (s_instance != null && s_instance != this) {
@@ -36,6 +38,7 @@ public class LobbyUI : MonoBehaviour
     void OnEnable()
     {
         this.m_animator.SetBool("isOpenedSelectMap", true);
+        this.UpdateCurrencyUI();
     }
     public void On3vs3Click() {
         ServerManagement.MaxPlayersInRoom = 6;
@@ -64,5 +67,9 @@ public class LobbyUI : MonoBehaviour
     }
     private void LoadMenuScene() {
         SceneManager.LoadScene("Menu Scene");
+    }
+    public void UpdateCurrencyUI() {
+        m_goldStarLabel.text = CurrencyManagement.Instance.GoldStar + "";
+        m_violetStarLabel.text = CurrencyManagement.Instance.VioletStar + "";
     }
 }

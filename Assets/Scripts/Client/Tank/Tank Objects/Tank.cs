@@ -30,12 +30,14 @@ public class InfoTank {
 [Serializable]
 public class TankerStat {
     public int Index;
+    public int Price;
     public bool HasUnlock;
     public float Healthy;
     public float MoveSpeed;
     public float Damage;
-    public TankerStat(int index, bool hasUnlock, float healthy, float moveSpeed, float damage) {
+    public TankerStat(int index, int price, bool hasUnlock, float healthy, float moveSpeed, float damage) {
         this.Index = index;
+        this.Price = price;
         this.HasUnlock = hasUnlock;
         this.Healthy = healthy;
         this.MoveSpeed = moveSpeed;
@@ -96,6 +98,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     protected TankTrail m_rightTrailEffect;
     protected TankTrail m_leftTrailEffect;
     public Transform PositionEffect;
+    public Transform PositionUPDamageEffect;
     protected object[] m_syncData;
     private void Awake()
     {

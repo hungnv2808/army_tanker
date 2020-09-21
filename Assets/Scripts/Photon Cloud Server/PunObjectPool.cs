@@ -16,7 +16,6 @@ public class PunObjectPool : MonoBehaviourPun
     }
     private object[] m_syncData;
     private float m_revivalMaxTime = 10.0f;
-    private float m_revivalTimer = 0;
     private static PunObjectPool s_instance;
     public static PunObjectPool Instance {
         get {
@@ -108,36 +107,37 @@ public class PunObjectPool : MonoBehaviourPun
         obj.transform.position = Vector3.zero;
     }
     public void Allow2RevivalMine(Tank tankObj, string whoDamage) {
-        m_revivalTimer = m_revivalMaxTime;
+        var revivalTimer = m_revivalMaxTime;
         ArenaUI.Instance.ShowWaitingForRevivalPanel(whoDamage);
-        StartCoroutine(Allow2RevivalCoroutine(tankObj));
+        StartCoroutine(Allow2RevivalCoroutine(tankObj, revivalTimer));
     }
-    public void Allow2RevivalTankBot(Tank bot) {
-        m_revivalTimer = m_revivalMaxTime;
-        StartCoroutine(Allow2RevivalTankBotCoroutine(bot));
-    }
-    private IEnumerator Allow2RevivalTankBotCoroutine(Tank bot) {
+    private IEnumerator Allow2RevivalCoroutine(Tank tankObj, float revivalTimer) {
         yield return new WaitForSeconds(1.0f);
-        m_revivalTimer -= 1;
-        if (m_revivalTimer <= 0) {
-            bot.RevivalAndSync();
-            bot.gameObject.SetActive(true);
-            yield break;
-        }
-        StartCoroutine(Allow2RevivalTankBotCoroutine(bot));
-    }
-    private IEnumerator Allow2RevivalCoroutine(Tank tankObj) {
-        yield return new WaitForSeconds(1.0f);
-        m_revivalTimer -= 1;
-        ArenaUI.Instance.ChangeCountdownRevivalLabel("" + m_revivalTimer);
-        if (m_revivalTimer <= 0) {
+        revivalTimer -= 1;
+        ArenaUI.Instance.ChangeCountdownRevivalLabel("" + revivalTimer);
+        if (revivalTimer <= 0) {
             tankObj.RevivalAndSync();
             ArenaUI.Instance.HideWaitingForRevivalPanel();
             tankObj.gameObject.SetActive(true);
             yield break;
         }
-        StartCoroutine(Allow2RevivalCoroutine(tankObj));
+        StartCoroutine(Allow2RevivalCoroutine(tankObj, revivalTimer));
     }
+    public void Allow2RevivalTankBot(Tank bot) {
+        var revivalotBotTimer = m_revivalMaxTime;
+        StartCoroutine(Allow2RevivalTankBotCoroutine(bot, revivalotBotTimer));
+    }
+    private IEnumerator Allow2RevivalTankBotCoroutine(Tank bot, float revivalotBotTimer) {
+        yield return new WaitForSeconds(1.0f);
+        revivalotBotTimer -= 1;
+        if (revivalotBotTimer <= 0) {
+            bot.RevivalAndSync();
+            bot.gameObject.SetActive(true);
+            yield break;
+        }
+        StartCoroutine(Allow2RevivalTankBotCoroutine(bot, revivalotBotTimer));
+    }
+    
     #region Received Event from server
     public void SendDispatch(byte eventCode, int photonViewID) {
         object[] eventContent = new object[] { photonViewID };

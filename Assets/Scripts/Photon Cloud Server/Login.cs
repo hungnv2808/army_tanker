@@ -9,9 +9,7 @@ using PlayFab.ClientModels;
 using LoginResult = PlayFab.ClientModels.LoginResult;
 public class Login : MonoBehaviour
 {
-    [SerializeField] private Transform m_loadingImage;
     [SerializeField] private GameObject m_controlPanel;
-    [SerializeField] private Image m_splashImage;
     [SerializeField] private Button m_loginButton;
     [SerializeField] private GameObject m_loginErrorPanel;
     [SerializeField] private GameObject m_settingNamePanel;
@@ -23,7 +21,6 @@ public class Login : MonoBehaviour
     void Start()
     {
         m_controlPanel.SetActive(false);
-        m_loadingImage.gameObject.SetActive(false);
         Invoke("RotateLoadingImage", 1.0f);
         m_loginErrorPanel.SetActive(false);
         // This call is required before any other calls to the Facebook API. We pass in the callback to be invoked once initialization is finished
@@ -31,19 +28,14 @@ public class Login : MonoBehaviour
     }
     
     private void RotateLoadingImage() {
-        m_splashImage.color = new Color(m_splashImage.color.r, m_splashImage.color.g, m_splashImage.color.b, 0.5f);
-        m_loadingImage.gameObject.SetActive(true);
         isRotateLoadingImageStopped = false;
         StartCoroutine(RotateLoadingImageCoroutine());
         this.CheckAutoLoginFB();
     }
     private IEnumerator RotateLoadingImageCoroutine() {
         if (isRotateLoadingImageStopped) {
-            m_splashImage.color = new Color(m_splashImage.color.r, m_splashImage.color.g, m_splashImage.color.b, 1);
-            m_loadingImage.gameObject.SetActive(false);
             yield break;
         } 
-        m_loadingImage.Rotate(0, 0, Time.deltaTime * (-720.0f)); /*tốc độ quay 720 độ 1s*/
         yield return null;
         StartCoroutine(RotateLoadingImageCoroutine());
     }
@@ -51,7 +43,6 @@ public class Login : MonoBehaviour
         FB.Init(OnFacebookInitialized, OnHideUnity);  
         m_loginButton.interactable = false;
         m_loginErrorPanel.SetActive(false);
-        m_loadingImage.gameObject.SetActive(true);
         isRotateLoadingImageStopped = false;
         StartCoroutine(RotateLoadingImageCoroutine());
     }
@@ -152,7 +143,7 @@ public class Login : MonoBehaviour
             PlayFabDatabase.Instance.DisPlayName = m_inputField.text;
             PlayFabDatabase.Instance.InitDatabase();
             Debug.Log("Setting name successly");
-            SceneManager.LoadScene("Menu Scene");
+            Invoke("LoadMenuSecen", 5f);
         }, errorCallback => {
             Debug.LogError("User name existed");
         });
@@ -171,12 +162,15 @@ public class Login : MonoBehaviour
                 Debug.Log("GetUserData pathAvatar");
                 await PlayFabDatabase.Instance.GetAllData();
                 Debug.Log(PlayFabDatabase.Instance.PathAvatar);
-                SceneManager.LoadScene("Menu Scene");
+                Invoke("LoadMenuSecen", 5f);
             }
             Debug.Log("check display name :" + resultCallback.PlayerProfile.DisplayName);
         }, errorCallback => {
             Debug.LogError("check display name :" + errorCallback.GenerateErrorReport());
         });
         isRotateLoadingImageStopped = true;
+    }
+    private void LoadMenuSecen() {
+        SceneManager.LoadScene("Menu Scene");
     }
 }

@@ -10,6 +10,10 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private GameObject[] m_tankModels;
     [SerializeField] private SpriteRenderer m_currentAssistanceSkill;
     [SerializeField] private GameObject m_comingSoonLabel;
+    [SerializeField] private Button m_priceButton;
+    [SerializeField] private Text m_priceLabel;
+    [SerializeField] private Text m_goldStarLabel;
+    [SerializeField] private Text m_violetStarLabel;
     private int m_indexModelShow = -1;
     private int m_indexAssistanceSkillShow = -1;
     private static ShopUI s_instance;
@@ -23,6 +27,9 @@ public class ShopUI : MonoBehaviour
             Destroy(s_instance);
         }
         s_instance = this;
+    }
+    private void OnEnable() {
+        this.UpdateCurrencyUI();
     }
     private void Start() {
         this.AddEventItemsShop();
@@ -62,13 +69,14 @@ public class ShopUI : MonoBehaviour
         for (int i = 3; i < m_itemsShop.Length; i++)
         {
             m_itemsShop[i].onClick.AddListener(() => {
-                if (m_indexModelShow != 3) {
+                if (m_indexModelShow != -1) {
                     for (int j = 0; j < m_tankModels.Length; j++)
                     {
                         m_tankModels[j].SetActive(false);
                     }
+                    m_priceButton.gameObject.SetActive(false);
                     m_comingSoonLabel.SetActive(true);
-                    m_indexModelShow = 3;
+                    m_indexModelShow = -1;
                 }
             });
         }
@@ -104,19 +112,30 @@ public class ShopUI : MonoBehaviour
         
     }
     private void HandleShowCurrentModel(int index) {
-        m_tankModels[m_indexModelShow].SetActive(false);
+        if (m_indexModelShow >= 0) m_tankModels[m_indexModelShow].SetActive(false);
         m_indexModelShow = index;
         if (PlayFabDatabase.Instance.TankerChampions[index].HasUnlock) {
+            m_priceButton.gameObject.SetActive(false);
             PlayFabDatabase.Instance.IndexTankerChampionSelected = index;
+        } else {
+            m_priceButton.gameObject.SetActive(true);
+            m_priceLabel.text = "" + PlayFabDatabase.Instance.TankerChampions[index].Price;
         }
         m_comingSoonLabel.SetActive(false);
         m_tankModels[index].SetActive(true);
+        
     }
     public void CloseClickHandle() {
         if (m_indexModelShow != PlayFabDatabase.Instance.IndexTankerChampionSelected) {
-            m_tankModels[m_indexModelShow].SetActive(false);
+            if (m_indexModelShow >= 0) m_tankModels[m_indexModelShow].SetActive(false);
             m_comingSoonLabel.SetActive(false);
+            m_priceButton.gameObject.SetActive(false);
             m_tankModels[PlayFabDatabase.Instance.IndexTankerChampionSelected].SetActive(true);
+            m_indexModelShow = PlayFabDatabase.Instance.IndexTankerChampionSelected;
         }
+    }
+    public void UpdateCurrencyUI() {
+        m_goldStarLabel.text = CurrencyManagement.Instance.GoldStar + "";
+        m_violetStarLabel.text = CurrencyManagement.Instance.VioletStar + "";
     }
 }

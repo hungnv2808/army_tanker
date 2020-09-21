@@ -73,6 +73,7 @@ MonoBehaviour:
   - IceFloorTrail
   - FireFloorTrail
   - WindlinesSpeedy
+  - PowerupGlow
 --- !u!114 &-2547313730440297515
 MonoBehaviour:
   m_ObjectHideFlags: 0

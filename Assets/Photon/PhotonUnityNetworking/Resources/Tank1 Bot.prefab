@@ -1392,6 +1392,7 @@ MonoBehaviour:
   m_leftTrail: {fileID: 2466505337250894194}
   m_rightTrail: {fileID: 635493841084656452}
   PositionEffect: {fileID: 0}
+  PositionUPDamageEffect: {fileID: 0}
 --- !u!114 &6764429147117373761
 MonoBehaviour:
   m_ObjectHideFlags: 0

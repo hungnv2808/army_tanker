@@ -11,7 +11,7 @@ public class Lv2Turrent : AbTurrent
         m_TankParentScript = GetComponentInParent<Tank>();
         m_energyConsumption = 40.0f;
         MaxCooldown = 0.8f;
-        m_simpleDamage = (int)this.m_damage/3;
+        
     }
     public override void ShootAndSync(Transform fireTransform, Transform tankTurren, Vector3 turrentDirection, int label, string playerName, int whoViewID) {
         m_curCooldown -= Time.deltaTime;
@@ -34,6 +34,7 @@ public class Lv2Turrent : AbTurrent
         m_curCooldown = MaxCooldown;
     }
     private IEnumerator CreatTrippleBulletCoroutine(Transform fireTransform, Transform tankTurren, Vector3 turrentDirection, int label, string playerName, int whoViewID) {
+        m_simpleDamage = (int)this.m_damage/3;
         // Instantiate<TankBullet>(Resources.Load<TankBullet>("Prefabs/Tank Bullet/Tank Normal Bullet"), fireTransform.position, Quaternion.identity).Init(tankTurren, tankTurren.eulerAngles + new Vector3(-90.0f, 0, 0), 5.0f, 100.0f, 0.4f);
         PunObjectPool.Instance.GetLocalPool("Prefabs/Tank Bullet/Tank Normal Bullet", "Tank Normal Bullet", fireTransform.position, Quaternion.identity).GetComponent<TankBullet>().Init(label, playerName, whoViewID, tankTurren, tankTurren.eulerAngles + new Vector3(-90.0f, 0, 0), m_simpleDamage, 40.0f, 1f);/*phải cộng -90 độ là do thằng xe thăng bị quay 1 góc -90 độ*/
 

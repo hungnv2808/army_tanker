@@ -260,11 +260,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1155167075061166453, guid: 25168fb4f81ff57408d1c08e22929799,
-        type: 3}
-      propertyPath: orthographic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1155167075061166459, guid: 25168fb4f81ff57408d1c08e22929799,
         type: 3}
       propertyPath: m_Name
@@ -428,11 +423,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 423136571968573448, guid: 7ec72dd12356d514e82ee223364c19b4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4045540271717920763, guid: 7ec72dd12356d514e82ee223364c19b4,
         type: 3}
       propertyPath: m_Name
@@ -542,16 +532,6 @@ PrefabInstance:
       propertyPath: m_currentAssistanceSkill
       value: 
       objectReference: {fileID: 4045540271609346946}
-    - target: {fileID: 3408089502291974497, guid: 5cd55383ae9f0b747a9b712491f91078,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 911
-      objectReference: {fileID: 0}
-    - target: {fileID: 6213330217064833441, guid: 5cd55383ae9f0b747a9b712491f91078,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 910
-      objectReference: {fileID: 0}
     - target: {fileID: 6213330217369443088, guid: 5cd55383ae9f0b747a9b712491f91078,
         type: 3}
       propertyPath: m_Camera
@@ -671,11 +651,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Menu UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7233391488225844191, guid: 5cd55383ae9f0b747a9b712491f91078,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 911
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cd55383ae9f0b747a9b712491f91078, type: 3}

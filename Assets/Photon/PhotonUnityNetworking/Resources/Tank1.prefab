@@ -304,6 +304,7 @@ Transform:
   m_LocalScale: {x: 82.166374, y: 70.68371, z: 28.347782}
   m_Children:
   - {fileID: 5681854014980583883}
+  - {fileID: 2008073841066295474}
   m_Father: {fileID: 837868344574786611}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -844,6 +845,7 @@ MonoBehaviour:
   m_leftTrail: {fileID: 5334076824937577934}
   m_rightTrail: {fileID: 6984240097184008184}
   PositionEffect: {fileID: 5560621531085862485}
+  PositionUPDamageEffect: {fileID: 2008073841066295474}
 --- !u!65 &8296172667629111131
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1844,6 +1846,36 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!1 &7774028168724448515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2008073841066295474}
+  m_Layer: 8
+  m_Name: Position Updamage Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2008073841066295474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774028168724448515}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.03245403}
+  m_LocalScale: {x: 0.07159075, y: 0.083220825, z: 0.16798168}
+  m_Children: []
+  m_Father: {fileID: 3768859572856675175}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &7810259202462696720
 GameObject:
   m_ObjectHideFlags: 0

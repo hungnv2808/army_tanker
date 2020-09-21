@@ -47,12 +47,4 @@ public class PersonalScoreUI : MonoBehaviour
             m_tank = value;
         }
     }
-    public Vector3 Position {
-        get {
-            return m_tranform.localPosition;
-        }
-        set {
-            m_tranform.localPosition = value;
-        }
-    }
 }
