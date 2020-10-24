@@ -7,45 +7,107 @@ using Facebook.Unity;
 using PlayFab;
 using PlayFab.ClientModels;
 using LoginResult = PlayFab.ClientModels.LoginResult;
+using DG.Tweening;
 public class Login : MonoBehaviour
 {
-    [SerializeField] private GameObject m_controlPanel;
-    [SerializeField] private Button m_loginButton;
-    [SerializeField] private GameObject m_loginErrorPanel;
-    [SerializeField] private GameObject m_settingNamePanel;
-    [SerializeField] private InputField m_inputField;
-    [SerializeField] private Text m_errorSettingNameLabel;
-    private bool isRotateLoadingImageStopped = false;
+    [SerializeField] private GameObject m_controlPanel, m_settingNamePanel, m_errorLoginPanel;
+    [SerializeField] private Button m_loginFacebookButton;
+    [SerializeField] private InputField m_nameInGameLabel, m_userNameLabel, m_passwordLabel, m_registerUserNameLabel, m_registerPasswordLabel, m_registerConfirmPasswordLabel;
+    [SerializeField] private Text m_errorSettingNameLabel, m_errorLoginLabel;
+    [SerializeField] private Transform m_loginPanel, m_registerPanel;
+    [SerializeField] private LoadingIcon m_loadingIcon;
     private string m_myToken;
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
         m_controlPanel.SetActive(false);
-        Invoke("RotateLoadingImage", 1.0f);
-        m_loginErrorPanel.SetActive(false);
+        m_loadingIcon.gameObject.SetActive(true);
+        m_loadingIcon.Init();
         // This call is required before any other calls to the Facebook API. We pass in the callback to be invoked once initialization is finished
-        
+        yield return new WaitForSeconds(2.0f);
+        m_loadingIcon.gameObject.SetActive(false);
+        m_loginPanel.DOScale(Vector3.one, 0.2f).SetLoops(1).SetEase(Ease.OutBack);
     }
     
-    private void RotateLoadingImage() {
-        isRotateLoadingImageStopped = false;
-        StartCoroutine(RotateLoadingImageCoroutine());
-        this.CheckAutoLoginFB();
-    }
-    private IEnumerator RotateLoadingImageCoroutine() {
-        if (isRotateLoadingImageStopped) {
-            yield break;
-        } 
-        yield return null;
-        StartCoroutine(RotateLoadingImageCoroutine());
+    // login facebook event button
+    public void OnLoginFacebook() {
+        FB.Init(OnFacebookInitialized, OnHideUnity);  
+        m_loginFacebookButton.interactable = false;
+        m_errorLoginPanel.SetActive(false);
     }
     public void OnLogin() {
-        FB.Init(OnFacebookInitialized, OnHideUnity);  
-        m_loginButton.interactable = false;
-        m_loginErrorPanel.SetActive(false);
-        isRotateLoadingImageStopped = false;
-        StartCoroutine(RotateLoadingImageCoroutine());
+        m_errorLoginPanel.SetActive(false);
+        m_userNameLabel.text.Trim();
+        m_passwordLabel.text.Trim();
+        if (m_userNameLabel.text.Length == 0 || m_passwordLabel.text.Length == 0) {
+            Debug.Log("tài khoản hoặc mật khẩu không để trống");
+            m_errorLoginPanel.SetActive(true);
+            m_errorLoginLabel.text = "Email hoặc mật khẩu không để trống";
+        } else {
+            m_errorLoginPanel.SetActive(false);
+            m_loginPanel.DOScale(Vector3.zero, 0.2f).SetLoops(1).SetEase(Ease.InBack).OnComplete(() => {
+                m_loadingIcon.gameObject.SetActive(true);
+                m_loadingIcon.Init();
+                var request = new LoginWithEmailAddressRequest{Email = m_userNameLabel.text, Password = m_passwordLabel.text};
+                PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
+            });
+        }
     }
+    private void OnLoginSuccess(LoginResult result) {
+        Debug.Log("Đăng nhập thành công");
+        PlayFabDatabase.Instance.MyDataID = result.PlayFabId;
+        this.CheckDisplayName();
+    }
+    private void OnLoginFailure(PlayFabError error) {
+        m_errorLoginPanel.SetActive(true);
+        m_loginPanel.DOScale(Vector3.one, 0.2f).SetLoops(1).SetEase(Ease.OutBack);
+        if ((int)error.Error == 1001) {
+            m_errorLoginLabel.text = "Tài khoản chưa đăng ký";
+        } else {
+            m_errorLoginLabel.text = "Email hoặc mật khẩu không chính xác";
+            Debug.Log("tài khoản hoặc mật khẩu không chính xác");
+        }
+        
+        Debug.LogError((int)error.Error);
+    }
+    public void OnRegister() {
+        // m_loginPanel.DOPlayBackwards();
+        if (m_registerUserNameLabel.text.Length == 0 || m_registerPasswordLabel.text.Length == 0) {
+            m_errorLoginPanel.SetActive(true);
+            m_errorLoginLabel.text = "Email hoặc mật khẩu không để trống";
+        } 
+        else if (m_registerPasswordLabel.text.Length < 6 && m_registerPasswordLabel.text.Length > 0) {
+            m_errorLoginPanel.SetActive(true);
+            m_errorLoginLabel.text = "Mật khẩu phải dài hơn 6 kí tự";
+        }
+        else if (!m_registerConfirmPasswordLabel.text.Equals(m_registerPasswordLabel.text)) {
+            m_errorLoginPanel.SetActive(true);
+            m_errorLoginLabel.text = "Xác nhận mật khẩu không chính xác";
+        } else {
+            m_errorLoginPanel.SetActive(false);
+            var registerRequest = new RegisterPlayFabUserRequest {Email = m_registerUserNameLabel.text, Password = m_registerPasswordLabel.text, RequireBothUsernameAndEmail = false};
+            PlayFabClientAPI.RegisterPlayFabUser(registerRequest, RegisterSuccess, RegisterFailure);
+        }
+        
+    }
+    private void RegisterSuccess(RegisterPlayFabUserResult result) {
+        Debug.Log("Đăng ký tài khoản thành công");
+        m_settingNamePanel.SetActive(true);
+        m_registerPanel.gameObject.SetActive(false);
+    }
+    private void RegisterFailure(PlayFabError error) {
+        Debug.LogError((int)error.Error);
+        if ((int)error.Error == 1000) {
+            m_errorLoginPanel.SetActive(true);
+            m_errorLoginLabel.text = "Email không hợp lệ";
+        }
+    }
+    public void OnRegisterLabel() {
+        m_loginPanel.DOScale(Vector3.zero, 0.2f).SetLoops(1).SetEase(Ease.InBack).OnComplete(() => {
+            m_registerPanel.DOScale(Vector3.one, 0.2f).SetLoops(1).SetEase(Ease.OutBack);
+        });
+    }
+
     private void OnFacebookInitialized()
     {
         Debug.Log("FB init done!");
@@ -63,10 +125,12 @@ public class Login : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+    /// <summary>
+    // check user logined onto game ? 
+    /// </summary>
     private void CheckAutoLoginFB() {
         // PlayerPrefs.DeleteKey("MY_TOKEN"); // cái này để test
         if (!PlayerPrefs.HasKey("MY_TOKEN") || PlayerPrefs.GetString("MY_TOKEN").Equals("")) {
-            isRotateLoadingImageStopped = true;
             m_controlPanel.SetActive(true);
         } else {
             PlayFabClientAPI.LoginWithFacebook(new LoginWithFacebookRequest { CreateAccount = false, AccessToken = PlayerPrefs.GetString("MY_TOKEN") },
@@ -91,8 +155,8 @@ public class Login : MonoBehaviour
         {
             // If Facebook authentication failed, we stop the cycle with the message
             Debug.Log("FB login fail!");
-            m_loginErrorPanel.SetActive(true);
-            m_loginButton.interactable = true;
+            m_errorLoginPanel.SetActive(true);
+            m_loginFacebookButton.interactable = true;
         }
     } 
     // When processing both results, we just set the message, explaining what's going on.
@@ -106,8 +170,8 @@ public class Login : MonoBehaviour
     }
     private void OnPlayfabFacebookAuthFailed(PlayFabError error) {
         Debug.Log("Playfab Facebook Auth Fail!");
-        m_loginErrorPanel.SetActive(true);
-        m_loginButton.interactable = true;
+        m_errorLoginPanel.SetActive(true);
+        m_loginFacebookButton.interactable = true;
     }
 
      private void OnPlayfabFacebookAutoAuthSuccess(LoginResult result)
@@ -118,33 +182,28 @@ public class Login : MonoBehaviour
     }
     private void OnPlayfabFacebookAutoAuthFailed(PlayFabError error) {
         Debug.Log("Playfab Facebook Auto Auth Fail!");
-        m_loginErrorPanel.SetActive(true);
+        m_errorLoginPanel.SetActive(true);
     }
-    // private void CheckUserExisted() {
-    //     var result = PlayFabDatabase.Instance.GetUserData(PlayFabDatabase.Instance.MyDataID, null);
-    //     if (result != null) {
-    //         if (result.Data.ContainsKey("userName")) {
-    //             PlayFabDatabase.Instance.MyData = result.Data;
-    //             return;
-    //         } else {
-    //             m_settingNamePanel.SetActive(true);
-    //         }
-    //     }
-    // }
+    /// <summary>
+    ///event button check name ingame 
+    /// </summary>
     public void OnCheck() {
+        m_errorLoginPanel.SetActive(false);
         m_errorSettingNameLabel.gameObject.SetActive(false);
-        if (m_inputField.text.Length > 15 || m_inputField.text.Length < 5) {
+        if (m_nameInGameLabel.text.Length > 15 || m_nameInGameLabel.text.Length < 5) {
             m_errorSettingNameLabel.gameObject.SetActive(true);
             return;
         }
         PlayFabClientAPI.UpdateUserTitleDisplayName(new UpdateUserTitleDisplayNameRequest {
-            DisplayName = m_inputField.text
+            DisplayName = m_nameInGameLabel.text
         }, resultCallback => {
-            PlayFabDatabase.Instance.DisPlayName = m_inputField.text;
+            PlayFabDatabase.Instance.DisPlayName = m_nameInGameLabel.text;
             PlayFabDatabase.Instance.InitDatabase();
             Debug.Log("Setting name successly");
             Invoke("LoadMenuSecen", 5f);
         }, errorCallback => {
+            m_errorLoginPanel.SetActive(true);
+            m_errorLoginLabel.text = "Tên đã tồn tại";
             Debug.LogError("User name existed");
         });
     }
@@ -168,7 +227,6 @@ public class Login : MonoBehaviour
         }, errorCallback => {
             Debug.LogError("check display name :" + errorCallback.GenerateErrorReport());
         });
-        isRotateLoadingImageStopped = true;
     }
     private void LoadMenuSecen() {
         SceneManager.LoadScene("Menu Scene");

@@ -2,15 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+public enum PlayMode {
+    None = 0,
+    ModeMoba = 1,
+    ModeCompetition = 2,
+
+}
 public class CameraFollow : MonoBehaviour
 {
     private Callback m_methodExcute;
+    public PlayMode PlayMode;
     private float elapsed = 0.0f;
     private float m_randomX;
     private float m_randomY;
-    private Transform m_target;
+    [SerializeField] private Transform m_target;
     [SerializeField] private Transform m_transform;
     [SerializeField] private Vector3 m_offset;
+    public Vector3 AxisCoordinateVertical;
+    public Vector3 AxisCoordinateHorizontal;
+    public Vector3 AxisCoordinateVerticalJoystickCrossHairs;
+    public Vector3 AxisCoordinateHorizontalJoystickCrossHairs;
     private float m_minX = -102.0f;
     private float m_maxX = 102.0f;
     private float m_minZ = -86.5f;
@@ -28,13 +39,18 @@ public class CameraFollow : MonoBehaviour
     }
     private static CameraFollow s_instance;
     // Start is called before the first frame update
-    void Start()
-    {
-        if (s_instance != null && s_instance != this) {
+    private void Awake() {
+         if (s_instance != null && s_instance != this) {
             DestroyImmediate(s_instance);
+            return;
         }
         s_instance = this;
-        this.FindPlayer();
+    }
+    void Start()
+    {
+       
+        // this.FindPlayer();
+        this.InitCameraFollow(); //test
     }
     public void FindPlayer() {
         isStopedFollowing = true;
@@ -45,9 +61,8 @@ public class CameraFollow : MonoBehaviour
     }
     public void InitCameraFollow() {
         isStopedFollowing = false;
-        this.ChangeFollowing(FollowFixed, Tank.LocalPlayerInstance.transform);
+        this.ChangeFollowing(PlayMode);
         
-        m_offset = new Vector3(0, 45.0f, -29.0f);
         // m_stopMovementOnStartGamePosition = m_target.position + m_offset;
         // m_startTime = Time.time;
         // StartCoroutine(CameraMovementOnStartGameCoroutine());
@@ -72,8 +87,7 @@ public class CameraFollow : MonoBehaviour
                 m_transform.localPosition = new Vector3(
                                             m_clampX,
                                             m_transform.localPosition.y,
-                                            m_clampZ
-                );
+                                            m_clampZ);
             }
             catch (Exception error) {
                 return;
@@ -81,9 +95,40 @@ public class CameraFollow : MonoBehaviour
             
         }
     }
-    public void ChangeFollowing(Callback method, Transform target) {
-        m_target = target;
-        this.m_methodExcute = method;
+    public void FollowModeCompetition() {
+            try {
+                // m_target = m_target ?? TankCompetition.Instance.m_transform;
+                m_transform.position = m_target.position + m_offset;
+                // m_transform.localEulerAngles = new Vector3(m_transform.localEulerAngles.x, TankCompetition.Instance.m_tankChassis.localEulerAngles.y, m_transform.localEulerAngles.z);
+            }
+            catch (Exception error) {
+                return;
+            }
+    }
+    public void ChangeFollowing(PlayMode playMode) {
+        switch((int)playMode) {
+            case 1:
+                m_target = Tank.LocalPlayerInstance.transform;
+                m_offset = new Vector3(0, 45.0f, -29.0f);
+                this.m_methodExcute = FollowFixed;
+                break;
+            case 2:
+                m_offset = m_transform.position - m_target.position; // di chuyển trong chế độ thi đấu
+                // m_offset = new Vector3(0, 6, -5);// khi bắn mục tiêu trong chế độ thi đấu
+                AxisCoordinateVertical = -m_target.GetComponent<TankCompetition>().m_tankChassis.up;
+                AxisCoordinateHorizontal = m_target.GetComponent<TankCompetition>().m_tankChassis.right;
+                this.m_methodExcute = FollowModeCompetition;
+                break;
+        }
+        
+    }
+    public void ChangeCornerCamera() {
+        m_transform.forward = -m_target.GetComponent<TankCompetition>().m_tankChassis.up;
+        m_transform.eulerAngles = new Vector3(15, m_transform.eulerAngles.y, m_transform.eulerAngles.z);
+        AxisCoordinateVertical = -m_target.GetComponent<TankCompetition>().m_tankChassis.up;
+        AxisCoordinateHorizontal = m_target.GetComponent<TankCompetition>().m_tankChassis.right;
+        m_transform.position = m_target.GetComponent<TankCompetition>().PosCamera.position;
+        m_offset = m_transform.position - m_target.position;
     }
     private IEnumerator CameraMovementOnStartGameCoroutine() {
         if (Vector3.Distance(m_transform.position, m_stopMovementOnStartGamePosition) > 0.0f) {
@@ -100,7 +145,7 @@ public class CameraFollow : MonoBehaviour
     public void Shake(float duration, float magnitude) {
         StartCoroutine(ShakeCoroutine(duration, magnitude));
     }
-    private IEnumerator ShakeCoroutine(float duration, float magnitude) {
+    private IEnumerator ShakeCoroutine(float duration, float magnitude) {   
         Vector3 originalPos = m_transform.localPosition;
         elapsed = 0.0f;
         while (elapsed < duration) {

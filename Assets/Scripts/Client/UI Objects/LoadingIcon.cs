@@ -9,11 +9,12 @@ public class LoadingIcon : MonoBehaviour
     [SerializeField] private Text m_loadingLabel;
     private int m_count;
 
-    private void Start() {
+    public void Init() {
         m_count = 0;
-        m_loadingLabel.text = "Loading";
+        m_loadingLabel.text = "Đang tải";
         StartCoroutine(AnimationLoadingLabel());
     }
+
     private void Update()
     {
         m_bigGear.localEulerAngles = new Vector3(0, 0, m_bigGear.localEulerAngles.z -  Time.deltaTime * 100);
@@ -26,13 +27,13 @@ public class LoadingIcon : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             switch (m_count) {
                 case 1:
-                    m_loadingLabel.text = "Loading.";
+                    m_loadingLabel.text = "Đang tải.";
                     break;
                 case 2:
-                    m_loadingLabel.text = "Loading..";
+                    m_loadingLabel.text = "Đang tải..";
                     break;
                 case 3:
-                    m_loadingLabel.text = "Loading...";
+                    m_loadingLabel.text = "Đang tải...";
                     break;
             }
             

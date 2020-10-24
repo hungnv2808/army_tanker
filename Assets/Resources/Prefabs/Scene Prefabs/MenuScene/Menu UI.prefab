@@ -6698,7 +6698,7 @@ MonoBehaviour:
   - {fileID: 0}
   m_currentAssistanceSkill: {fileID: 0}
   m_comingSoonLabel: {fileID: 3875866128955278371}
-  m_priceButton: {fileID: 0}
+  m_priceButton: {fileID: 5391771137632423771}
   m_priceLabel: {fileID: 1774401447652058041}
   m_goldStarLabel: {fileID: 1269960935806796901}
   m_violetStarLabel: {fileID: 1550606464311311152}
@@ -17864,7 +17864,7 @@ GameObject:
   - component: {fileID: 3828271139619028605}
   - component: {fileID: 5391771137632423771}
   m_Layer: 5
-  m_Name: Unlock Label
+  m_Name: Unlock Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

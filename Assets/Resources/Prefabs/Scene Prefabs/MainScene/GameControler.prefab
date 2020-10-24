@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c710f9eec175f5648a69055c72259c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playMode: 1
   m_assistanceSkillImage:
   - {fileID: 21300000, guid: 1b7ad1f80c30c46468dd892cbb5437d2, type: 3}
   - {fileID: 21300000, guid: d506b956447a3454498d7c498cd2280a, type: 3}
