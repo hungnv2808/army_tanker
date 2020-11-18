@@ -9,6 +9,6 @@ public class VFX : MonoBehaviour
         Invoke("Disable", m_lifeTime);
     }
     public void Disable() {
-        PunObjectPool.Instance.SetLocalPool(this.gameObject);
+        if (PunObjectPool.Instance != null) PunObjectPool.Instance.SetLocalPool(this.gameObject);
     }
 }

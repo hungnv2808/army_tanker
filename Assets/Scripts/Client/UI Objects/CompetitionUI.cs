@@ -14,7 +14,13 @@ public class CompetitionUI : MonoBehaviour
     [SerializeField] private GameObject m_mainCamera;
     [SerializeField] private GameObject m_movementPanel;
     [SerializeField] private GameObject m_crosshairsPanel;
+    [SerializeField] private Image m_barLaunchForce;
+    [SerializeField] private Text m_labelLaunchForce;
     private static CompetitionUI s_instance;
+    [SerializeField] private Text m_notiLabel;
+    [SerializeField] private Text m_heartLabel;
+    [SerializeField] private GameObject m_repairingPanel;
+    [SerializeField] private Text m_timerRepairingLabel;
     public static CompetitionUI Instance {
         get {
             return s_instance;
@@ -26,6 +32,9 @@ public class CompetitionUI : MonoBehaviour
             return;
         }
         s_instance = this;
+    }
+    public void ModifyHeart(int healthy) {
+        m_heartLabel.text = "" + healthy;
     }
     public void OnSpeedUpButtonPointerDown() {
         if (TankCompetition.Instance != null) TankCompetition.Instance.SpeedUp();
@@ -60,7 +69,39 @@ public class CompetitionUI : MonoBehaviour
         m_movementPanel.SetActive(true);
         m_crosshairsPanel.SetActive(false);
     }
-    public void OnShoot() {
-        TankCompetition.Instance.Shoot();
+    public void OnShootButtonPointerDown() {
+        TankCompetition.Instance.IncreaseLaunchForce();
+    }
+    public void OnShootButtonPointerUp() {
+        TankCompetition.Instance.StopIncreaseLaunchForce();
+    }
+    
+    public IEnumerator ResetBarLanchForceCoroutine() {
+        float _tmp = m_barLaunchForce.fillAmount;
+        while (_tmp > 0) {
+            _tmp -= Time.deltaTime * 4;
+            if (_tmp < 0) _tmp = 0;
+            m_barLaunchForce.fillAmount = _tmp;
+            m_labelLaunchForce.text = (_tmp * 5).ToString("0.0");
+            yield return null;
+        }
+    }
+    public void UpdateBarLaunchForce(float t, float launchForce) {
+        m_barLaunchForce.fillAmount = t;
+        m_labelLaunchForce.text = launchForce.ToString("0.0");
+    }
+    public void ChangeTextNotiLabel(bool hasHit,int t) {
+        if (hasHit) m_notiLabel.text = "Bạn đã bắn trúng mục tiêu số " + t;
+        else m_notiLabel.text = "Bạn đã bắn trượt mục tiêu";
+    }
+    public void ShowRepairingPanel(int time) {
+        this.m_repairingPanel.SetActive(true);
+        this.m_timerRepairingLabel.text = "" + time;
+    }
+    public void HideRepairingPanel() {
+        this.m_repairingPanel.SetActive(false);
+    }
+    public void UpdateTimerRepairing(int time) {
+        this.m_timerRepairingLabel.text = "" + time;
     }
 }

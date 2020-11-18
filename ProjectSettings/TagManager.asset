@@ -15,6 +15,10 @@ TagManager:
   - MainCanvas
   - Tree
   - Grass
+  - Target
+  - Door
+  - Player Bullet
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -35,9 +39,9 @@ TagManager:
   - HealField
   - Player Lighting Bullet
   - Bomb
-  - 
-  - 
-  - 
+  - Tank Turrent
+  - Foam
+  - Wall
   - 
   - 
   - 

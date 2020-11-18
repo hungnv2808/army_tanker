@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2300000}
   - component: {fileID: -4648520846641992703}
   - component: {fileID: -7056084737192688361}
-  m_Layer: 10
+  m_Layer: 21
   m_Name: Prop_Haybale_01
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 4, y: 4, z: 87.39999}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
