@@ -19,8 +19,13 @@ public class CompetitionUI : MonoBehaviour
     private static CompetitionUI s_instance;
     [SerializeField] private Text m_notiLabel;
     [SerializeField] private Text m_heartLabel;
+    [SerializeField] private Text m_ammoLabel;
     [SerializeField] private GameObject m_repairingPanel;
     [SerializeField] private Text m_timerRepairingLabel;
+    private string m_minute;
+    private string m_second;
+    [SerializeField] private Text m_timeClockLabel;
+    private float m_lerpTime = 0; // thời gian theo giây
     public static CompetitionUI Instance {
         get {
             return s_instance;
@@ -33,8 +38,14 @@ public class CompetitionUI : MonoBehaviour
         }
         s_instance = this;
     }
+    private void Start() {
+        this.TurnClock();
+    }
     public void ModifyHeart(int healthy) {
         m_heartLabel.text = "" + healthy;
+    }
+    public void ModifyAmmo(int ammo) {
+        m_ammoLabel.text = "" + ammo;
     }
     public void OnSpeedUpButtonPointerDown() {
         if (TankCompetition.Instance != null) TankCompetition.Instance.SpeedUp();
@@ -94,6 +105,9 @@ public class CompetitionUI : MonoBehaviour
         if (hasHit) m_notiLabel.text = "Bạn đã bắn trúng mục tiêu số " + t;
         else m_notiLabel.text = "Bạn đã bắn trượt mục tiêu";
     }
+    public void ChangeTextNotiLabel(string text) {
+        m_notiLabel.text = text;
+    }
     public void ShowRepairingPanel(int time) {
         this.m_repairingPanel.SetActive(true);
         this.m_timerRepairingLabel.text = "" + time;
@@ -103,5 +117,25 @@ public class CompetitionUI : MonoBehaviour
     }
     public void UpdateTimerRepairing(int time) {
         this.m_timerRepairingLabel.text = "" + time;
+    }
+    public void TurnClock() {
+        StartCoroutine(CountdownCoroutine());
+    }
+    private IEnumerator CountdownCoroutine() {
+        yield return new WaitForSeconds(1.0f);
+        m_lerpTime += 1.0f;
+        if (((int)m_lerpTime / 60) < 10) {
+            m_minute = "0" + ( (int)m_lerpTime/60 );
+        } else {
+            m_minute = "" + ( (int)m_lerpTime/60 );
+        }
+        if (((int)m_lerpTime % 60) < 10) {
+            m_second = "0" + ( (int)m_lerpTime%60 );
+        } else {
+            m_second = "" + ( (int)m_lerpTime%60 );
+        }
+        m_timeClockLabel.text = m_minute + ":" + m_second;
+
+        StartCoroutine(CountdownCoroutine());
     }
 }

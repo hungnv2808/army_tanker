@@ -5,8 +5,8 @@ using UnityEngine.UI;
 using Photon.Pun;
 public class TimerClock : MonoBehaviour
 {
-    public static int LerpTime = 0; // thời gian theo phút
-    private static float m_lerpTime = 0; // thời gian theo giây
+    public int LerpTime = 0; // thời gian theo phút
+    private float m_lerpTime = 0; // thời gian theo giây
     private static TimerClock s_instance;
     public static TimerClock Instance {
         get {

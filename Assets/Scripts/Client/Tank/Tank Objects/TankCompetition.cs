@@ -1,7 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum RoundShoot {
+    None = 0,
+    One = 1,
+    Two = 2,
+    Three = 3,
+} 
 public class TankCompetition : MonoBehaviour
 {
     private Vector3 m_movementDirection = Vector3.zero; /* hướng dịch chuyển của xe tăng*/
@@ -15,10 +20,16 @@ public class TankCompetition : MonoBehaviour
     public Transform PosCamera;
     private float m_moveSpeed = 0;  /* speed là 15 đơn vị/giây (1 đơn vị = 100px)*/
     private float m_maxSpeed = 30;
+    private bool m_stopMove = false;
     public GameObject ZoomLenCamera;
     public GameObject TargetIcon;
     private int m_healthy;
+    private int m_ammo;
     private JoytickState m_joystickCrossHairsState;
+    public bool HasFinishedRoundShot1 = false;
+    public bool HasFinishedRoundShot2 = false;
+    public bool HasFinishedRoundShot3 = false;
+    public RoundShoot RoundShoot = RoundShoot.None; 
     private static TankCompetition s_instance;
     public static TankCompetition Instance {
         get {
@@ -35,7 +46,9 @@ public class TankCompetition : MonoBehaviour
     }
     private void Start() {
         m_healthy = 3;
+        m_ammo = 0;
         CompetitionUI.Instance.ModifyHeart(m_healthy);
+        CompetitionUI.Instance.ModifyAmmo(m_ammo);
         m_movementDirection = -m_tankChassis.up;
         m_turretDirection = -m_tankTurret.up;
         m_joystickCrossHairsState = JoytickState.None;
@@ -56,7 +69,7 @@ public class TankCompetition : MonoBehaviour
         StartCoroutine(RepairCoroutine());
     }
     private IEnumerator RepairCoroutine() {
-        int timer = 10;
+        int timer = 15;
         CompetitionUI.Instance.ShowRepairingPanel(timer);
         var timeWaiting = new WaitForSeconds(1);
         while(timer > 0) {
@@ -80,6 +93,11 @@ public class TankCompetition : MonoBehaviour
     }
     
     public void Move(Joystick joystickMovement) {
+        if (m_stopMove) {
+            m_excuteChangeSpeed = null;
+            m_moveSpeed = 0; 
+            return;
+        } 
         if (joystickMovement.GetJoystickState())
         {
             m_movementDirection = Vector3.MoveTowards(m_movementDirection, joystickMovement.Horizontal * CameraFollow.Instance.AxisCoordinateHorizontal + joystickMovement.Vertical * CameraFollow.Instance.AxisCoordinateVertical,Time.deltaTime*10); // lấy trục z (CameraFollow.Instance.m_transform.forward) của camera ứng với trục vertical của joytick
@@ -110,9 +128,61 @@ public class TankCompetition : MonoBehaviour
     }
     public float LaunchForce;
     private void ShootHandle(float launchForce) {
+        if (m_ammo <= 0) { 
+            m_ammo = 0;
+            CompetitionUI.Instance.ChangeTextNotiLabel("Bạn đã hết đạn!");
+            return; 
+        }
+        m_ammo -= 1;
+        CompetitionUI.Instance.ModifyAmmo(m_ammo);
         this.LaunchForce = launchForce;
         BulletCompetition.Spawn(m_fireTransform.position, -m_directionShoot.up * launchForce * 4000);
         // StartCoroutine(RecoilGunCoroutine(m_tankTurret.localPosition, m_tankTurret, -m_tankTurret.up));
+    }
+    public void CheckRoundShoot() {
+        if (m_ammo <= 0) { 
+            if (RoundShoot.Equals(RoundShoot.One)) {
+                if (Target.Count > 0) {
+                    CompetitionUI.Instance.ChangeTextNotiLabel("Bạn đã bắn trượt "+Target.Count+ " mục tiêu");
+                    // phạt 
+                    this.ChangePosition(new Vector3(-130f, 0, -21));
+                } else {
+                    TargetMovement.Show();
+                }
+                m_stopMove = false;
+                HasFinishedRoundShot1 = true;
+                Target.Hiden();
+            } else if (RoundShoot.Equals(RoundShoot.Two)) {
+                if (TargetMovement.Count > 0) {
+                    CompetitionUI.Instance.ChangeTextNotiLabel("Bạn đã bắn trượt "+TargetMovement.Count+ " mục tiêu");
+                    // phạt 
+                    this.ChangePosition(new Vector3(-130f, 0, -21));
+                } else {
+                    TargetFlight.Show();
+                }
+                RoundShoot = RoundShoot.Three;
+                m_stopMove = false;
+                HasFinishedRoundShot2 = true;
+                TargetMovement.Hiden();
+            }
+            else if (RoundShoot.Equals(RoundShoot.Three)) {
+                if (TargetFlight.Count > 0) {
+                    CompetitionUI.Instance.ChangeTextNotiLabel("Bạn đã bắn trượt "+TargetFlight.Count+ " mục tiêu");
+                    // phạt 
+                    this.ChangePosition(new Vector3(-130f, 0, -21));
+                }
+                RoundShoot = RoundShoot.None;
+                m_stopMove = false;
+                HasFinishedRoundShot3 = true;
+                TargetFlight.Hiden();
+            } 
+            return;
+        }
+    }
+    private Vector3 m_oldPos;
+    private void ChangePosition(Vector3 pos) {
+        m_oldPos = m_transform.position;
+        m_transform.position = pos;
     }
     private void RefreshAxisJoytickCrossHairs() {
         Debug.Log("RefreshAxisJoytickCrossHairs");
@@ -230,10 +300,40 @@ public class TankCompetition : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other) {
-        if (other.tag.Equals("Door")) {
+        if (other.tag.Equals("Door1") && !HasFinishedRoundShot1) {
+            m_ammo = 3;
+            RoundShoot = RoundShoot.One;
+            CompetitionUI.Instance.ModifyAmmo(m_ammo);
             Target.ShowFirstStaticTarget();
+            m_stopMove = true;
+        } else if (other.tag.Equals("Door2") && !HasFinishedRoundShot2) {
+            m_ammo = 15;
+            RoundShoot = RoundShoot.Two;
+            CompetitionUI.Instance.ModifyAmmo(m_ammo);
+            TargetMovement.Show();
+            m_stopMove = true;
+        } else if (other.tag.Equals("EndPoint")) {
+            m_stopMove = true;
+            this.ChangePosition(m_oldPos);
+            if (RoundShoot.Equals(RoundShoot.Three)) {
+                TargetFlight.Show();
+            }
+        } else if (other.tag.Equals("WinningPoint")) {
+            m_stopMove = true;
+            var isPassRoundShoot = HasFinishedRoundShot1 && HasFinishedRoundShot2 && HasFinishedRoundShot3;
+            if (!isPassRoundShoot) {
+                CompetitionUI.Instance.ChangeTextNotiLabel("Bạn chưa hoàn thành vòng bắn mục tiêu!");
+            } 
+            else if (Barrier.BarrierOvercomeCount < Barrier.BarrierOvercomeMaxCount) {
+                CompetitionUI.Instance.ChangeTextNotiLabel("Bạn vi phạm luật chơi: không hoàn thành vượt qua các thử thách!");
+            }
+        }
+        var barrier = other.gameObject.GetComponent<Barrier>();
+        if (barrier != null) {
+            barrier.Overcome();
         }
     }
+
     private void OnCollisionEnter(Collision other) {
         if (other.collider.tag.Equals("Wall")) {
             m_excuteChangeSpeed = null;
@@ -243,4 +343,5 @@ public class TankCompetition : MonoBehaviour
             CompetitionUI.Instance.UpdateSpeedClock(m_moveSpeed, m_maxSpeed);
         }
     }
+    
 }

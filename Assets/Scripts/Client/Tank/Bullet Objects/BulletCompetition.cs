@@ -14,11 +14,26 @@ public class BulletCompetition : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.tag.Equals("Target")) {
             var target = other.gameObject.GetComponent<Target>();
+            Target.CheckCount();
             target.Destroy();
             CompetitionUI.Instance.ChangeTextNotiLabel(true, target.m_index);
+            
         } else {
             CompetitionUI.Instance.ChangeTextNotiLabel(false, 0);
         }
+        if (other.tag.Equals("DynamicTarget")) {
+            if (TankCompetition.Instance.RoundShoot.Equals(RoundShoot.Two)) {
+                TargetMovement.CheckCount();
+                var dynamicTarget = other.gameObject.GetComponentInParent<TargetMovement>();
+                dynamicTarget.Destroy();
+            }
+            else {
+                TargetFlight.CheckCount();
+                var dynamicTarget = other.gameObject.GetComponentInParent<TargetFlight>();
+                dynamicTarget.Destroy();
+            }
+        }
+        TankCompetition.Instance.CheckRoundShoot();
         Instantiate(Resources.Load("Prefabs/Effect/ExplosionFireballFire"), m_transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }

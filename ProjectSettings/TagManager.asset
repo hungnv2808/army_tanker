@@ -16,9 +16,24 @@ TagManager:
   - Tree
   - Grass
   - Target
-  - Door
+  - Door1
   - Player Bullet
   - Wall
+  - Fire
+  - Bound
+  - DynamicTarget
+  - Door2
+  - Door
+  - EndPoint
+  - TargetFlight
+  - TargetMovement
+  - TargetStatic
+  - WinningPoint
+  - VatCan2
+  - VatCan3
+  - VatCan4
+  - VatCan5
+  - VatCan6
   layers:
   - Default
   - TransparentFX
@@ -42,9 +57,9 @@ TagManager:
   - Tank Turrent
   - Foam
   - Wall
-  - 
-  - 
-  - 
+  - Fire
+  - Bound
+  - Door Round Shoot
   - 
   - 
   - 
