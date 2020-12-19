@@ -17,10 +17,14 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private Button m_mailBoxButton;
     [SerializeField] private Button m_shopButton;
     [SerializeField] private Button m_closeShopButton;
+    [SerializeField] private Button m_CompetitionButton;
+    [SerializeField] private Button m_playButton;
     [SerializeField] private GameObject m_shopPanel;
     [SerializeField] private GameObject m_mailBoxPanel;
     [SerializeField] private Animator m_animator;
     [SerializeField] private Animator m_displayModelAnimator;
+    [SerializeField] private GameObject m_displayModelCompetition;
+    [SerializeField] private GameObject m_competitionPanel;
     [SerializeField] private Text m_goldStarLabel;
     [SerializeField] private Text m_violetStarLabel;
     public RectTransform UI_GoldPosition;
@@ -51,6 +55,8 @@ public class MenuUI : MonoBehaviour
         m_mailBoxButton.onClick.AddListener(OnMailBoxClick);
         m_shopButton.onClick.AddListener(OnShopClick);
         m_closeShopButton.onClick.AddListener(OnCloseShopClick);
+        m_CompetitionButton.onClick.AddListener(OnCompetitionClick);
+        m_playButton.onClick.AddListener(OnPlay);
         this.ShowPlayerNameLabel(PlayFabDatabase.Instance.DisPlayName, PlayFabDatabase.Instance.PathAvatar);
         m_animator.SetBool("isOpenShop", false);
         m_animator.SetBool("isOpenSelectMap", false);
@@ -108,6 +114,14 @@ public class MenuUI : MonoBehaviour
         AnimatorHelper.RunActionSequence(m_animator, () => {
             m_displayModelAnimator.SetBool("isDisplayRight", false);
         });
+    }
+    private void OnCompetitionClick() {
+        m_competitionPanel.SetActive(true);
+        m_displayModelCompetition.SetActive(true);
+        m_displayModelAnimator.gameObject.SetActive(false);
+    }
+    private void OnPlay() {
+        SceneManager.LoadScene("LoadMapCompetition Scene");
     }
     private void ShowShop() {
         m_shopPanel.SetActive(true);

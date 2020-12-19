@@ -218,10 +218,11 @@ public class Login : MonoBehaviour
                 m_settingNamePanel.SetActive(true);
             } else {
                 PlayFabDatabase.Instance.DisPlayName = resultCallback.PlayerProfile.DisplayName;
-                Debug.Log("GetUserData pathAvatar");
                 await PlayFabDatabase.Instance.GetAllData();
-                Debug.Log(PlayFabDatabase.Instance.PathAvatar);
+                // PlayFabDatabase.Instance.InitDatabase();// test
+                // Debug.Log(PlayFabDatabase.Instance.PathAvatar);
                 Invoke("LoadMenuSecen", 5f);
+                this.OnGetLeaderboard();//test
             }
             Debug.Log("check display name :" + resultCallback.PlayerProfile.DisplayName);
         }, errorCallback => {
@@ -230,5 +231,18 @@ public class Login : MonoBehaviour
     }
     private void LoadMenuSecen() {
         SceneManager.LoadScene("Menu Scene");
+    }
+    public void OnGetLeaderboard() {
+        var requestLeaderboard = new GetLeaderboardRequest { StartPosition=0, StatisticName = "ResultRound1", MaxResultsCount = 100};
+        PlayFabClientAPI.GetLeaderboard(requestLeaderboard, OnSuccessLeaderboard, OnErrorLeaderboard);
+    }
+    private void OnSuccessLeaderboard(GetLeaderboardResult result) {
+        foreach (var player in result.Leaderboard)
+        {
+            Debug.Log(player.DisplayName +  " : " + player.StatValue);
+        }
+    }   
+    private void OnErrorLeaderboard(PlayFabError error) {
+        Debug.Log(error.ErrorMessage);
     }
 }

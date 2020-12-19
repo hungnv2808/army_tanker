@@ -13162,7 +13162,7 @@ MonoBehaviour:
   PlayMode: 2
   m_target: {fileID: 3274448597463815507}
   m_transform: {fileID: 1291141152}
-  m_offset: {x: 0, y: 0, z: 0}
+  m_offset: {x: 38.3, y: 20, z: 0}
   AxisCoordinateVertical: {x: 0, y: 0, z: 0}
   AxisCoordinateHorizontal: {x: 0, y: 0, z: 0}
   AxisCoordinateVerticalJoystickCrossHairs: {x: 0, y: 0, z: 0}

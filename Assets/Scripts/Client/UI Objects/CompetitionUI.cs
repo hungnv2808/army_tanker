@@ -22,10 +22,16 @@ public class CompetitionUI : MonoBehaviour
     [SerializeField] private Text m_ammoLabel;
     [SerializeField] private GameObject m_repairingPanel;
     [SerializeField] private Text m_timerRepairingLabel;
+    [SerializeField] private Image m_itemButton;
     private string m_minute;
     private string m_second;
     [SerializeField] private Text m_timeClockLabel;
     private float m_lerpTime = 0; // thời gian theo giây
+    public float LerpTime {
+        get {
+            return m_lerpTime;
+        }
+    }
     public static CompetitionUI Instance {
         get {
             return s_instance;
@@ -137,5 +143,13 @@ public class CompetitionUI : MonoBehaviour
         m_timeClockLabel.text = m_minute + ":" + m_second;
 
         StartCoroutine(CountdownCoroutine());
+    }
+    public void OnItemClick() {
+        TankCompetition.Instance.UseItem();
+        m_itemButton.gameObject.SetActive(false);
+    }
+    public void ShowItemButton(Sprite itemSprite) {
+        m_itemButton.gameObject.SetActive(true);
+        m_itemButton.sprite = itemSprite;
     }
 }

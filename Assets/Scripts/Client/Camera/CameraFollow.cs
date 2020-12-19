@@ -49,8 +49,9 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
        
-        // this.FindPlayer();
-        this.InitCameraFollow(); //test
+        this.FindPlayer();
+        // this.InitCameraFollow(); //test
+        
     }
     public void FindPlayer() {
         isStopedFollowing = true;
@@ -68,7 +69,7 @@ public class CameraFollow : MonoBehaviour
         // StartCoroutine(CameraMovementOnStartGameCoroutine());
     }
     private IEnumerator FindPlayerLoopCorountine() {
-        if (Tank.LocalPlayerInstance != null) {
+        if (Tank.LocalPlayerInstance != null || TankCompetition.Instance != null) {
             this.InitCameraFollow();
             yield break;
         }
@@ -113,11 +114,13 @@ public class CameraFollow : MonoBehaviour
                 this.m_methodExcute = FollowFixed;
                 break;
             case 2:
+                m_target = TankCompetition.Instance.m_transform;
                 m_offset = m_transform.position - m_target.position; // di chuyển trong chế độ thi đấu
                 // m_offset = new Vector3(0, 6, -5);// khi bắn mục tiêu trong chế độ thi đấu
                 AxisCoordinateVertical = -m_target.GetComponent<TankCompetition>().m_tankChassis.up;
                 AxisCoordinateHorizontal = m_target.GetComponent<TankCompetition>().m_tankChassis.right;
                 this.m_methodExcute = FollowModeCompetition;
+                this.ChangeCornerCamera();
                 break;
         }
         

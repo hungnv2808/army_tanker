@@ -167,17 +167,21 @@ public class PlayFabDatabase : MonoBehaviour
         }
         DateTime timeDataLocal = DateTime.Parse(PlayerPrefs.GetString("date"));
         int resultDateTimeCompare = DateTime.Compare(timeDataServer, timeDataLocal);
-        if (resultDateTimeCompare < 0) { // time save server is earlier than time save local
-            //load dữ liệu từ local và đồng bộ dữ liệu từ local lên server
-            Debug.Log("load dữ liệu từ local");
-            this.HandleDataLocal(data);
-        } else {
-            // load dữ liệu từ server
-            Debug.Log("load dữ liệu từ server");
-            Debug.Log(data["tankerChampion"].Value);
-            this.HandleDataServer(data);
+        // if (resultDateTimeCompare < 0) { // time save server is earlier than time save local
+        //     //load dữ liệu từ local và đồng bộ dữ liệu từ local lên server
+        //     Debug.Log("load dữ liệu từ local");
+        //     this.HandleDataLocal(data);
+        // } else {
+        //     // load dữ liệu từ server
+        //     Debug.Log("load dữ liệu từ server");
+        //     Debug.Log(data["tankerChampion"].Value);
+        //     this.HandleDataServer(data);
             
-        }
+        // }
+        //load dữ liệu từ server
+        Debug.Log("load dữ liệu từ server");
+        Debug.Log(data["tankerChampion"].Value);
+        this.HandleDataServer(data);
         
         // if (data.ContainsKey("competitorKilledCount")) MissionMangement.Instance.CompetitorKilledCount = int.Parse(data["competitorKilledCount"].Value);
         // for (int i = 1; i <= 22; i++)
@@ -303,6 +307,30 @@ public class PlayFabDatabase : MonoBehaviour
             await Task.Yield();
         }
         return userDataResult;
+    }
+    private async Task UpdatePlayerStatistics(List<StatisticUpdate> statistics) {
+        int isComplete = 0;
+        PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest {
+            Statistics = statistics
+        },
+            result => { isComplete = 400; Debug.Log("User statistics updated"); },
+            error => { isComplete = 404; Debug.LogError(error.GenerateErrorReport()); }
+        );
+        while(isComplete == 0) {
+            await Task.Yield();
+        }
+    }
+    public async void UpdateResultRound1() {
+        await PlayFabDatabase.Instance.UpdatePlayerStatistics(new List<StatisticUpdate> {
+                    new StatisticUpdate {StatisticName = "ResultRound1", Value = (int)CompetitionUI.Instance.LerpTime}
+                });
+        // update xong chuyển đến màn hình xếp hạng
+        /*
+        màn thi đấu diễn ra trong 30 phút cả 2 vòng: thí sinh nào không hoàn thành các vòng chơi trong 30 phút sẽ bị loại khỏi cuộc chơi (thua cuộc)
+        bảng xếp hạng sẽ có list những player hoàn thành vòng loại
+        và có label hiển thị số người chơi hoàn thành/tổng số người tham gia
+        */
+        
     }
     public string GetPlayerProfile(string id) {
         string displayerName = null;

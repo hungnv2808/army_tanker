@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Waiting Scene.unity
     guid: 06e2f89c3c9b66448ae2b322b239b9a0
   - enabled: 1
+    path: Assets/Scenes/LoadMapCompetition Scene.unity
+    guid: 1860263170b539449905850f6a8d431d
+  - enabled: 1
     path: Assets/Scenes/Main Scene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Competition Scene.unity
+    guid: 0658656b24d0b4c46a063fb85d46cb89
   m_configObjects: {}

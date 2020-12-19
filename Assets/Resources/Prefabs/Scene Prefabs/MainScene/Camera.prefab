@@ -127,5 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83444cf68c82204e8e582ffb60fe6df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayMode: 1
+  m_target: {fileID: 0}
   m_transform: {fileID: 7665081162009477203}
   m_offset: {x: 0, y: 0, z: 0}
+  AxisCoordinateVertical: {x: 0, y: 0, z: 0}
+  AxisCoordinateHorizontal: {x: 0, y: 0, z: 0}
+  AxisCoordinateVerticalJoystickCrossHairs: {x: 0, y: 0, z: 0}
+  AxisCoordinateHorizontalJoystickCrossHairs: {x: 0, y: 0, z: 0}

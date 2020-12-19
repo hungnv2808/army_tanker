@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlayFab.ClientModels;
 public enum RoundShoot {
     None = 0,
     One = 1,
@@ -31,6 +32,7 @@ public class TankCompetition : MonoBehaviour
     public bool HasFinishedRoundShot3 = false;
     public RoundShoot RoundShoot = RoundShoot.None; 
     private static TankCompetition s_instance;
+    public IItem m_currentItem;
     public static TankCompetition Instance {
         get {
             return s_instance;
@@ -54,7 +56,7 @@ public class TankCompetition : MonoBehaviour
         m_joystickCrossHairsState = JoytickState.None;
         this.RefreshAxisJoytickCrossHairs();
     }
-    private void RefreshHealthy() {
+    public void RefreshHealthy() {
         m_healthy = 3;
         CompetitionUI.Instance.ModifyHeart(m_healthy);
     }
@@ -225,6 +227,10 @@ public class TankCompetition : MonoBehaviour
     public void StopReduceSpeed() {
         m_excuteChangeSpeed = StopChangeSpeedHandle;
     }
+    public void X2Speed() {
+        m_moveSpeed = m_maxSpeed * 1.5f;
+        CompetitionUI.Instance.UpdateSpeedClock(m_maxSpeed, m_maxSpeed);
+    }
     private void SpeedUpHandle() {
         // Debug.Log("tang toc");
         if (m_moveSpeed >= m_maxSpeed) m_moveSpeed = m_maxSpeed;
@@ -250,6 +256,11 @@ public class TankCompetition : MonoBehaviour
     }
     public void StopIncreaseLaunchForce() {
         m_hasShootButtonPressed = false;
+    }
+    public void UseItem() {
+        if (m_currentItem != null) {
+            m_currentItem.Excute();
+        }
     }
     private IEnumerator LoopIncreaseLaunchForceCoroutine() {
         yield return StartCoroutine(CompetitionUI.Instance.ResetBarLanchForceCoroutine());
@@ -326,11 +337,23 @@ public class TankCompetition : MonoBehaviour
             } 
             else if (Barrier.BarrierOvercomeCount < Barrier.BarrierOvercomeMaxCount) {
                 CompetitionUI.Instance.ChangeTextNotiLabel("Bạn vi phạm luật chơi: không hoàn thành vượt qua các thử thách!");
+                // Load Scene menu
+            }
+            else {
+                // hoàn thành round 1
+                CompetitionUI.Instance.ChangeTextNotiLabel("Chúc mừng bạn hoàn thành vòng loại!");
+                PlayFabDatabase.Instance.UpdateResultRound1();
             }
         }
         var barrier = other.gameObject.GetComponent<Barrier>();
         if (barrier != null) {
             barrier.Overcome();
+        }
+        var item = other.gameObject.GetComponent<IItem>();
+        if (item != null) {
+            m_currentItem = item;
+            CompetitionUI.Instance.ShowItemButton(m_currentItem.GetSprite());
+            item.Disable();
         }
     }
 
