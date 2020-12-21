@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitleId: 49983
   DeveloperSecretKey: 7YTU7RQU1XXU59GT7KPD4B336XMCW7WO3764COWS9NMHXCWH59
+  TitleId: 
+  DeveloperSecretKey: 
   ProductionEnvironmentUrl: 
   RequestType: 2
+  RequestType: 0
   AdvertisingIdType: 
   AdvertisingIdValue: 
   DisableAdvertising: 0
