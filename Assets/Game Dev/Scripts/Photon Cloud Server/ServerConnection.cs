@@ -55,7 +55,6 @@ namespace Tank3d.PhotonServer
             {
                 Debug.Log("Connected MasterServer successly :)");
                 Debug.Log("Count Of Rooms: "+ PhotonNetwork.CountOfRooms);
-                Invoke("JoinRandomRoom", 0f);
                 /*we need at this point to attempt joining a random room. If it fails, we will get notified in OnJoinRandomFailed() and we will creat one*/
             }
             else
@@ -68,7 +67,12 @@ namespace Tank3d.PhotonServer
             }
         }
         public void JoinRoom() {
-            this.Connect2MasterServer();// connect to server and join room
+            if (PhotonNetwork.IsConnected) {
+                JoinRandomRoom();
+            } else {
+                // handle when player disconected
+            }
+            // this.Connect2MasterServer();// connect to server and join room
         }
         #endregion 
         private void JoinRandomRoom() {
@@ -80,7 +84,6 @@ namespace Tank3d.PhotonServer
             /*khi mình rời phòng thì thằng callback OnLeftRoom() sẽ chạy sau khi mà thằng PhotonNetwork.LeaveRoom() chạy xong, tiếp đến thì nó sẽ gọi vào hàm này*/
             Debug.Log("Connected MasterServer successly :)");
             Debug.Log("Count Of Rooms: "+ PhotonNetwork.CountOfRooms);
-            Invoke("JoinRandomRoom", 0f);
 
         }
         public override void OnDisconnected(DisconnectCause cause)
@@ -104,17 +107,16 @@ namespace Tank3d.PhotonServer
             // #Critical: We only load if we are the first player, else we rely on (dựa vào) `PhotonNetwork.AutomaticallySyncScene` to sync our instance scene.
             if(PhotonNetwork.CurrentRoom.PlayerCount < ServerManagement.MaxPlayersInRoom) {
                 Debug.Log("Wating for other player");
-                // LobbyUI.Instance.HideFindMatchButton();
                 if (PhotonNetwork.IsMasterClient) {
                     ServerManagement.Instance.CheckTimeoutLoadScene();
                 }
             } else {
                 Debug.Log("start game");
                 //TODO: NOTE
-                if (ServerManagement.MaxPlayersInRoom == 1) {
-                    PhotonNetwork.LoadLevel("Main Scene"); // dòng này là để test offline
-                    ServerManagement.Instance.CancleLoadSceneTimeout();
-                } 
+                // if (ServerManagement.MaxPlayersInRoom == 1) {
+                //     PhotonNetwork.LoadLevel("Main Scene"); // dòng này là để test offline
+                //     ServerManagement.Instance.CancleLoadSceneTimeout();
+                // } 
                 StartCoroutine(ServerManagement.Instance.CheckSceneLoadingCompletelyLoopCoroutine());
             }
         }

@@ -67,11 +67,8 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     [SerializeField] protected TextMesh m_heatlthyLabel;
     [SerializeField] protected EnergyBar m_energyScript;
     [SerializeField] protected TextMesh m_displayNameText;
-    [SerializeField] protected Material[] m_tankMaterials;
     [SerializeField] protected GameObject m_iconInvisible;
-    [SerializeField] protected MeshRenderer[] m_meshs;
     public Transform BombPowPoint;
-    private Transform m_autoTargetIcon;
     private Transform m_transformParentAutoTargetIcon;
     protected Rigidbody m_rigidbody;
     protected string m_playerName;
@@ -123,8 +120,8 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     protected virtual void Start()
     {
         m_rigidbody = gameObject.GetComponent<Rigidbody>();
-        m_playerName = PlayFabDatabase.Instance.DisPlayName;
-        m_displayNameText.text = m_playerName;
+        // m_playerName = PlayFabDatabase.Instance.DisPlayName;
+        
         this.InitTankTurrents();
         m_isPlayer = true;
         this.InitTankerStat();
@@ -149,10 +146,6 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         m_heatlthyLabel.text = m_currHealthy + "";
     }
     protected void InitAutoTarget() {
-        m_autoTargetIcon = PunObjectPool.Instance.GetLocalPool("Prefabs/Target Icon", "Target Icon", Vector3.zero, Quaternion.identity).transform;
-        m_autoTargetIcon.localEulerAngles = new Vector3(90, 0, 0);
-        m_autoTargetIcon.gameObject.SetActive(false);
-        m_transformParentAutoTargetIcon = m_autoTargetIcon.GetComponentInParent<Transform>();
         StartCoroutine(LoopDectectPlayerCoroutine());
     }
     protected virtual void CreatTrail() {
@@ -242,14 +235,8 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
                         m_enemyTarget = m_enemies[i];
                     }
                 }
-                m_autoTargetIcon.SetParent(m_enemyTarget.transform);
-                m_autoTargetIcon.localPosition = new Vector3(0, 0.15f, 0);
-                m_autoTargetIcon.gameObject.SetActive(true);
+                
 
-            } else {
-                m_autoTargetIcon.gameObject.SetActive(false);
-                m_autoTargetIcon.SetParent(m_transformParentAutoTargetIcon);
-                m_autoTargetIcon.localScale = Vector3.one;
             }
         }
     }
@@ -322,7 +309,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         m_heatlthyLabel.text = m_currHealthy + "";
         m_energyScript.FillUpMaxEnergyBar();
         m_healthyBar.FillUpMaxHealthyBar();
-        this.Visible();
+        // this.Visible();
         this.m_transform.position = m_revivalPosition;
         Invoke("CreatTrail", 1.0f);
         CameraFollow.Instance.InitCameraFollow();
@@ -423,66 +410,19 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         }
     }
     #endregion
-    public virtual void Invisible() {
-        m_iconInvisible.SetActive(true);
-        for (int i = 0; i < m_meshs.Length; i++)
-        {
-            m_meshs[i].material = m_tankMaterials[1];
-        }
-        this.photonView.RPC("RPC_Invisible",RpcTarget.Others,this.photonView.ViewID);
-    }
-    public virtual void Visible() {
-        m_iconInvisible.SetActive(false);
-        for (int i = 0; i < m_meshs.Length; i++)
-        {
-            m_meshs[i].material = m_tankMaterials[0];
-        }
-        this.photonView.RPC("RPC_Visible",RpcTarget.Others,this.photonView.ViewID);
-    }
-    [PunRPC]
-    protected void RPC_Invisible(int ViewID) {
-        if (this.photonView.ViewID != ViewID) return;
-        for (int i = 0; i < m_transform.childCount; i++)
-        {
-            m_transform.GetChild(i).gameObject.SetActive(false);
-        }
-    }
-    [PunRPC]
-    protected void RPC_Visible(int ViewID) {
-        if (this.photonView.ViewID != ViewID) return;
-        for (int i = 0; i < m_transform.childCount; i++)
-        {
-            m_transform.GetChild(i).gameObject.SetActive(true);
-        }
-    }
+    
     public virtual void OnDisable() {
-        if (IsPlayer && photonView.IsMine) {
-            m_autoTargetIcon.gameObject.SetActive(false);
-            m_autoTargetIcon.SetParent(m_transformParentAutoTargetIcon);
-            m_autoTargetIcon.localScale = Vector3.one;
-        }
         
         PhotonNetwork.NetworkingClient.EventReceived -= OnEventReceived;
     }
-    protected void OnTriggerEnter(Collider other)
-    {
-        if (other.tag.Equals("Grass")) {
-            this.Invisible();
-        }
-    }
     protected void OnTriggerExit(Collider other)
     {
-        if (other.tag.Equals("SmallRobot") || other.tag.Equals("Team0") || other.tag.Equals("Team1")) m_boxCollider.isTrigger = false;
-        if (other.tag.Equals("HealField" + m_team)) {
-            isIncreasedBlood = false;
-        }
-        if (other.tag.Equals("Grass")) {
-            this.Visible();
-        }
+        if (other.tag.Equals("Team0") || other.tag.Equals("Team1")) m_boxCollider.isTrigger = false;
+       
     }
     public virtual void OnCollisionEnter(Collision other)
     {
-        if (other.collider.tag.Equals("SmallRobot") || other.collider.tag.Equals("Team0") || other.collider.tag.Equals("Team1"))
+        if (other.collider.tag.Equals("Team0") || other.collider.tag.Equals("Team1"))
         {
             m_boxCollider.isTrigger = true;
         }
@@ -533,6 +473,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
             return m_playerName;
         }
         set {
+            m_displayNameText.text = m_playerName;
             m_playerName = value;
         }
     }

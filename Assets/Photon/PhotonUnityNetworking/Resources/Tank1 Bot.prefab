@@ -1381,13 +1381,7 @@ MonoBehaviour:
   m_heatlthyLabel: {fileID: 1973202753461006298}
   m_energyScript: {fileID: 4161459560871399768}
   m_displayNameText: {fileID: 2432269909030834027}
-  m_tankMaterials:
-  - {fileID: 2100000, guid: 7576275ab240e8048af3f872daed0ddd, type: 2}
-  - {fileID: 2100000, guid: 6c878649239c5f042b9179540623597e, type: 2}
   m_iconInvisible: {fileID: 8904971980980104335}
-  m_meshs:
-  - {fileID: 6380296084941604113}
-  - {fileID: 2893798057812318107}
   BombPowPoint: {fileID: 0}
   m_leftTrail: {fileID: 2466505337250894194}
   m_rightTrail: {fileID: 635493841084656452}

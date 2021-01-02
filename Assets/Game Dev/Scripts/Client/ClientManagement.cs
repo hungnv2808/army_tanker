@@ -174,7 +174,6 @@ public class ClientManagement : MonoBehaviourPun
     
     private IEnumerator StartGameCountDownCoroutine() {
         Debug.Log("######StartGameCountDown");
-        ArenaUI.Instance.HideLoadingArenaPanel();
         yield return new WaitForSeconds(1.0f);
         m_startGameCountdown -= 1;
         ArenaUI.Instance.ChangeCountdownLabel("" + m_startGameCountdown);

@@ -436,6 +436,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
@@ -1082,6 +1086,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -211.3
@@ -1342,6 +1350,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
@@ -1411,6 +1423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 89
@@ -1471,6 +1487,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1536,6 +1556,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1609,6 +1633,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1755,6 +1783,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2455,6 +2487,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (55)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -158.4
@@ -2594,6 +2630,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2927,6 +2967,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (54)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 127.19
@@ -3198,6 +3242,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3668,85 +3716,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410712436}
-  m_CullTransparentMesh: 0
---- !u!1 &412856636
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 412856637}
-  - component: {fileID: 412856639}
-  - component: {fileID: 412856638}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &412856637
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 412856636}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1472808651}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &412856638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 412856636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Len
-
-'
---- !u!222 &412856639
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 412856636}
   m_CullTransparentMesh: 0
 --- !u!1 &413341208 stripped
 GameObject:
@@ -4240,6 +4209,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 268.5
@@ -4381,6 +4354,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.599998
@@ -4459,7 +4436,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &490588131
 Transform:
@@ -4501,7 +4478,7 @@ GameObject:
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &497287211
 Transform:
@@ -4777,6 +4754,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5283,7 +5264,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &565619218
 Transform:
@@ -5661,6 +5642,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6180,6 +6165,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6251,6 +6240,7 @@ GameObject:
   - component: {fileID: 652403179}
   - component: {fileID: 652403178}
   - component: {fileID: 652403181}
+  - component: {fileID: 652403182}
   m_Layer: 5
   m_Name: Shoot Button
   m_TagString: Untagged
@@ -6268,15 +6258,14 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2042782695}
+  m_Children: []
   m_Father: {fileID: 1609038422}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -134, y: 250}
-  m_SizeDelta: {x: 113.5, y: 90.899994}
+  m_AnchoredPosition: {x: -130.2, y: 232}
+  m_SizeDelta: {x: 105.8, y: 114.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &652403178
 MonoBehaviour:
@@ -6296,7 +6285,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -6339,7 +6328,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: d6d5ebe4985f56649a2f167826622fdc, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6400,6 +6389,25 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!95 &652403182
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652403176}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e8d54f79bcfd014eb87e42d332f9cf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &654080590
 GameObject:
   m_ObjectHideFlags: 0
@@ -6495,6 +6503,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -82.7
@@ -6567,7 +6579,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &657907202
 Transform:
@@ -6601,7 +6613,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!54 &669194113
 Rigidbody:
@@ -6702,6 +6714,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6952,6 +6968,7 @@ GameObject:
   - component: {fileID: 701152508}
   - component: {fileID: 701152507}
   - component: {fileID: 701152506}
+  - component: {fileID: 701152510}
   m_Layer: 5
   m_Name: Speed Up Button
   m_TagString: Untagged
@@ -6969,15 +6986,14 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1703687456}
+  m_Children: []
   m_Father: {fileID: 1079986058}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -254, y: 307}
-  m_SizeDelta: {x: 113.5, y: 90.899994}
+  m_AnchoredPosition: {x: -282.3, y: 321.6}
+  m_SizeDelta: {x: 170.1, y: 120.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &701152506
 MonoBehaviour:
@@ -7040,7 +7056,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -7083,7 +7099,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 662d52612aff2274a81cfa9fc47c11b1, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7101,6 +7117,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701152504}
   m_CullTransparentMesh: 0
+--- !u!95 &701152510
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701152504}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e8d54f79bcfd014eb87e42d332f9cf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &709091470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7111,6 +7146,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7449,6 +7488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 175
@@ -7509,6 +7552,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7578,7 +7625,7 @@ GameObject:
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &739411118
 Transform:
@@ -7702,6 +7749,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -58.3
@@ -7774,6 +7825,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8036,6 +8091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 254.50568
@@ -8185,6 +8244,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8360,6 +8423,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -47.7
@@ -8418,6 +8485,135 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+--- !u!1 &826202833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 826202834}
+  - component: {fileID: 826202837}
+  - component: {fileID: 826202836}
+  - component: {fileID: 826202835}
+  m_Layer: 5
+  m_Name: Cheat Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &826202834
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826202833}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 842538086}
+  m_Father: {fileID: 5765964085768536560}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 141, y: -73}
+  m_SizeDelta: {x: 160, y: 75.900024}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &826202835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826202833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 826202836}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5765964085768536574}
+        m_MethodName: OnHack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &826202836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826202833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &826202837
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826202833}
+  m_CullTransparentMesh: 0
 --- !u!1001 &829806386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8580,6 +8776,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842384981}
   m_CullTransparentMesh: 0
+--- !u!1 &842538085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 842538086}
+  - component: {fileID: 842538088}
+  - component: {fileID: 842538087}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &842538086
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842538085}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 826202834}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &842538087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842538085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Hack
+--- !u!222 &842538088
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842538085}
+  m_CullTransparentMesh: 0
 --- !u!1 &844220952
 GameObject:
   m_ObjectHideFlags: 0
@@ -8598,7 +8871,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &844220953
 BoxCollider:
@@ -8739,7 +9012,7 @@ GameObject:
   m_TagString: WinningPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &855057074
 Transform:
@@ -9223,6 +9496,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.599998
@@ -9378,6 +9655,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -58.3
@@ -9452,7 +9733,7 @@ GameObject:
   m_TagString: VatCan3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &937778472
 Transform:
@@ -9536,6 +9817,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10004,6 +10289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.9
@@ -10111,6 +10400,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.8
@@ -10187,7 +10480,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!54 &1000019404
 Rigidbody:
@@ -10442,6 +10735,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10771,6 +11068,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.599998
@@ -10844,6 +11145,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -58.3
@@ -10912,6 +11217,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11087,6 +11396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -198.7
@@ -11153,7 +11466,7 @@ GameObject:
   m_TagString: VatCan5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1091412904
 Transform:
@@ -11360,6 +11673,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -228.5
@@ -11424,6 +11741,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11775,7 +12096,7 @@ GameObject:
   m_TagString: VatCan4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1154412737
 Transform:
@@ -11826,6 +12147,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11887,6 +12212,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12020,7 +12349,7 @@ GameObject:
   m_TagString: TargetStatic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1182866414
 Transform:
@@ -12460,6 +12789,7 @@ GameObject:
   - component: {fileID: 1241731097}
   - component: {fileID: 1241731096}
   - component: {fileID: 1241731099}
+  - component: {fileID: 1241731100}
   m_Layer: 5
   m_Name: Reduce Speed Button
   m_TagString: Untagged
@@ -12476,16 +12806,15 @@ RectTransform:
   m_GameObject: {fileID: 1241731094}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1615817082}
+  m_LocalScale: {x: 1, y: -1, z: 1}
+  m_Children: []
   m_Father: {fileID: 1079986058}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -254, y: 135}
-  m_SizeDelta: {x: 113.5, y: 90.899994}
+  m_AnchoredPosition: {x: -282.3, y: 150.4}
+  m_SizeDelta: {x: 170.1, y: 121.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241731096
 MonoBehaviour:
@@ -12505,7 +12834,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -12548,7 +12877,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 662d52612aff2274a81cfa9fc47c11b1, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12609,6 +12938,25 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!95 &1241731100
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241731094}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e8d54f79bcfd014eb87e42d332f9cf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1246712810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12619,6 +12967,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (46)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12917,6 +13269,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13397,6 +13753,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13594,7 +13954,7 @@ GameObject:
   m_TagString: Door1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1343392186
 Transform:
@@ -13633,6 +13993,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14003,6 +14367,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -251
@@ -14071,7 +14439,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!54 &1395559993
 Rigidbody:
@@ -14176,6 +14544,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14500,6 +14872,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (50)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -223.5
@@ -14577,6 +14953,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -58.3
@@ -14646,6 +15026,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 164
@@ -14708,6 +15092,7 @@ GameObject:
   - component: {fileID: 1472808654}
   - component: {fileID: 1472808653}
   - component: {fileID: 1472808652}
+  - component: {fileID: 1472808655}
   m_Layer: 5
   m_Name: Zoom Len Button
   m_TagString: Untagged
@@ -14725,15 +15110,14 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 412856637}
+  m_Children: []
   m_Father: {fileID: 1079986058}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -134, y: 449}
-  m_SizeDelta: {x: 113.5, y: 90.899994}
+  m_AnchoredPosition: {x: -134, y: 459}
+  m_SizeDelta: {x: 113.5, y: 110.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1472808652
 MonoBehaviour:
@@ -14753,7 +15137,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -14807,8 +15191,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 79b2414f26bd3ad40876719229f27905, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -14825,6 +15209,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472808650}
   m_CullTransparentMesh: 0
+--- !u!95 &1472808655
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472808650}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e8d54f79bcfd014eb87e42d332f9cf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1477699576
 GameObject:
   m_ObjectHideFlags: 0
@@ -14994,6 +15397,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15260,6 +15667,7 @@ GameObject:
   - component: {fileID: 1519968325}
   - component: {fileID: 1519968324}
   - component: {fileID: 1519968323}
+  - component: {fileID: 1519968326}
   m_Layer: 5
   m_Name: Rotation Camera Button
   m_TagString: Untagged
@@ -15277,15 +15685,14 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1889588669}
+  m_Children: []
   m_Father: {fileID: 1079986058}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -133, y: 597}
-  m_SizeDelta: {x: 113.5, y: 90.899994}
+  m_AnchoredPosition: {x: -133, y: 604.2}
+  m_SizeDelta: {x: 113.5, y: 113.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1519968323
 MonoBehaviour:
@@ -15305,7 +15712,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -15359,8 +15766,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d168c1253179f3f449d4454e7adee2d2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -15377,85 +15784,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519968321}
   m_CullTransparentMesh: 0
---- !u!1 &1531128422
-GameObject:
+--- !u!95 &1519968326
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1531128423}
-  - component: {fileID: 1531128425}
-  - component: {fileID: 1531128424}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1531128423
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531128422}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2098230665}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1531128424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531128422}
+  m_GameObject: {fileID: 1519968321}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Off Len
-
-'
---- !u!222 &1531128425
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531128422}
-  m_CullTransparentMesh: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e8d54f79bcfd014eb87e42d332f9cf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1537066882 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 472992, guid: 1048366b48a8cc3429168da2a8224d7d,
@@ -15472,6 +15819,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15610,6 +15961,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -15720,6 +16075,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15870,6 +16229,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16108,6 +16471,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16389,83 +16756,6 @@ Transform:
   m_Father: {fileID: 423074838}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1615817081
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1615817082}
-  - component: {fileID: 1615817084}
-  - component: {fileID: 1615817083}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1615817082
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615817081}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1241731095}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1615817083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615817081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Reduce Speed
---- !u!222 &1615817084
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615817081}
-  m_CullTransparentMesh: 0
 --- !u!222 &1621073954
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16630,6 +16920,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
@@ -16744,6 +17038,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17037,6 +17335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -50.2
@@ -17093,83 +17395,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 673377657}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1703687455
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1703687456}
-  - component: {fileID: 1703687458}
-  - component: {fileID: 1703687457}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1703687456
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703687455}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 701152505}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1703687457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703687455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Speed Up
---- !u!222 &1703687458
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703687455}
-  m_CullTransparentMesh: 0
 --- !u!1001 &1705401235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17180,6 +17405,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (52)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17251,6 +17480,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17546,6 +17779,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -103
@@ -17754,6 +17991,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -69.5
@@ -17865,6 +18106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17
@@ -17929,6 +18174,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18044,6 +18293,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18189,7 +18442,7 @@ GameObject:
   m_TagString: VatCan6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1794011060
 Transform:
@@ -18324,6 +18577,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18632,7 +18889,7 @@ GameObject:
   m_TagString: EndPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1855879158
 Transform:
@@ -18865,83 +19122,6 @@ Transform:
   m_Father: {fileID: 423074838}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1889588668
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1889588669}
-  - component: {fileID: 1889588671}
-  - component: {fileID: 1889588670}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1889588669
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889588668}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1519968322}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1889588670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889588668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Rotate Camera
---- !u!222 &1889588671
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889588668}
-  m_CullTransparentMesh: 0
 --- !u!1 &1893675798
 GameObject:
   m_ObjectHideFlags: 0
@@ -18983,6 +19163,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19044,6 +19228,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19581,7 +19769,7 @@ GameObject:
   m_TagString: VatCan2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1962911050
 Transform:
@@ -20037,85 +20225,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!1 &2042782694
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2042782695}
-  - component: {fileID: 2042782697}
-  - component: {fileID: 2042782696}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2042782695
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042782694}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 652403177}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2042782696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042782694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Shoot
-
-'
---- !u!222 &2042782697
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042782694}
-  m_CullTransparentMesh: 0
 --- !u!1001 &2045503752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20126,6 +20235,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20187,6 +20300,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_Name
       value: Prop_Haybale_01 (53)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20353,7 +20470,7 @@ GameObject:
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2071718094
 Transform:
@@ -20515,6 +20632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (51)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -138.3
@@ -20619,7 +20740,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2097927240
 Transform:
@@ -20713,15 +20834,14 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1531128423}
+  m_Children: []
   m_Father: {fileID: 1609038422}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -134, y: 449}
-  m_SizeDelta: {x: 113.5, y: 90.899994}
+  m_AnchoredPosition: {x: -134, y: 459.2}
+  m_SizeDelta: {x: 113.5, y: 111.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2098230666
 MonoBehaviour:
@@ -20795,8 +20915,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 79b2414f26bd3ad40876719229f27905, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -21110,6 +21230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Haybale_01 (56)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6730209783ff743a6cb46ffe71646e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -173.5
@@ -21180,6 +21304,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21253,6 +21381,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23006,7 +23138,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -280, y: 258}
+  m_AnchoredPosition: {x: -310, y: 236}
   m_SizeDelta: {x: 100, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2929252283561967759
@@ -27277,6 +27409,7 @@ RectTransform:
   - {fileID: 5765964086206126487}
   - {fileID: 5765964084457323307}
   - {fileID: 5765964085653455649}
+  - {fileID: 826202834}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27394,6 +27527,7 @@ MonoBehaviour:
   m_ammoLabel: {fileID: 151092964}
   m_repairingPanel: {fileID: 595897925}
   m_timerRepairingLabel: {fileID: 49175001}
+  m_itemButton: {fileID: 0}
   m_timeClockLabel: {fileID: 5765964085351444909}
 --- !u!114 &5765964085799338032
 MonoBehaviour:

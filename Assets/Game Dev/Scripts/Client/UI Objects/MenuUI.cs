@@ -8,7 +8,9 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private Button m_avatar;
     [SerializeField] private Button m_dailyQuest;
     [SerializeField] private Button m_fightButton;
-    [SerializeField] private Button m_achievementButton;
+    // [SerializeField] private Button m_achievementButton;
+    [SerializeField] private Button m_gemShopButton;
+    [SerializeField] private GameObject m_gemShopPanel;
     [SerializeField] private Text m_playerNameLabel;
     [SerializeField] private GameObject m_avatarInventoryPanel;
     [SerializeField] private GameObject m_dailyQuestPanel;
@@ -21,12 +23,14 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private Button m_playButton;
     [SerializeField] private GameObject m_shopPanel;
     [SerializeField] private GameObject m_mailBoxPanel;
+    [SerializeField] private GameObject m_rewardPanel;
     [SerializeField] private Animator m_animator;
     [SerializeField] private Animator m_displayModelAnimator;
     [SerializeField] private GameObject m_displayModelCompetition;
     [SerializeField] private GameObject m_competitionPanel;
     [SerializeField] private Text m_goldStarLabel;
     [SerializeField] private Text m_violetStarLabel;
+    [SerializeField] private GameObject m_okRewardButton;
     public RectTransform UI_GoldPosition;
     public RectTransform UI_DiamondPosition;
     private bool m_isOpenMailBox = false;
@@ -36,6 +40,8 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private RectTransform m_listCompetitionRankContent;
     [SerializeField] private GameObject m_celTemplate; 
     [SerializeField] private GameObject m_resultCompetitionPanel;
+    [SerializeField] private InputField m_accountNumber;
+    [SerializeField] private InputField m_bankName;
     public static MenuUI Instance {
         get {
             return s_instance;
@@ -43,7 +49,7 @@ public class MenuUI : MonoBehaviour
     }
     private void Awake() {
         if (s_instance != null && s_instance != this) {
-            Destroy(this.gameObject);
+            Destroy(s_instance.gameObject);
         }
         s_instance = this;
     }
@@ -54,12 +60,13 @@ public class MenuUI : MonoBehaviour
         m_avatar.onClick.AddListener(OnAvatarClick);
         m_dailyQuest.onClick.AddListener(OnDailyQuestClick);
         m_fightButton.onClick.AddListener(OnFightClick);
-        m_achievementButton.onClick.AddListener(OnAchievementClick);
+        // m_achievementButton.onClick.AddListener(OnAchievementClick);
+        m_gemShopButton.onClick.AddListener(OnGemShopClick);
         m_mailBoxButton.onClick.AddListener(OnMailBoxClick);
         m_shopButton.onClick.AddListener(OnShopClick);
         m_closeShopButton.onClick.AddListener(OnCloseShopClick);
         m_CompetitionButton.onClick.AddListener(OnCompetitionClick);
-        m_playButton.onClick.AddListener(OnPlay);
+        m_playButton.onClick.AddListener(OnPlayCompetition);
         this.ShowPlayerNameLabel(PlayFabDatabase.Instance.DisPlayName, PlayFabDatabase.Instance.PathAvatar);
         m_animator.SetBool("isOpenShop", false);
         m_animator.SetBool("isOpenSelectMap", false);
@@ -83,6 +90,9 @@ public class MenuUI : MonoBehaviour
         } else {
             m_dailyQuestUI.HideDailyQuestPanel();
         }
+    }
+    private void OnGemShopClick() {
+        m_gemShopPanel.SetActive(true);
     }
     private void OnAchievementClick() {
         m_achievementPanel.SetActive(true);
@@ -123,9 +133,8 @@ public class MenuUI : MonoBehaviour
         m_displayModelCompetition.SetActive(true);
         m_displayModelAnimator.gameObject.SetActive(false);
     }
-    private void OnPlay() {
-        // SceneManager.LoadScene("LoadMapCompetition Scene");
-        this.ShowListCompetitionRank();
+    private void OnPlayCompetition() {
+        SceneManager.LoadScene("LoadMapCompetition Scene");
     }
     private void ShowShop() {
         m_shopPanel.SetActive(true);
@@ -139,19 +148,62 @@ public class MenuUI : MonoBehaviour
     }
     private List<Transform> m_listCompetitionRank;
     public void ShowListCompetitionRank() {
+        Debug.Log(MenuUI.Instance.GetInstanceID());
         m_competitionPanel.SetActive(false);
         m_resultCompetitionPanel.SetActive(true);
         PlayFabDatabase.Instance.GetLeaderboard(0);
         m_listCompetitionRank = m_listCompetitionRank ?? new List<Transform>();
-        InvokeRepeating("UpdateLeaderboard", 0, 2f);
+        Invoke("UpdateLeaderboard", 2f);
     }
     public void UpdateLeaderboard() {
         PlayFabDatabase.Instance.GetLeaderboard(1);
+        if (PlayFabDatabase.Instance.IsFinishedCompetitionOtherPlayer) {
+            //show button ok
+            m_okRewardButton.SetActive(true);
+        } else {
+            Invoke("UpdateLeaderboard", 2f);
+        }
+        
     }
     public void OnOkClick() {
         m_resultCompetitionPanel.SetActive(false);
-        CancelInvoke("GetLeaderboard");
+        CancelInvoke("UpdateLeaderboard");
         // check xem có đc nhận thưởng hay không
+        for (int i = 0; i < m_listCompetitionRank.Count; i++)
+        {
+            if (i < 3) {
+                if (PlayFabDatabase.Instance.DisPlayName.Trim().Equals(m_listCompetitionRank[i].GetChild(1).GetComponent<Text>().text.Trim())) {
+                    this.ShowRewardPanel(i+1);
+                    return;
+                }
+            } 
+        }
+    }
+    public void ShowRewardPanel(int index) {
+        m_rewardPanel.SetActive(true);
+        TextAsset dataPrize = Resources.Load<TextAsset>("DataPrize_" + index);
+        string[] data = dataPrize.text.Split('\t');
+        m_rewardPanel.transform.GetChild(3).GetComponent<Text>().text = data[0];
+        m_rewardPanel.transform.GetChild(4).GetComponent<Text>().text = data[1];
+        m_rewardPanel.transform.GetChild(5).GetComponent<Text>().text = data[2];
+
+        CurrencyManagement.Instance.IncreaseVioletStar(int.Parse(data[2]));
+    }
+    public void OnClaimClick() {
+        if (m_accountNumber.text.Trim().Equals("")) {
+            m_accountNumber.gameObject.GetComponent<Image>().color = Color.red;
+            return;
+        }
+        if (m_bankName.text.Trim().Equals("")) {
+            m_bankName.gameObject.GetComponent<Image>().color = Color.red;
+            return;
+        }
+        PlayFabDatabase.Instance.SetUserData(new Dictionary<string, string> {
+            {"accountNumber", m_accountNumber.text},
+            {"bankName", m_bankName.text},
+        });
+        m_rewardPanel.SetActive(false);
+        
     }
     public void UpdateCelLeaderboard(string username, string result, int index) {
         m_listCompetitionRank[index].GetChild(1).GetComponent<Text>().text = username;

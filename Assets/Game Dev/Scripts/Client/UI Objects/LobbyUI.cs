@@ -39,6 +39,7 @@ public class LobbyUI : MonoBehaviour
     {
         this.m_animator.SetBool("isOpenedSelectMap", true);
         this.UpdateCurrencyUI();
+        ServerConnection.Instance.Connect2MasterServer();
     }
     public void On3vs3Click() {
         ServerManagement.MaxPlayersInRoom = 6;

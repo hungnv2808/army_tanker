@@ -369,27 +369,22 @@ public class TankCompetition : MonoBehaviour
             CancelInvoke("ReduceHealthy");
         }
     }
-    private async void FinishCompetition() {
-        await PlayFabDatabase.Instance.UpdateResultCompetition((int)CompetitionUI.Instance.LerpTime);
+    public async void FinishCompetition() {
+
         CompetitionUI.Instance.ChangeTextNotiLabel("Chúc mừng bạn hoàn thành cuộc thi!");
-        StartCoroutine(LoadMenuScene());
+        await PlayFabDatabase.Instance.UpdateResultCompetition((int)CompetitionUI.Instance.LerpTime);
+        // wait
+        LoadScene.Instance.LoadMenuSceneAfterCompetition();
     }
-    private IEnumerator LoadMenuScene() {
-        yield return new WaitForSeconds(3.0f);
-        AsyncOperation asyn = SceneManager.LoadSceneAsync("Menu Scene");
-        while (!asyn.isDone) {
-            yield return null;
-        }
-        MenuUI.Instance.ShowListCompetitionRank();
-    }
+    
     private void OnCollisionEnter(Collision other) {
-        if (other.collider.tag.Equals("Wall")) {
-            m_excuteChangeSpeed = null;
-            Debug.Log("dam vao tuong");
-            this.ReduceHealthy();
-            m_moveSpeed = 0; 
-            CompetitionUI.Instance.UpdateSpeedClock(m_moveSpeed, m_maxSpeed);
-        }
+    if (other.collider.tag.Equals("Wall")) {
+        m_excuteChangeSpeed = null;
+        Debug.Log("dam vao tuong");
+        this.ReduceHealthy();
+        m_moveSpeed = 0; 
+        CompetitionUI.Instance.UpdateSpeedClock(m_moveSpeed, m_maxSpeed);
     }
+}
     
 }

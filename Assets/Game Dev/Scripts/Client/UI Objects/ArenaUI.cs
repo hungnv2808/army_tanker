@@ -23,11 +23,10 @@ public class ArenaUI : MonoBehaviour
     [SerializeField] private Text m_team1ScoreLabel;
     [SerializeField] private Text m_team0ScoreLabel;
     [SerializeField] private GameObject m_endGamePanel;
-    [SerializeField] private GameObject m_victoryImage;
-    [SerializeField] private GameObject m_defeatImage;
+    [SerializeField] private Text m_victoryLabel;
+    [SerializeField] private Text m_starGoldLabel;
+    [SerializeField] private Text m_starVioletLabel;
     [SerializeField] private Button m_claimRewardButton;
-    [SerializeField] private GameObject m_loadingArenaPanel;
-    [SerializeField] private Transform m_loadingImage;
     [SerializeField] private Button m_scorePanel;
     [SerializeField] private GameObject m_detailScoreUI;
     [SerializeField] private RectTransform[] m_killingNotiPositions;
@@ -52,8 +51,9 @@ public class ArenaUI : MonoBehaviour
         isStopedCheckingFPS = false;
         m_killingNotifications = new Queue<RectTransform>(3);
         StartCoroutine(CheckFPSCoroutine());
-        this.ShowLoadingArenaPanel();
         this.AddEventButton();
+
+        
     }
     private void AddEventButton() {
         m_claimRewardButton.onClick.AddListener(HideEndGamePanel);
@@ -137,41 +137,31 @@ public class ArenaUI : MonoBehaviour
     public void ShowGameVictoryPanel() {
         PhotonNetwork.LeaveRoom();
         m_endGamePanel.SetActive(true);
-        m_defeatImage.SetActive(false);
-        m_victoryImage.SetActive(true);
+        m_victoryLabel.text = "VICTORY";
+        RandomStarGold(3.0f, 5.0f);
+        RandomStarViolet(3, 15);
     }
     public void ShowGameDefeatPanel() {
         PhotonNetwork.LeaveRoom();
         m_endGamePanel.SetActive(true);
-        m_victoryImage.SetActive(false);
-        m_defeatImage.SetActive(true);
+        m_victoryLabel.text = "DEFEAT";
+        RandomStarGold(0.5f, 2.0f);
+    }
+    private void RandomStarGold(float min, float max) {
+        var value = Random.Range(min, max);
+        m_starGoldLabel.text = (int)(value * 100) + "";
+        CurrencyManagement.Instance.GoldStar += (int)(value * 100);
+    }
+    private void RandomStarViolet(int min, int max) {
+        var value = Random.Range(min, max);
+        m_starVioletLabel.text = value + "";
+        CurrencyManagement.Instance.VioletStar += value;
     }
     public void HideEndGamePanel() {
         m_endGamePanel.SetActive(false);
         LoadScene.Instance.Load("Menu Scene", MissionMangement.Instance.CheckMisson);
     }
-    public void ShowLoadingArenaPanel() {
-        m_loadingArenaPanel.SetActive(true);
-        RotateLoadingImage();
-    }
-    public void HideLoadingArenaPanel() {
-        isRotateLoadingImageStopped = true;
-        m_loadingArenaPanel.SetActive(false);
-    }
-    private void RotateLoadingImage() {
-        m_loadingImage.gameObject.SetActive(true);
-        isRotateLoadingImageStopped = false;
-        StartCoroutine(RotateLoadingImageCoroutine());
-    }
-    private IEnumerator RotateLoadingImageCoroutine() {
-        if (isRotateLoadingImageStopped) {
-            m_loadingImage.gameObject.SetActive(false);
-            yield break;
-        } 
-        m_loadingImage.Rotate(0, 0, Time.deltaTime * (-720.0f)); /*tốc độ quay 720 độ 1s*/
-        yield return null;
-        StartCoroutine(RotateLoadingImageCoroutine());
-    }
+    
     private void ShowDetailScoreUI() {
         m_detailScoreUI.SetActive(true);
     }

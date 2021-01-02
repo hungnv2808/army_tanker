@@ -22,13 +22,25 @@ public class LoadScene : MonoBehaviour
     public void Load(string sceneName, Action callback) {
         StartCoroutine(LoadCoroutine(sceneName, callback));
     }   
-    private IEnumerator LoadCoroutine(string sceneName, Action callback) {
+    public IEnumerator LoadCoroutine(string sceneName, Action callback) {
         m_asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         m_asyncLoad.allowSceneActivation = true;
         while(!m_asyncLoad.isDone) {
             yield return new WaitForSeconds(0.1f);
         }
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1f);
         callback();
+    }
+    public void LoadMenuSceneAfterCompetition() {
+        StartCoroutine(LoadMenuSceneAfterCompetitionCoroutine());
+    }
+    public IEnumerator LoadMenuSceneAfterCompetitionCoroutine() {
+        m_asyncLoad = SceneManager.LoadSceneAsync("Menu Scene");
+        m_asyncLoad.allowSceneActivation = true;
+        while(!m_asyncLoad.isDone) {
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(1f);
+        MenuUI.Instance.ShowListCompetitionRank();
     }
 }

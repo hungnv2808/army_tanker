@@ -51,6 +51,7 @@ public class PlayFabDatabase : MonoBehaviour
     private int m_indexTankerChampionSelected;
     private int m_indexAssistanceSkillSelected;
     private InfoTank m_infoTank;
+    public bool IsFinishedCompetitionOtherPlayer = true;
     public InfoTank InfoTank {
         get {
             return m_infoTank;
@@ -107,14 +108,14 @@ public class PlayFabDatabase : MonoBehaviour
         this.m_pathAvatar = m_infoTank.PathAvatar;
         m_tankerChampions = new List<TankerStat>();
         m_tankerChampions.Add(new TankerStat(0, 0, true, 1000, 7, 250));//tank1
-        m_tankerChampions.Add(new TankerStat(1, 300, false, 1000, 9, 500));//tank2
-        m_tankerChampions.Add(new TankerStat(2, 500, false, 1000, 10, 700));//drone
+        m_tankerChampions.Add(new TankerStat(1, 5000, false, 1000, 9, 500));//tank2
+        m_tankerChampions.Add(new TankerStat(2, 15000, false, 1000, 10, 700));//drone
 
         m_assistanceSkills = new List<AssistanceSkill>();
         m_assistanceSkills.Add(new AssistanceSkill(0, true));// phép bổ trợ tăng máu,
-        m_assistanceSkills.Add(new AssistanceSkill(1, false));// phép bổ tăng tốc,
-        m_assistanceSkills.Add(new AssistanceSkill(2, false));// phép bổ tăng sát thương,
-        m_assistanceSkills.Add(new AssistanceSkill(3, false));// phép bổ trợ ném bom,
+        m_assistanceSkills.Add(new AssistanceSkill(1, true));// phép bổ tăng tốc,
+        m_assistanceSkills.Add(new AssistanceSkill(2, true));// phép bổ tăng sát thương,
+        m_assistanceSkills.Add(new AssistanceSkill(3, true));// phép bổ trợ ném bom,
         
         m_achievementDatas = new List<AchievementData>();
         m_achievementDatas.Add(new AchievementData(1, false, 0));
@@ -253,6 +254,8 @@ public class PlayFabDatabase : MonoBehaviour
         Debug.Log("Update success data server!");
     }
     public void UpdateDataClient() {
+        m_infoTank.VioletStar = CurrencyManagement.Instance.VioletStar;
+        m_infoTank.GoldStar = CurrencyManagement.Instance.GoldStar;
         string infoTankJson = JsonHelper.ToJson<InfoTank>(m_infoTank);
         string tankerChampionJson = JsonHelper.ToJson<List<TankerStat>>(m_tankerChampions);
         string assistanceSkillJson = JsonHelper.ToJson<List<AssistanceSkill>>(m_assistanceSkills);
@@ -319,11 +322,18 @@ public class PlayFabDatabase : MonoBehaviour
         while(isComplete == 0) {
             await Task.Yield();
         }
+        
     }
+
+    public void UpdatePlayerStatisics(List<StatisticUpdate> statistics){
+        //PlayFabClientAPI.UpdatePlayerStatistics()
+    }
+
     public async Task UpdateResultCompetition(int timer) {
         await UpdatePlayerStatistics(new List<StatisticUpdate> {
                     new StatisticUpdate {StatisticName = "ResultRound1", Value = timer}
                 });
+        Debug.Log("Save Result");
         // update xong chuyển đến màn hình xếp hạng
         /*
         màn thi đấu diễn ra trong 30 phút cả 2 vòng: thí sinh nào không hoàn thành các vòng chơi trong 30 phút sẽ bị loại khỏi cuộc chơi (thua cuộc)
@@ -336,6 +346,7 @@ public class PlayFabDatabase : MonoBehaviour
     public void GetLeaderboard(int flag) {
         var requestLeaderboard = new GetLeaderboardRequest { StartPosition=0, StatisticName = "ResultRound1", MaxResultsCount = 100};
         if (flag == 0) { // Khởi tạo
+            Leaderboard = new List<PlayerLeaderboardEntry>();
             PlayFabClientAPI.GetLeaderboard(requestLeaderboard, OnSuccessLeaderboard, OnErrorLeaderboard);
         } else { // cập nhật
             PlayFabClientAPI.GetLeaderboard(requestLeaderboard, OnSuccessUpdateLeaderboard, OnErrorLeaderboard);
@@ -345,25 +356,36 @@ public class PlayFabDatabase : MonoBehaviour
     }
     private void OnSuccessLeaderboard(GetLeaderboardResult result) {
         Debug.Log("OnSuccessLeaderboard");
-        Leaderboard = result.Leaderboard;
-        for (int i = 0; i < result.Leaderboard.Count; i++)
+        for (int i= result.Leaderboard.Count - 1; i >=0 ; i--)
         {
-            if (result.Leaderboard[i].StatValue < 0)
-                MenuUI.Instance.CreatCelLeaderboard(result.Leaderboard[i].DisplayName , "Playing", i);
+            Leaderboard.Add(result.Leaderboard[i]);
+        }
+        
+        for (int i = 0; i < Leaderboard.Count; i++)
+        {
+            if (Leaderboard[i].StatValue < 0)
+                MenuUI.Instance.CreatCelLeaderboard(Leaderboard[i].DisplayName , "Playing", i);
             else 
-                MenuUI.Instance.CreatCelLeaderboard(result.Leaderboard[i].DisplayName , result.Leaderboard[i].StatValue +"", i);
+                MenuUI.Instance.CreatCelLeaderboard(Leaderboard[i].DisplayName , Leaderboard[i].StatValue +"", i);
         }
         
     }   
     private void OnSuccessUpdateLeaderboard(GetLeaderboardResult result) {
         Debug.Log("OnSuccessUpdateLeaderboard");
-        Leaderboard = result.Leaderboard;
-        for (int i = 0; i < result.Leaderboard.Count; i++)
+        IsFinishedCompetitionOtherPlayer = true;
+        for (int j = 0, i= result.Leaderboard.Count - 1; i >=0 ; i--)
         {
-            if (result.Leaderboard[i].StatValue < 0)
-                MenuUI.Instance.UpdateCelLeaderboard(result.Leaderboard[i].DisplayName , "Playing", i);
-            else 
-                MenuUI.Instance.UpdateCelLeaderboard(result.Leaderboard[i].DisplayName , result.Leaderboard[i].StatValue +"", i);
+            Leaderboard[j] = result.Leaderboard[i];
+        }
+        for (int i = 0; i < Leaderboard.Count; i++)
+        {
+            if (Leaderboard[i].StatValue < 0) {
+                MenuUI.Instance.UpdateCelLeaderboard(Leaderboard[i].DisplayName , "Playing", i);
+                IsFinishedCompetitionOtherPlayer = false;
+            }
+            else {
+                MenuUI.Instance.UpdateCelLeaderboard(Leaderboard[i].DisplayName , Leaderboard[i].StatValue/60 +"m"+Leaderboard[i].StatValue%60+"s", i);
+            }
         }
         
     }   

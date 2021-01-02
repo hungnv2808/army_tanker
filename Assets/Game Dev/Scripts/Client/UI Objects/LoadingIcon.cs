@@ -11,7 +11,7 @@ public class LoadingIcon : MonoBehaviour
 
     public void Init() {
         m_count = 0;
-        m_loadingLabel.text = "Đang tải";
+        m_loadingLabel.text = "Loading";
         StartCoroutine(AnimationLoadingLabel());
     }
 
@@ -27,13 +27,13 @@ public class LoadingIcon : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             switch (m_count) {
                 case 1:
-                    m_loadingLabel.text = "Đang tải.";
+                    m_loadingLabel.text = "Loading.";
                     break;
                 case 2:
-                    m_loadingLabel.text = "Đang tải..";
+                    m_loadingLabel.text = "Loading..";
                     break;
                 case 3:
-                    m_loadingLabel.text = "Đang tải...";
+                    m_loadingLabel.text = "Loading...";
                     break;
             }
             

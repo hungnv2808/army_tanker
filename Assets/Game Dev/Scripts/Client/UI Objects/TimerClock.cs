@@ -25,7 +25,7 @@ public class TimerClock : MonoBehaviour
     }
     void Start()
     {
-        LerpTime = 10;
+        LerpTime = 1;
         m_text = GetComponent<Text>();
         m_lerpTime = LerpTime * 60.0f;
     }

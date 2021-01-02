@@ -99,10 +99,4 @@ public class Drone : Tank
             }
         }
     }
-    public override void Invisible()
-    {
-    }
-    public override void Visible()
-    {
-    }
 }

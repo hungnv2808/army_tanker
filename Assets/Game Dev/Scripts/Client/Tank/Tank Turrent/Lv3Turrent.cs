@@ -20,11 +20,11 @@ public class Lv3Turrent : AbTurrent
             this.CreatTrippleBullet(fireTransform, tankTurren, turrentDirection, label, playerName, whoViewID);
             m_TankParentScript.SendDispatchShooted(TankEvent.EVENT_SEND_DISPATCH_TURRENT_SHOOTED);
             this.RecoilGun(tankTurren, turrentDirection);
-            m_TankParentScript.Recoil(8);
+            // m_TankParentScript.Recoil(8);
             m_curCooldown = MaxCooldown;
-            if (m_TankParentScript.photonView.IsMine && m_TankParentScript.IsPlayer) {
-                CameraFollow.Instance.Shake(0.15f, 0.35f);
-            }
+            // if (m_TankParentScript.photonView.IsMine && m_TankParentScript.IsPlayer) {
+            //     CameraFollow.Instance.Shake(0.15f, 0.35f);
+            // }
         }
     }
     public override void Shoot(Transform fireTransform, Transform tankTurren, Vector3 turrentDirection, int label, string playerName, int whoViewID) {

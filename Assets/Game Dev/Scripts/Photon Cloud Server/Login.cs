@@ -27,6 +27,9 @@ public class Login : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         m_loadingIcon.gameObject.SetActive(false);
         m_loginPanel.DOScale(Vector3.one, 0.2f).SetLoops(1).SetEase(Ease.OutBack);
+
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 300;
     }
     
     // login facebook event button

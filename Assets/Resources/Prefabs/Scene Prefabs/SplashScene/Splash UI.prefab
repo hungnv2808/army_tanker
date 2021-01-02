@@ -107,7 +107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 194.09999, y: 87.427}
+  m_AnchoredPosition: {x: 194.09999, y: 87.427246}
   m_SizeDelta: {x: 100, y: 174.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &118720364
@@ -184,7 +184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -210.70001, y: 87.427}
+  m_AnchoredPosition: {x: -210.70001, y: 87.427246}
   m_SizeDelta: {x: 100, y: 174.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &273820117
@@ -338,7 +338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -280.4, y: 87.427}
+  m_AnchoredPosition: {x: -280.4, y: 87.427246}
   m_SizeDelta: {x: 100, y: 174.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &343732731
@@ -1081,7 +1081,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "T\xE0i kho\u1EA3n..."
+  m_Text: Email...
 --- !u!1 &654417029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +1483,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -347, y: 87.427}
+  m_AnchoredPosition: {x: -347, y: 87.427246}
   m_SizeDelta: {x: 100, y: 174.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &886898893
@@ -1560,7 +1560,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 317.5, y: 87.427}
+  m_AnchoredPosition: {x: 317.5, y: 87.427246}
   m_SizeDelta: {x: 100, y: 174.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &889695940
@@ -1630,7 +1630,7 @@ RectTransform:
   m_GameObject: {fileID: 904478285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1777108341}
   - {fileID: 1675097971}
@@ -1974,7 +1974,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -140, y: 87.427}
+  m_AnchoredPosition: {x: -140, y: 87.427246}
   m_SizeDelta: {x: 100, y: 174.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1066798372
@@ -2359,7 +2359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 376.8, y: 87.427}
+  m_AnchoredPosition: {x: 376.8, y: 87.427246}
   m_SizeDelta: {x: 100, y: 174.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1425272795
@@ -2617,7 +2617,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0110ang t\u1EA3i..."
+  m_Text: Loading...
 --- !u!1 &1726456425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,7 +2729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 439, y: 87.427}
+  m_AnchoredPosition: {x: 439, y: 87.427246}
   m_SizeDelta: {x: 100, y: 174.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1747984694
@@ -2945,7 +2945,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 256.3, y: 87.427}
+  m_AnchoredPosition: {x: 256.3, y: 87.427246}
   m_SizeDelta: {x: 100, y: 174.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1794512980
@@ -3023,7 +3023,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -65.274994}
+  m_AnchoredPosition: {x: 0, y: -65.2749}
   m_SizeDelta: {x: 144.3, y: 175.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1827142159
@@ -3138,7 +3138,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "T\xE0i kho\u1EA3n..."
+  m_Text: Email...
 --- !u!1 &1865175212
 GameObject:
   m_ObjectHideFlags: 0
@@ -3878,7 +3878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 139, y: 87.427}
+  m_AnchoredPosition: {x: 139, y: 87.427246}
   m_SizeDelta: {x: 100, y: 174.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2031996301
@@ -4110,8 +4110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 4637519048616892231, guid: b30e9c90dec3be641ab4ebfa67914b0f,
-    type: 3}
+  m_Material: {fileID: 2100000, guid: bbe9d29372e5fb74d9f81755799576ee, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:

@@ -29,6 +29,7 @@ public class MailManagement : MonoBehaviour
     private void Awake() {
         if (m_instance != null && m_instance != this) {
             Destroy(this.gameObject);
+            return;
         }
         m_instance = this;
         DontDestroyOnLoad(this.gameObject);

@@ -46,6 +46,8 @@ public class CompetitionUI : MonoBehaviour
     }
     private void Start() {
         this.TurnClock();
+        
+        
     }
     public void ModifyHeart(int healthy) {
         m_heartLabel.text = "" + healthy;
@@ -85,6 +87,10 @@ public class CompetitionUI : MonoBehaviour
         TankCompetition.Instance.TargetIcon.SetActive(false);
         m_movementPanel.SetActive(true);
         m_crosshairsPanel.SetActive(false);
+    }
+    // test
+    public void OnHack() {
+        TankCompetition.Instance.FinishCompetition();
     }
     public void OnShootButtonPointerDown() {
         TankCompetition.Instance.IncreaseLaunchForce();

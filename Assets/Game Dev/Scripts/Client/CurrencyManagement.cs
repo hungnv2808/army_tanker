@@ -21,17 +21,21 @@ public class CurrencyManagement : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         m_golds = new List<CurrencyMovement>();
     }
-    public void DecreaseGold(int count) {
+    public void DecreaseGoldStar(int count) {
         this.GoldStar -= count;
+        MenuUI.Instance.UpdateCurrencyUI();
     }
-    public void DecreaseDiamond(int count) {
+    public void DecreaseVioletStar(int count) {
         this.VioletStar -= count;
+        MenuUI.Instance.UpdateCurrencyUI();
     }
-    public void IncreaseGold(int count) {
+    public void IncreaseGoldStar(int count) {
         this.GoldStar += count;
+        MenuUI.Instance.UpdateCurrencyUI();
     }
-    public void IncreaseDiamond(int count) {
+    public void IncreaseVioletStar(int count) {
         this.VioletStar += count;
+        MenuUI.Instance.UpdateCurrencyUI();
     }
     public IEnumerator EffectGold() {
         m_golds.Clear();
