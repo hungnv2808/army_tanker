@@ -42,6 +42,7 @@ namespace Tank3d.PhotonServer
             PhotonNetwork.AutomaticallySyncScene = true; /*đảm bảo rằng khi sử dụng PhotonNetwork.LoadLevel() trên 1 thằng client thì tất cả những client khác trong cùng phòng sẽ tự động đồng bộ level
             của thằng kia*/
             DontDestroyOnLoad(this);
+            Connect2MasterServer();
         }
         #endregion
         

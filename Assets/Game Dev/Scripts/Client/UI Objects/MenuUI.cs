@@ -20,6 +20,7 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private Button m_shopButton;
     [SerializeField] private Button m_closeShopButton;
     [SerializeField] private Button m_CompetitionButton;
+    [SerializeField] private Button m_closeCompetitionButton;
     [SerializeField] private Button m_playButton;
     [SerializeField] private GameObject m_shopPanel;
     [SerializeField] private GameObject m_mailBoxPanel;
@@ -66,13 +67,17 @@ public class MenuUI : MonoBehaviour
         m_shopButton.onClick.AddListener(OnShopClick);
         m_closeShopButton.onClick.AddListener(OnCloseShopClick);
         m_CompetitionButton.onClick.AddListener(OnCompetitionClick);
+        m_closeCompetitionButton.onClick.AddListener(OnCloseCompetitionClick);
         m_playButton.onClick.AddListener(OnPlayCompetition);
         this.ShowPlayerNameLabel(PlayFabDatabase.Instance.DisPlayName, PlayFabDatabase.Instance.PathAvatar);
         m_animator.SetBool("isOpenShop", false);
         m_animator.SetBool("isOpenSelectMap", false);
         m_displayModelAnimator.SetBool("isDisplayRight", false);
+
+        SoundManagement.Instance.PlaySoundBackground();
     }
     private void OnAvatarClick() {
+        SoundManagement.Instance.PlaySoundClick();
         isAvatarClicked = !isAvatarClicked;
         if (isAvatarClicked) {
             m_avatarInventoryPanel.SetActive(true);
@@ -92,6 +97,7 @@ public class MenuUI : MonoBehaviour
         }
     }
     private void OnGemShopClick() {
+        SoundManagement.Instance.PlaySoundClick();
         m_gemShopPanel.SetActive(true);
     }
     private void OnAchievementClick() {
@@ -110,6 +116,7 @@ public class MenuUI : MonoBehaviour
         m_mailBoxPanel.SetActive(m_isOpenMailBox);
     }
     private void OnFightClick() {
+        SoundManagement.Instance.PlaySoundClick();
         m_animator.SetBool("isOpenSelectMap", true);
         Invoke("LoadSelectMapScene", 0.7f);
     }
@@ -117,11 +124,13 @@ public class MenuUI : MonoBehaviour
         SceneManager.LoadScene("Lobby Scene");
     }
     private void OnShopClick() {
+        SoundManagement.Instance.PlaySoundClick();
         m_displayModelAnimator.SetBool("isDisplayRight", true);
         m_animator.SetBool("isOpenShop", true);
         // AnimatorHelper.RunActionSequence(m_animator, ShowShop);
     }
     private void OnCloseShopClick() {
+        SoundManagement.Instance.PlaySoundClick();
         ShopUI.Instance.CloseClickHandle();
         m_animator.SetBool("isOpenShop", false);
         AnimatorHelper.RunActionSequence(m_animator, () => {
@@ -129,18 +138,20 @@ public class MenuUI : MonoBehaviour
         });
     }
     private void OnCompetitionClick() {
+        SoundManagement.Instance.PlaySoundClick();
         m_competitionPanel.SetActive(true);
         m_displayModelCompetition.SetActive(true);
         m_displayModelAnimator.gameObject.SetActive(false);
     }
+    private void OnCloseCompetitionClick() {
+        SoundManagement.Instance.PlaySoundClick();
+        m_competitionPanel.SetActive(false);
+        m_displayModelCompetition.SetActive(false);
+        m_displayModelAnimator.gameObject.SetActive(true);
+    }
     private void OnPlayCompetition() {
+        SoundManagement.Instance.PlaySoundClick();
         SceneManager.LoadScene("LoadMapCompetition Scene");
-    }
-    private void ShowShop() {
-        m_shopPanel.SetActive(true);
-    }
-    private void HiddenShop() {
-        m_shopPanel.SetActive(false);
     }
     public void UpdateCurrencyUI() {
         m_goldStarLabel.text = CurrencyManagement.Instance.GoldStar + "";
@@ -166,6 +177,7 @@ public class MenuUI : MonoBehaviour
         
     }
     public void OnOkClick() {
+        SoundManagement.Instance.PlaySoundClick();
         m_resultCompetitionPanel.SetActive(false);
         CancelInvoke("UpdateLeaderboard");
         // check xem có đc nhận thưởng hay không
@@ -190,6 +202,7 @@ public class MenuUI : MonoBehaviour
         CurrencyManagement.Instance.IncreaseVioletStar(int.Parse(data[2]));
     }
     public void OnClaimClick() {
+        SoundManagement.Instance.PlaySoundClick();
         if (m_accountNumber.text.Trim().Equals("")) {
             m_accountNumber.gameObject.GetComponent<Image>().color = Color.red;
             return;

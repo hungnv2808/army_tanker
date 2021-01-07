@@ -39,20 +39,22 @@ public class LobbyUI : MonoBehaviour
     {
         this.m_animator.SetBool("isOpenedSelectMap", true);
         this.UpdateCurrencyUI();
-        ServerConnection.Instance.Connect2MasterServer();
     }
     public void On3vs3Click() {
+        SoundManagement.Instance.PlaySoundOpenPanel();
         ServerManagement.MaxPlayersInRoom = 6;
         ServerConnection.Instance.JoinRoom();
         SceneManager.LoadScene("Waiting Scene");
 
     }
     public void On2vs2Click() {
+        SoundManagement.Instance.PlaySoundOpenPanel();
         ServerManagement.MaxPlayersInRoom = 4;
         ServerConnection.Instance.JoinRoom();
         SceneManager.LoadScene("Waiting Scene");
     }
     public void On1vs1Click() {
+        SoundManagement.Instance.PlaySoundOpenPanel();
         ServerManagement.MaxPlayersInRoom = 2;
         ServerConnection.Instance.JoinRoom();
         SceneManager.LoadScene("Waiting Scene");
@@ -63,6 +65,7 @@ public class LobbyUI : MonoBehaviour
         SceneManager.LoadScene("Waiting Scene");
     }
     public void OnBackClick() {
+        SoundManagement.Instance.PlaySoundClick();
         this.m_animator.SetBool("isOpenedSelectMap", false);
         Invoke("LoadMenuScene", 0.7f);
     }

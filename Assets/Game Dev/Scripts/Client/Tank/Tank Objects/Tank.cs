@@ -185,10 +185,13 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     public virtual void Move(Joystick joystickMovement) {
         if (joystickMovement.GetJoystickState())
         {
+            SoundManagement.Instance.PlaySoundTank(1);
             m_movementDirection = new Vector3(joystickMovement.Horizontal, 0, joystickMovement.Vertical);
             m_tankChassis.up = Vector3.MoveTowards(m_tankChassis.up, -m_movementDirection.normalized, Time.deltaTime*m_moveSpeed);
             m_tankChassis.eulerAngles = new Vector3(-90, m_tankChassis.eulerAngles.y, m_tankChassis.eulerAngles.z);
             if (m_tankChassis.up == -m_movementDirection.normalized) m_transform.Translate(m_movementDirection.normalized * m_moveSpeed * Time.deltaTime, Space.World);/* mỗi 1 frame dịch chuyển được m_moveSpeed * Time.deltaTime đơn vị unity */
+        } else {
+            SoundManagement.Instance.PlaySoundTank(0);
         }
     }
     public virtual void Attack(Joystick joytickCrossHairs) {

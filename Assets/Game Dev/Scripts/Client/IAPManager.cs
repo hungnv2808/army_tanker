@@ -37,6 +37,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
         m_close.onClick.AddListener(OnCloseClick);
     }
     private void OnCloseClick() {
+        SoundManagement.Instance.PlaySoundClick();
         this.gameObject.SetActive(false);
     }
 
@@ -96,6 +97,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
     }
     void BuyProductID(string productId)
     {
+        SoundManagement.Instance.PlaySoundClick();
         // If Purchasing has been initialized ...
         if (IsInitialized())
         {

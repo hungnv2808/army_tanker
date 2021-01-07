@@ -239,19 +239,26 @@ public class TankCompetition : MonoBehaviour
     }
     private void SpeedUpHandle() {
         // Debug.Log("tang toc");
+        SoundManagement.Instance.PlaySoundTank(1);
         if (m_moveSpeed >= m_maxSpeed) m_moveSpeed = m_maxSpeed;
         else m_moveSpeed += Time.deltaTime*10; // mất 3s để tăng đến vận tốc tối đa
         CompetitionUI.Instance.UpdateSpeedClock(m_moveSpeed, m_maxSpeed);
     }
     private void ReduceSpeedHandle() {
         // Debug.Log("giam toc");
-        if (m_moveSpeed <= 0) m_moveSpeed = 0;
+        if (m_moveSpeed <= 0) {
+            SoundManagement.Instance.PlaySoundTank(0);
+            m_moveSpeed = 0;
+        }
         else m_moveSpeed -= Time.deltaTime*20;// mất 1,5s để giảm vận tốc từ 30 về 0
         CompetitionUI.Instance.UpdateSpeedClock(m_moveSpeed, m_maxSpeed);
     }
     private void StopChangeSpeedHandle() {
         // Debug.Log("giam dan toc");
-        if (m_moveSpeed <= 0) m_moveSpeed = 0;
+        if (m_moveSpeed <= 0) {
+            SoundManagement.Instance.PlaySoundTank(0);
+            m_moveSpeed = 0;
+        }
         else m_moveSpeed -= Time.deltaTime*1;// 1s thì vận tốc giảm 1
         CompetitionUI.Instance.UpdateSpeedClock(m_moveSpeed, m_maxSpeed);
     }

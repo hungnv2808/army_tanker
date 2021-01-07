@@ -52,8 +52,7 @@ public class ArenaUI : MonoBehaviour
         m_killingNotifications = new Queue<RectTransform>(3);
         StartCoroutine(CheckFPSCoroutine());
         this.AddEventButton();
-
-        
+        SoundManagement.Instance.StopSoundBackground();
     }
     private void AddEventButton() {
         m_claimRewardButton.onClick.AddListener(HideEndGamePanel);

@@ -53,16 +53,19 @@ public class ShopUI : MonoBehaviour
     private void AddEventItemsShop() {
         m_itemsShop[0].onClick.AddListener(() => {
             if (m_indexModelShow != 0) {
+                SoundManagement.Instance.PlaySoundClick();
                 HandleShowCurrentModel(0);
             }
         });
         m_itemsShop[1].onClick.AddListener(() => {
             if (m_indexModelShow != 1) {
+                SoundManagement.Instance.PlaySoundClick();
                 HandleShowCurrentModel(1);
             }
         });
         m_itemsShop[2].onClick.AddListener(() => {
             if (m_indexModelShow != 2) {
+                SoundManagement.Instance.PlaySoundClick();
                 HandleShowCurrentModel(2);
             }
         });
@@ -70,6 +73,7 @@ public class ShopUI : MonoBehaviour
         {
             m_itemsShop[i].onClick.AddListener(() => {
                 if (m_indexModelShow != -1) {
+                    SoundManagement.Instance.PlaySoundClick();
                     for (int j = 0; j < m_tankModels.Length; j++)
                     {
                         m_tankModels[j].SetActive(false);
@@ -84,21 +88,25 @@ public class ShopUI : MonoBehaviour
     private void AddEventItemsAssistanceSkill() {
         m_itemsSkin[0].onClick.AddListener(() => {
             if (m_indexAssistanceSkillShow != 0) {
+                SoundManagement.Instance.PlaySoundClick();
                 this.HandleShowCurrentAssistanceSkill(0);
             }
         });
         m_itemsSkin[1].onClick.AddListener(() => {
             if (m_indexAssistanceSkillShow != 1) {
+                SoundManagement.Instance.PlaySoundClick();
                 this.HandleShowCurrentAssistanceSkill(1);
             }
         });
         m_itemsSkin[2].onClick.AddListener(() => {
             if (m_indexAssistanceSkillShow != 2) {
+                SoundManagement.Instance.PlaySoundClick();
                 this.HandleShowCurrentAssistanceSkill(2);
             }
         });
         m_itemsSkin[3].onClick.AddListener(() => {
             if (m_indexAssistanceSkillShow != 3) {
+                SoundManagement.Instance.PlaySoundClick();
                 this.HandleShowCurrentAssistanceSkill(3);
             }
         });
