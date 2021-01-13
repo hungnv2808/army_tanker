@@ -44,25 +44,21 @@ public class LobbyUI : MonoBehaviour
         SoundManagement.Instance.PlaySoundOpenPanel();
         ServerManagement.MaxPlayersInRoom = 6;
         ServerConnection.Instance.JoinRoom();
-        SceneManager.LoadScene("Waiting Scene");
 
     }
     public void On2vs2Click() {
         SoundManagement.Instance.PlaySoundOpenPanel();
         ServerManagement.MaxPlayersInRoom = 4;
         ServerConnection.Instance.JoinRoom();
-        SceneManager.LoadScene("Waiting Scene");
     }
     public void On1vs1Click() {
         SoundManagement.Instance.PlaySoundOpenPanel();
         ServerManagement.MaxPlayersInRoom = 2;
         ServerConnection.Instance.JoinRoom();
-        SceneManager.LoadScene("Waiting Scene");
     }
     public void OnTestRoomClick() {
         ServerManagement.MaxPlayersInRoom = 1;
         ServerConnection.Instance.JoinRoom();
-        SceneManager.LoadScene("Waiting Scene");
     }
     public void OnBackClick() {
         SoundManagement.Instance.PlaySoundClick();

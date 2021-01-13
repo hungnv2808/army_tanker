@@ -134,14 +134,14 @@ public class ArenaUI : MonoBehaviour
         m_team0ScoreLabel.text = "" + team0Killed;
     }
     public void ShowGameVictoryPanel() {
-        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Destroy(Tank.LocalPlayerInstance.photonView);
         m_endGamePanel.SetActive(true);
         m_victoryLabel.text = "VICTORY";
         RandomStarGold(3.0f, 5.0f);
         RandomStarViolet(3, 15);
     }
     public void ShowGameDefeatPanel() {
-        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Destroy(Tank.LocalPlayerInstance.photonView);
         m_endGamePanel.SetActive(true);
         m_victoryLabel.text = "DEFEAT";
         RandomStarGold(0.5f, 2.0f);
@@ -157,6 +157,7 @@ public class ArenaUI : MonoBehaviour
         CurrencyManagement.Instance.VioletStar += value;
     }
     public void HideEndGamePanel() {
+        PhotonNetwork.LeaveRoom();
         m_endGamePanel.SetActive(false);
         LoadScene.Instance.Load("Menu Scene", MissionMangement.Instance.CheckMisson);
     }

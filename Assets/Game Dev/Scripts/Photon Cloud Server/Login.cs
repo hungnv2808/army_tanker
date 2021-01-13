@@ -203,7 +203,7 @@ public class Login : MonoBehaviour
             PlayFabDatabase.Instance.DisPlayName = m_nameInGameLabel.text;
             PlayFabDatabase.Instance.InitDatabase();
             Debug.Log("Setting name successly");
-            Invoke("LoadMenuSecen", 5f);
+            Invoke("LoadMenuSecen", 0f);
         }, errorCallback => {
             m_errorLoginPanel.SetActive(true);
             m_errorLoginLabel.text = "Tên đã tồn tại";
@@ -224,7 +224,7 @@ public class Login : MonoBehaviour
                 await PlayFabDatabase.Instance.GetAllData();
                 // PlayFabDatabase.Instance.InitDatabase();// test
                 // Debug.Log(PlayFabDatabase.Instance.PathAvatar);
-                Invoke("LoadMenuSecen", 5f);
+                Invoke("LoadMenuSecen", 0f);
                 // this.OnGetLeaderboard();//test
             }
             Debug.Log("check display name :" + resultCallback.PlayerProfile.DisplayName);

@@ -1,0 +1,49 @@
+{
+  "DataTankChampion" : [
+    {
+      "Index" : 0,
+      "Healthy" : [ {"Level": 0, "Stat": 1000, "Price": 0}, 
+                    {"Level": 1, "Stat": 1500, "Price": 700}, 
+                    {"Level": 2, "Stat": 2000, "Price": 1200}
+      ],
+      "MoveSpeed" : [ {"Level": 0, "Stat": 7, "Price": 0}, 
+                      {"Level": 1, "Stat": 9, "Price": 850}, 
+                      {"Level": 2, "Stat": 12, "Price": 1350}
+      ],
+      "Damage" : [  {"Level": 0, "Stat": 250, "Price": 0}, 
+                    {"Level": 1, "Stat": 370, "Price": 1100},
+                    {"Level": 2, "Stat": 460, "Price": 1350}
+      ]
+    },
+    {
+      "Index" : 1,
+      "Healthy" : [ {"Level": 0, "Stat": 1100, "Price": 0}, 
+                    {"Level": 1, "Stat": 1800, "Price": 800}, 
+                    {"Level": 2, "Stat": 2250, "Price": 1250}
+      ],
+      "MoveSpeed" : [ {"Level": 0, "Stat": 9, "Price": 0}, 
+                      {"Level": 1, "Stat": 12, "Price": 950}, 
+                      {"Level": 2, "Stat": 15, "Price": 1450}
+      ],
+      "Damage" : [  {"Level": 0, "Stat": 500, "Price": 0}, 
+                    {"Level": 1, "Stat": 635, "Price": 1350}, 
+                    {"Level": 2, "Stat": 720, "Price": 1750}
+      ]
+    },
+    {
+      "Index" : 2,
+      "Healthy" : [ {"Level": 0, "Stat": 1150, "Price": 0}, 
+                    {"Level": 1, "Stat": 1650, "Price": 900}, 
+                    {"Level": 2, "Stat": 2100, "Price": 1450}
+      ],
+      "MoveSpeed" : [ {"Level": 0, "Stat": 11, "Price": 0}, 
+                      {"Level": 1, "Stat": 14, "Price": 1150}, 
+                      {"Level": 2, "Stat": 17, "Price": 1950}
+      ],
+      "Damage" : [  {"Level": 0, "Stat": 700, "Price": 0}, 
+                    {"Level": 1, "Stat": 875, "Price": 1550}, 
+                    {"Level": 2, "Stat": 985, "Price": 1980}
+      ]
+    }
+  ]
+}

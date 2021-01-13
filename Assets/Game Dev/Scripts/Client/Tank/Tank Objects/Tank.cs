@@ -32,10 +32,10 @@ public class TankerStat {
     public int Index;
     public int Price;
     public bool HasUnlock;
-    public float Healthy;
-    public float MoveSpeed;
-    public float Damage;
-    public TankerStat(int index, int price, bool hasUnlock, float healthy, float moveSpeed, float damage) {
+    public int Healthy;
+    public int MoveSpeed;
+    public int Damage;
+    public TankerStat(int index, int price, bool hasUnlock, int healthy, int moveSpeed, int damage) {
         this.Index = index;
         this.Price = price;
         this.HasUnlock = hasUnlock;
@@ -114,7 +114,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
             this.m_predictedTrajectoryPathBullet.SetPosition(1, Vector3.zero);
         }
             
-        Invoke("InitAutoTarget", 2.0f);
+        // Invoke("InitAutoTarget", 2.0f);
     }
     
     protected virtual void Start()
@@ -137,9 +137,9 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
     }
     protected virtual void InitTankerStat() {
         m_maxEnergy = 100.0f;
-        m_maxHealthy = PlayFabDatabase.Instance.CurrentTankerStat.Healthy;
-        m_moveSpeed = PlayFabDatabase.Instance.CurrentTankerStat.MoveSpeed;
-        m_currentTurrent.Damage = PlayFabDatabase.Instance.CurrentTankerStat.Damage;
+        m_maxHealthy = PlayFabDatabase.Instance.CurrentTankerHealthyStat;
+        m_moveSpeed = PlayFabDatabase.Instance.CurrentTankerSpeedStat;
+        m_currentTurrent.Damage = PlayFabDatabase.Instance.CurrentTankerDamageStat;
 
         m_currentEnergy = m_maxEnergy;
         m_currHealthy = m_maxHealthy;
@@ -476,8 +476,8 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
             return m_playerName;
         }
         set {
-            m_displayNameText.text = m_playerName;
             m_playerName = value;
+            m_displayNameText.text = value;
         }
     }
     public string PathAvatar {

@@ -29,8 +29,11 @@ public class ClientManagement : MonoBehaviourPun
         s_instance = this;
         DontDestroyOnLoad(this);
     }
-    private void Start()
+    public void Start()
     {
+        // if (PhotonNetwork.IsMasterClient) {
+        //     photonView.RPC("Start", RpcTarget.Others);
+        // }
         Debug.Log("######Start client management");
         this.InitRevivalPositions();
         // if (PhotonNetwork.IsMasterClient) {
@@ -104,15 +107,16 @@ public class ClientManagement : MonoBehaviourPun
         }
         return true;
     }
-    public void CreatPlayer() {
+    public IEnumerator CreatPlayer() {
         if (!CheckPunObjectPool()) {
-            return;
+            yield break;
         }
         if (Tank.LocalPlayerInstance == null) {
             Debug.LogFormat("We are Instantiating LocalPlayer ");
             // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
             ArenaUI.Instance.HideNotificationPanel();
             var tankClone = PunObjectPool.Instance.GetPunPool("Tank" + (PlayFabDatabase.Instance.IndexTankerChampionSelected+1), Vector3.zero, Quaternion.identity);
+            Debug.Log("tankClone:"+tankClone.transform.position);
             var script = tankClone.GetComponent<Tank>();
             script.photonView.RPC("Disable", RpcTarget.All, script.photonView.ViewID);
             script.IsPlayer = true;
@@ -121,8 +125,15 @@ public class ClientManagement : MonoBehaviourPun
             this.photonView.RPC("RPC_SendPlayerViewID", RpcTarget.MasterClient, script.photonView.ViewID);
             this.photonView.RPC("RPC_AsyncInfoTank", RpcTarget.Others, script.photonView.ViewID, script.PlayerName, script.PathAvatar);
         }
+        yield return null;
     }
     public IEnumerator CreatTeam() {
+        while (m_tankViewIDs.Count < (ServerManagement.MaxPlayersInRoom - 1)) {
+            yield return new WaitForSeconds(0.2f);
+        }
+        Debug.Log("m_tankViewIDs.Count" + m_tankViewIDs.Count);
+        Debug.Log("ServerManagement.MaxPlayersInRoom - 1" + (ServerManagement.MaxPlayersInRoom-1));
+
         for (int i = 0; i < m_tankViewIDs.Count; i++)
         {
             var tank = PhotonView.Find(m_tankViewIDs[i]).gameObject.GetComponent<Tank>();
@@ -131,7 +142,14 @@ public class ClientManagement : MonoBehaviourPun
             tank.photonView.RPC("RPC_UpdateTeam", RpcTarget.All, m_tankViewIDs[i], whichTeam, this.GetRevivalPosition(whichTeam, tank.IsPlayer));
             Debug.Log("Creat Team for : " + i);
         }
-        yield return new WaitForSeconds(1.0f);
+        yield return null;
+        this.photonView.RPC("CreatTeamSuccess", RpcTarget.All);
+    }
+    [PunRPC]
+    public void CreatTeamSuccess() {
+        Tank.LocalPlayerInstance.GetComponent<PhotonView>().RPC("Enable", RpcTarget.All, Tank.LocalPlayerInstance.GetComponent<PhotonView>().ViewID);
+        Debug.Log("Tank.LocalPlayerInstance:" + Tank.LocalPlayerInstance);
+        TimerClock.Instance.TurnClock();
     }
     public void StartGameCountDown() {
         m_startGameCountdown = 3;
@@ -176,25 +194,24 @@ public class ClientManagement : MonoBehaviourPun
         Debug.Log("######StartGameCountDown");
         yield return new WaitForSeconds(1.0f);
         m_startGameCountdown -= 1;
-        ArenaUI.Instance.ChangeCountdownLabel("" + m_startGameCountdown);
+        if (m_startGameCountdown >= 0) ArenaUI.Instance.ChangeCountdownLabel("" + m_startGameCountdown);
         if (m_startGameCountdown <= 0) {
             yield return new WaitForSeconds(1.0f);
             ArenaUI.Instance.ChangeCountdownLabel("Go");
             yield return new WaitForSeconds(0.9f);
             ArenaUI.Instance.HideCountdownPanel();
 
-            this.CreatPlayer();
+            yield return StartCoroutine(CreatPlayer());
             if (PhotonNetwork.IsMasterClient) {
                 this.InitBotTank(ServerManagement.MaxPlayersInRoom - PhotonNetwork.CurrentRoom.PlayerCount);
                 yield return StartCoroutine(this.CreatTeam());  
                 this.InitPersonalScore();
             }
-            Tank.LocalPlayerInstance.GetComponent<PhotonView>().RPC("Enable", RpcTarget.All, Tank.LocalPlayerInstance.GetComponent<PhotonView>().ViewID);
-            TimerClock.Instance.TurnClock();
             yield break;
         }
         StartCoroutine(StartGameCountDownCoroutine());
     }
+
     public void UpdateAndSyncScore(int whoDeath) {
         this.photonView.RPC("PunRPC_UpdateScore", RpcTarget.All, whoDeath);
     }

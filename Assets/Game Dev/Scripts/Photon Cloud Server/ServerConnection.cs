@@ -69,16 +69,13 @@ namespace Tank3d.PhotonServer
         }
         public void JoinRoom() {
             if (PhotonNetwork.IsConnected) {
-                JoinRandomRoom();
+                PhotonNetwork.JoinRandomRoom(); 
             } else {
-                // handle when player disconected
+                this.Connect2MasterServer();// connect to server and join room
             }
-            // this.Connect2MasterServer();// connect to server and join room
         }
         #endregion 
-        private void JoinRandomRoom() {
-            PhotonNetwork.JoinRandomRoom(); 
-        }
+
         #region MonobehaviourPunCallbacks Callbacks
         public override void OnConnectedToMaster()
         {
@@ -103,6 +100,7 @@ namespace Tank3d.PhotonServer
         /*hàm này là 1 callback và nó sẽ được gọi sau khi PhotonNetwork.JoinRandomRoom() trả về thành công*/
         public override void OnJoinedRoom()
         {
+            SceneManager.LoadScene("Waiting Scene");
             Debug.Log("You joined room successly :)");  
             Debug.Log("PhotonNetwork.CurrentRoom.Name " + PhotonNetwork.CurrentRoom.Name);
             // #Critical: We only load if we are the first player, else we rely on (dựa vào) `PhotonNetwork.AutomaticallySyncScene` to sync our instance scene.

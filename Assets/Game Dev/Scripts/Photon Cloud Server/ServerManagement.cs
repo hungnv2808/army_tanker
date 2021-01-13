@@ -81,7 +81,7 @@ public class ServerManagement : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         Debug.LogFormat("One player left room() {0}", otherPlayer.NickName); // seen when other disconnects
-        ArenaUI.Instance.ShowNotificationPanel();
+        // ArenaUI.Instance.ShowNotificationPanel();
     }
     // public override void OnLeftRoom() {
     //     /*callback này được gọi khi 

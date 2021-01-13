@@ -107,9 +107,9 @@ public class PlayFabDatabase : MonoBehaviour
         m_infoTank = new InfoTank("Avatar/1", 1, 0, 0, 0, 0, 0);
         this.m_pathAvatar = m_infoTank.PathAvatar;
         m_tankerChampions = new List<TankerStat>();
-        m_tankerChampions.Add(new TankerStat(0, 0, true, 1000, 7, 250));//tank1
-        m_tankerChampions.Add(new TankerStat(1, 5000, false, 1000, 9, 500));//tank2
-        m_tankerChampions.Add(new TankerStat(2, 15000, false, 1000, 10, 700));//drone
+        m_tankerChampions.Add(new TankerStat(0, 0, true, 0, 0, 0));//tank1
+        m_tankerChampions.Add(new TankerStat(1, 5000, false, 0, 0, 0));//tank2
+        m_tankerChampions.Add(new TankerStat(2, 15000, false, 0, 0, 0));//drone
 
         m_assistanceSkills = new List<AssistanceSkill>();
         m_assistanceSkills.Add(new AssistanceSkill(0, true));// phép bổ trợ tăng máu,
@@ -117,37 +117,37 @@ public class PlayFabDatabase : MonoBehaviour
         m_assistanceSkills.Add(new AssistanceSkill(2, true));// phép bổ tăng sát thương,
         m_assistanceSkills.Add(new AssistanceSkill(3, true));// phép bổ trợ ném bom,
         
-        m_achievementDatas = new List<AchievementData>();
-        m_achievementDatas.Add(new AchievementData(1, false, 0));
-        m_achievementDatas.Add(new AchievementData(2, false, 0));
-        m_achievementDatas.Add(new AchievementData(3, false, 0));
-        m_achievementDatas.Add(new AchievementData(4, false, 0));
-        m_achievementDatas.Add(new AchievementData(5, false, 0));
-        m_achievementDatas.Add(new AchievementData(6, false, 0));
-        m_achievementDatas.Add(new AchievementData(7, false, 0));
-        m_achievementDatas.Add(new AchievementData(8, false, 0));
-        m_achievementDatas.Add(new AchievementData(9, false, 0));
-        m_achievementDatas.Add(new AchievementData(10, false, 0));
-        m_achievementDatas.Add(new AchievementData(11, false, 0));
-        m_achievementDatas.Add(new AchievementData(12, false, 0));
-        m_achievementDatas.Add(new AchievementData(13, false, 0));
-        m_achievementDatas.Add(new AchievementData(14, false, 0));
-        m_achievementDatas.Add(new AchievementData(15, false, 0));
-        m_achievementDatas.Add(new AchievementData(16, false, 0));
-        m_achievementDatas.Add(new AchievementData(17, false, 0));
-        m_achievementDatas.Add(new AchievementData(18, false, 0));
-        m_achievementDatas.Add(new AchievementData(19, false, 0));
-        m_achievementDatas.Add(new AchievementData(20, false, 0));
-        m_achievementDatas.Add(new AchievementData(21, false, 0));
-        m_achievementDatas.Add(new AchievementData(22, false, 0));
+        // m_achievementDatas = new List<AchievementData>();
+        // m_achievementDatas.Add(new AchievementData(1, false, 0));
+        // m_achievementDatas.Add(new AchievementData(2, false, 0));
+        // m_achievementDatas.Add(new AchievementData(3, false, 0));
+        // m_achievementDatas.Add(new AchievementData(4, false, 0));
+        // m_achievementDatas.Add(new AchievementData(5, false, 0));
+        // m_achievementDatas.Add(new AchievementData(6, false, 0));
+        // m_achievementDatas.Add(new AchievementData(7, false, 0));
+        // m_achievementDatas.Add(new AchievementData(8, false, 0));
+        // m_achievementDatas.Add(new AchievementData(9, false, 0));
+        // m_achievementDatas.Add(new AchievementData(10, false, 0));
+        // m_achievementDatas.Add(new AchievementData(11, false, 0));
+        // m_achievementDatas.Add(new AchievementData(12, false, 0));
+        // m_achievementDatas.Add(new AchievementData(13, false, 0));
+        // m_achievementDatas.Add(new AchievementData(14, false, 0));
+        // m_achievementDatas.Add(new AchievementData(15, false, 0));
+        // m_achievementDatas.Add(new AchievementData(16, false, 0));
+        // m_achievementDatas.Add(new AchievementData(17, false, 0));
+        // m_achievementDatas.Add(new AchievementData(18, false, 0));
+        // m_achievementDatas.Add(new AchievementData(19, false, 0));
+        // m_achievementDatas.Add(new AchievementData(20, false, 0));
+        // m_achievementDatas.Add(new AchievementData(21, false, 0));
+        // m_achievementDatas.Add(new AchievementData(22, false, 0));
 
-        m_dailyQuestDatas = new List<AchievementData>();
-        m_dailyQuestDatas.Add(new AchievementData(1, false, 0));
-        m_dailyQuestDatas.Add(new AchievementData(2, false, 0));
-        m_dailyQuestDatas.Add(new AchievementData(3, false, 0));
-        m_dailyQuestDatas.Add(new AchievementData(4, false, 0));
-        m_dailyQuestDatas.Add(new AchievementData(5, false, 0));
-        m_dailyQuestDatas.Add(new AchievementData(6, false, 0));
+        // m_dailyQuestDatas = new List<AchievementData>();
+        // m_dailyQuestDatas.Add(new AchievementData(1, false, 0));
+        // m_dailyQuestDatas.Add(new AchievementData(2, false, 0));
+        // m_dailyQuestDatas.Add(new AchievementData(3, false, 0));
+        // m_dailyQuestDatas.Add(new AchievementData(4, false, 0));
+        // m_dailyQuestDatas.Add(new AchievementData(5, false, 0));
+        // m_dailyQuestDatas.Add(new AchievementData(6, false, 0));
     }
     public async Task GetAllData() {
         var data = await PlayFabDatabase.Instance.GetUserData(PlayFabDatabase.Instance.MyDataID, new List<string>() {
@@ -156,8 +156,8 @@ public class PlayFabDatabase : MonoBehaviour
                         // {"competitorKilledCount", "0"},
                         {"tankerChampion"},
                         {"assistanceSkill"},
-                        {"achievement"},
-                        {"dailyQuest"},
+                        // {"achievement"},
+                        // {"dailyQuest"},
                     });
         
         DateTime timeDataServer = DateTime.Parse(data["date"].Value);
@@ -181,7 +181,7 @@ public class PlayFabDatabase : MonoBehaviour
         // }
         //load dữ liệu từ server
         Debug.Log("load dữ liệu từ server");
-        Debug.Log(data["tankerChampion"].Value);
+        // Debug.Log(data["tankerChampion"].Value);
         this.HandleDataServer(data);
         
         // if (data.ContainsKey("competitorKilledCount")) MissionMangement.Instance.CompetitorKilledCount = int.Parse(data["competitorKilledCount"].Value);
@@ -239,8 +239,8 @@ public class PlayFabDatabase : MonoBehaviour
         string infoTankJson = JsonHelper.ToJson<InfoTank>(m_infoTank);
         string tankerChampionJson = JsonHelper.ToJson<List<TankerStat>>(m_tankerChampions);
         string assistanceSkillJson = JsonHelper.ToJson<List<AssistanceSkill>>(m_assistanceSkills);
-        string achievementDataJson = JsonHelper.ToJson<List<AchievementData>>(m_achievementDatas);
-        string dailyQuestDataJson = JsonHelper.ToJson<List<AchievementData>>(m_dailyQuestDatas);
+        // string achievementDataJson = JsonHelper.ToJson<List<AchievementData>>(m_achievementDatas);
+        // string dailyQuestDataJson = JsonHelper.ToJson<List<AchievementData>>(m_dailyQuestDatas);
         this.SetUserData(new Dictionary<string, string>() {
             //giới hạn update chỉ update đc 10 key, get data tối đa đc 12
             {"date", DateTime.Now.ToString()},
@@ -248,8 +248,8 @@ public class PlayFabDatabase : MonoBehaviour
             // {"competitorKilledCount", "0"},
             {"tankerChampion", tankerChampionJson},
             {"assistanceSkill", assistanceSkillJson},
-            {"achievement", achievementDataJson},
-            {"dailyQuest", dailyQuestDataJson},
+            // {"achievement", achievementDataJson},
+            // {"dailyQuest", dailyQuestDataJson},
         });
         Debug.Log("Update success data server!");
     }
@@ -259,14 +259,14 @@ public class PlayFabDatabase : MonoBehaviour
         string infoTankJson = JsonHelper.ToJson<InfoTank>(m_infoTank);
         string tankerChampionJson = JsonHelper.ToJson<List<TankerStat>>(m_tankerChampions);
         string assistanceSkillJson = JsonHelper.ToJson<List<AssistanceSkill>>(m_assistanceSkills);
-        string achievementDataJson = JsonHelper.ToJson<List<AchievementData>>(m_achievementDatas);
-        string dailyQuestDataJson = JsonHelper.ToJson<List<AchievementData>>(m_dailyQuestDatas);
+        // string achievementDataJson = JsonHelper.ToJson<List<AchievementData>>(m_achievementDatas);
+        // string dailyQuestDataJson = JsonHelper.ToJson<List<AchievementData>>(m_dailyQuestDatas);
         PlayerPrefs.SetString("date", DateTime.Now.ToString());
         PlayerPrefs.SetString("infoTank", infoTankJson);
         PlayerPrefs.SetString("tankerChampion", tankerChampionJson);
         PlayerPrefs.SetString("assistanceSkill", assistanceSkillJson);
-        PlayerPrefs.SetString("achievement", achievementDataJson);
-        PlayerPrefs.SetString("dailyQuest", dailyQuestDataJson);
+        // PlayerPrefs.SetString("achievement", achievementDataJson);
+        // PlayerPrefs.SetString("dailyQuest", dailyQuestDataJson);
         Debug.Log("Update success data local!");
 
     }
@@ -421,9 +421,19 @@ public class PlayFabDatabase : MonoBehaviour
         this.UpdateDataClient();
         this.UpdateDataServer();
     }
-    public TankerStat CurrentTankerStat {
+    public int CurrentTankerSpeedStat {
         get {
-            return this.m_tankerChampions[this.m_indexTankerChampionSelected];
+            return ShopUI.Instance.DataTankChampion.Champions[m_indexTankerChampionSelected].MoveSpeed[PlayFabDatabase.Instance.TankerChampions[m_indexTankerChampionSelected].MoveSpeed].Stat;
+        }
+    }
+    public int CurrentTankerHealthyStat {
+        get {
+            return ShopUI.Instance.DataTankChampion.Champions[m_indexTankerChampionSelected].Healthy[PlayFabDatabase.Instance.TankerChampions[m_indexTankerChampionSelected].Healthy].Stat;
+        }
+    }
+    public int CurrentTankerDamageStat {
+        get {
+            return ShopUI.Instance.DataTankChampion.Champions[m_indexTankerChampionSelected].Damage[PlayFabDatabase.Instance.TankerChampions[m_indexTankerChampionSelected].Damage].Stat;
         }
     }
 }

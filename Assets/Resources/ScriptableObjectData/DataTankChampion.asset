@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d016d92c67da19b449c7deb558d4d4ff, type: 3}
+  m_Name: DataTankChampion
+  m_EditorClassIdentifier: 
+  Champions:
+  - Index: 0
+    Healthy:
+    - Stat: 1000
+      Price: 0
+    - Stat: 1500
+      Price: 700
+    - Stat: 2000
+      Price: 1200
+    MoveSpeed:
+    - Stat: 7
+      Price: 0
+    - Stat: 9
+      Price: 850
+    - Stat: 12
+      Price: 1350
+    Damage:
+    - Stat: 250
+      Price: 0
+    - Stat: 370
+      Price: 1100
+    - Stat: 460
+      Price: 1350
+  - Index: 1
+    Healthy:
+    - Stat: 1100
+      Price: 0
+    - Stat: 1800
+      Price: 800
+    - Stat: 2250
+      Price: 1250
+    MoveSpeed:
+    - Stat: 9
+      Price: 0
+    - Stat: 12
+      Price: 950
+    - Stat: 15
+      Price: 1450
+    Damage:
+    - Stat: 500
+      Price: 0
+    - Stat: 635
+      Price: 1350
+    - Stat: 720
+      Price: 1750
+  - Index: 2
+    Healthy:
+    - Stat: 1150
+      Price: 0
+    - Stat: 1650
+      Price: 900
+    - Stat: 2100
+      Price: 1450
+    MoveSpeed:
+    - Stat: 11
+      Price: 0
+    - Stat: 14
+      Price: 1150
+    - Stat: 17
+      Price: 1950
+    Damage:
+    - Stat: 700
+      Price: 0
+    - Stat: 875
+      Price: 1550
+    - Stat: 985
+      Price: 1980

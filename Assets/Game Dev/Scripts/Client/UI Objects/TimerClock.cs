@@ -55,7 +55,7 @@ public class TimerClock : MonoBehaviour
         }
     }
     public void GetTimeOut() {
-        ClientManagement.Instance.PersonalScores[Tank.LocalPlayerInstance.photonView.ViewID].UpdateKillingCount();
+        // ClientManagement.Instance.PersonalScores[Tank.LocalPlayerInstance.photonView.ViewID].UpdateKillingCount();
         var myTeam = Tank.LocalPlayerInstance.GetComponent<Tank>().Team;
         if (ClientManagement.Instance.Team0Killed > ClientManagement.Instance.Team1Killed) {
             if (myTeam != 1) {

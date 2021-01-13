@@ -1983,13 +1983,7 @@ MonoBehaviour:
   m_heatlthyLabel: {fileID: 7475922250557824675}
   m_energyScript: {fileID: 1058160184}
   m_displayNameText: {fileID: 1512492359}
-  m_tankMaterials:
-  - {fileID: 2100000, guid: ae043150e0e5f864785a66ebc5512a72, type: 2}
-  - {fileID: 2100000, guid: c2283377365ea1e4e8d32b6e7c4efd56, type: 2}
   m_iconInvisible: {fileID: 520035646}
-  m_meshs:
-  - {fileID: 754608930147281822}
-  - {fileID: 6742806281059507995}
   BombPowPoint: {fileID: 961120243}
   m_leftTrail: {fileID: 336656989}
   m_rightTrail: {fileID: 1178517097}

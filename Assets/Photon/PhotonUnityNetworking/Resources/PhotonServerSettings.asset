@@ -53,6 +53,9 @@ MonoBehaviour:
   - RPC_AsyncInfoTank
   - RPC_Invisible
   - RPC_Visible
+  - CreatTeamSuccess
+  - Init
+  - Start
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

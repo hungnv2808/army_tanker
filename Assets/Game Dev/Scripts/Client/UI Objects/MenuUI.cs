@@ -127,6 +127,7 @@ public class MenuUI : MonoBehaviour
         SoundManagement.Instance.PlaySoundClick();
         m_displayModelAnimator.SetBool("isDisplayRight", true);
         m_animator.SetBool("isOpenShop", true);
+        ShopUI.Instance.HandleShowCurrentModel(PlayFabDatabase.Instance.IndexTankerChampionSelected);
         // AnimatorHelper.RunActionSequence(m_animator, ShowShop);
     }
     private void OnCloseShopClick() {
