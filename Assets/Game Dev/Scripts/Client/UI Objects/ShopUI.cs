@@ -188,6 +188,7 @@ public class ShopUI : MonoBehaviour
             if (PlayFabDatabase.Instance.TankerChampions[index].HasUnlock) m_currSpeedUpdatePrice = m_dataTankChampion.Champions[index].MoveSpeed[PlayFabDatabase.Instance.TankerChampions[index].MoveSpeed + 1].Price;
             else m_currSpeedUpdatePrice = -1;
             m_nextSpeedPriceLabel.text = m_dataTankChampion.Champions[index].MoveSpeed[PlayFabDatabase.Instance.TankerChampions[index].MoveSpeed + 1].Price + "";
+            m_speedUpdateButtonAnimator.gameObject.SetActive(true);
         }
         else {
             m_speedUpdateButtonAnimator.gameObject.SetActive(false);
@@ -199,6 +200,7 @@ public class ShopUI : MonoBehaviour
             if (PlayFabDatabase.Instance.TankerChampions[index].HasUnlock) m_currHealthyUpdatePrice = m_dataTankChampion.Champions[index].Healthy[PlayFabDatabase.Instance.TankerChampions[index].Healthy + 1].Price;
             else m_currHealthyUpdatePrice = -1;
             m_nextHealthyPriceLabel.text = m_dataTankChampion.Champions[index].Healthy[PlayFabDatabase.Instance.TankerChampions[index].Healthy + 1].Price + "";
+            m_healthyUpdateButtonAnimator.gameObject.SetActive(true);
         } 
         else {
             m_healthyUpdateButtonAnimator.gameObject.SetActive(false);
@@ -210,6 +212,7 @@ public class ShopUI : MonoBehaviour
             if (PlayFabDatabase.Instance.TankerChampions[index].HasUnlock) m_currDamageUpdatePrice = m_dataTankChampion.Champions[index].Damage[PlayFabDatabase.Instance.TankerChampions[index].Damage + 1].Price;
             else m_currDamageUpdatePrice = -1;
             m_nextDamagePriceLabel.text = m_dataTankChampion.Champions[index].Damage[PlayFabDatabase.Instance.TankerChampions[index].Damage + 1].Price + "";
+            m_damageUpdateButtonAnimator.gameObject.SetActive(true);
         } 
         else {
             m_damageUpdateButtonAnimator.gameObject.SetActive(false);

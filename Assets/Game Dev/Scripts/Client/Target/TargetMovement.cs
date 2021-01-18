@@ -29,7 +29,7 @@ public class TargetMovement : MonoBehaviour
         Count -= 1;
     }
     public static void Show() {
-        var targetMovement = GameObject.FindGameObjectWithTag("TargetMovement");
+        var targetMovement = GameObject.FindGameObjectWithTag("TargetMovement").transform.GetChild(0).gameObject;
         if (targetMovement != null) targetMovement.SetActive(true);
     }
     public static void Hiden() {

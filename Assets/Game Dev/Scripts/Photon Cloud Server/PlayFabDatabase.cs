@@ -351,31 +351,36 @@ public class PlayFabDatabase : MonoBehaviour
         } else { // cập nhật
             PlayFabClientAPI.GetLeaderboard(requestLeaderboard, OnSuccessUpdateLeaderboard, OnErrorLeaderboard);
         }
-        
 
+    }
+    public void UpdateLeaderboard() {
+        MenuUI.Instance.UpdateLeaderboard();
     }
     private void OnSuccessLeaderboard(GetLeaderboardResult result) {
         Debug.Log("OnSuccessLeaderboard");
         for (int i= result.Leaderboard.Count - 1; i >=0 ; i--)
         {
             Leaderboard.Add(result.Leaderboard[i]);
+            Debug.Log("OnSuccessLeaderboard[i]:" + result.Leaderboard[i].DisplayName);
         }
         
         for (int i = 0; i < Leaderboard.Count; i++)
         {
+            
             if (Leaderboard[i].StatValue < 0)
                 MenuUI.Instance.CreatCelLeaderboard(Leaderboard[i].DisplayName , "Playing", i);
             else 
                 MenuUI.Instance.CreatCelLeaderboard(Leaderboard[i].DisplayName , Leaderboard[i].StatValue +"", i);
         }
-        
+        Invoke("UpdateLeaderboard", 0f);
     }   
     private void OnSuccessUpdateLeaderboard(GetLeaderboardResult result) {
         Debug.Log("OnSuccessUpdateLeaderboard");
         IsFinishedCompetitionOtherPlayer = true;
-        for (int j = 0, i= result.Leaderboard.Count - 1; i >=0 ; i--)
+        for (int j = 0, i= result.Leaderboard.Count - 1; i >=0 ; i--, j++)
         {
             Leaderboard[j] = result.Leaderboard[i];
+            Debug.Log("OnSuccessUpdateLeaderboard[i]:" + Leaderboard[j].DisplayName);
         }
         for (int i = 0; i < Leaderboard.Count; i++)
         {
@@ -387,7 +392,9 @@ public class PlayFabDatabase : MonoBehaviour
                 MenuUI.Instance.UpdateCelLeaderboard(Leaderboard[i].DisplayName , Leaderboard[i].StatValue/60 +"m"+Leaderboard[i].StatValue%60+"s", i);
             }
         }
-        
+        if (!IsFinishedCompetitionOtherPlayer) {
+            Invoke("UpdateLeaderboard", 2f);
+        }
     }   
     private void OnErrorLeaderboard(PlayFabError error) {
         Debug.Log(error.ErrorMessage);

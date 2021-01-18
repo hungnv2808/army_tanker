@@ -23,6 +23,8 @@ public class CompetitionUI : MonoBehaviour
     [SerializeField] private GameObject m_repairingPanel;
     [SerializeField] private Text m_timerRepairingLabel;
     [SerializeField] private Image m_itemButton;
+    [SerializeField] private GameObject m_map;
+    private bool m_isOpenMap = false;
     private string m_minute;
     private string m_second;
     [SerializeField] private Text m_timeClockLabel;
@@ -46,8 +48,7 @@ public class CompetitionUI : MonoBehaviour
     }
     private void Start() {
         this.TurnClock();
-        
-        
+        SoundManagement.Instance.StopSoundBackground();
     }
     public void ModifyHeart(int healthy) {
         m_heartLabel.text = "" + healthy;
@@ -92,6 +93,10 @@ public class CompetitionUI : MonoBehaviour
     public void OnHack() {
         TankCompetition.Instance.FinishCompetition();
     }
+    public void OnMapClick() {
+        m_isOpenMap = !m_isOpenMap;
+        m_map.SetActive(m_isOpenMap);
+    }
     public void OnShootButtonPointerDown() {
         TankCompetition.Instance.IncreaseLaunchForce();
     }
@@ -118,7 +123,13 @@ public class CompetitionUI : MonoBehaviour
         else m_notiLabel.text = "Bạn đã bắn trượt mục tiêu";
     }
     public void ChangeTextNotiLabel(string text) {
+        CancelInvoke("HidenNotiLabel");
+        m_notiLabel.gameObject.SetActive(true);
         m_notiLabel.text = text;
+        Invoke("HidenNotiLabel", 3f);
+    }
+    public void HidenNotiLabel() {
+        m_notiLabel.gameObject.SetActive(false);
     }
     public void ShowRepairingPanel(int time) {
         this.m_repairingPanel.SetActive(true);

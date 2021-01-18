@@ -77,7 +77,7 @@ public class TankCompetition : MonoBehaviour
         StartCoroutine(RepairCoroutine());
     }
     private IEnumerator RepairCoroutine() {
-        int timer = 15;
+        int timer = 10;
         CompetitionUI.Instance.ShowRepairingPanel(timer);
         var timeWaiting = new WaitForSeconds(1);
         while(timer > 0) {
@@ -147,6 +147,7 @@ public class TankCompetition : MonoBehaviour
         BulletCompetition.Spawn(m_fireTransform.position, -m_directionShoot.up * launchForce * 4000);
         // StartCoroutine(RecoilGunCoroutine(m_tankTurret.localPosition, m_tankTurret, -m_tankTurret.up));
     }
+    
     public void CheckRoundShoot() {
         if (m_ammo <= 0) { 
             if (RoundShoot.Equals(RoundShoot.One)) {
@@ -185,12 +186,30 @@ public class TankCompetition : MonoBehaviour
                 TargetFlight.Hiden();
             } 
             return;
+        } else {
+            if (Target.Count <= 0) {
+                CompetitionUI.Instance.ChangeTextNotiLabel("Bạn đã hạ gục hết mục tiêu. ");
+                m_stopMove = false;
+                HasFinishedRoundShot1 = true;
+
+            }
+            if (TargetMovement.Count <= 0) {
+                CompetitionUI.Instance.ChangeTextNotiLabel("Bạn đã hạ gục hết mục tiêu di chuyển trên mặt đất, tiếp tục hạ các mục tiêu đang bay. ");
+                TargetFlight.Show();
+                HasFinishedRoundShot2 = true;
+            } 
+            if (TargetFlight.Count <= 0) {
+                CompetitionUI.Instance.ChangeTextNotiLabel("Bạn đã hạ gục hết mục tiêu. ");
+                m_stopMove = false;
+                HasFinishedRoundShot3 = true;
+            }
         }
     }
     private Vector3 m_oldPos;
     private void ChangePosition(Vector3 pos) {
         m_oldPos = m_transform.position;
         m_transform.position = pos;
+        m_stopMove = false;
     }
     private void RefreshAxisJoytickCrossHairs() {
         Debug.Log("RefreshAxisJoytickCrossHairs");

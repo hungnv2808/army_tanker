@@ -432,12 +432,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_tankChassis: {fileID: 109898045558803284}
   m_tankTurret: {fileID: 1341004681968014446}
+  m_directionShoot: {fileID: 0}
+  m_tankTurretParent: {fileID: 0}
   m_turretDirection: {x: 0, y: 0, z: 0}
   m_fireTransform: {fileID: 7497254678693838530}
   m_transform: {fileID: 3274448599228461882}
   PosCamera: {fileID: 1056734954}
   ZoomLenCamera: {fileID: 4358568848343456046}
   TargetIcon: {fileID: 1016389273}
+  HasFinishedRoundShot1: 0
+  HasFinishedRoundShot2: 0
+  HasFinishedRoundShot3: 0
+  RoundShoot: 0
   LaunchForce: 0
 --- !u!1 &2455021067978762907
 GameObject:
@@ -1243,8 +1249,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.036326535, y: 0.029267384, z: 0.027536953}
-  m_Center: {x: 0, y: 0.00047384584, z: 0.013682611}
+  m_Size: {x: 0.036326535, y: 0.02926738, z: 0.011851666}
+  m_Center: {x: 1.619506e-12, y: 0.00047384543, z: 0.00583997}
 --- !u!1 &5487142516862299684
 GameObject:
   m_ObjectHideFlags: 0

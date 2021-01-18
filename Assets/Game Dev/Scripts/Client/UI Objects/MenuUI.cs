@@ -25,6 +25,7 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private GameObject m_shopPanel;
     [SerializeField] private GameObject m_mailBoxPanel;
     [SerializeField] private GameObject m_rewardPanel;
+    [SerializeField] private GameObject m_confirmPanel;
     [SerializeField] private Animator m_animator;
     [SerializeField] private Animator m_displayModelAnimator;
     [SerializeField] private GameObject m_displayModelCompetition;
@@ -43,6 +44,11 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private GameObject m_resultCompetitionPanel;
     [SerializeField] private InputField m_accountNumber;
     [SerializeField] private InputField m_bankName;
+    [SerializeField] private InputField m_name;
+    [SerializeField] private Text m_accountNumberConfirm;
+    [SerializeField] private Text m_bankNameConfirm;
+    [SerializeField] private Text m_nameConfirm;
+
     public static MenuUI Instance {
         get {
             return s_instance;
@@ -152,6 +158,10 @@ public class MenuUI : MonoBehaviour
     }
     private void OnPlayCompetition() {
         SoundManagement.Instance.PlaySoundClick();
+        if (CurrencyManagement.Instance.VioletStar < 100) {
+            return;
+        }
+        CurrencyManagement.Instance.DecreaseVioletStar(100);
         SceneManager.LoadScene("LoadMapCompetition Scene");
     }
     public void UpdateCurrencyUI() {
@@ -165,7 +175,6 @@ public class MenuUI : MonoBehaviour
         m_resultCompetitionPanel.SetActive(true);
         PlayFabDatabase.Instance.GetLeaderboard(0);
         m_listCompetitionRank = m_listCompetitionRank ?? new List<Transform>();
-        Invoke("UpdateLeaderboard", 2f);
     }
     public void UpdateLeaderboard() {
         PlayFabDatabase.Instance.GetLeaderboard(1);
@@ -173,7 +182,7 @@ public class MenuUI : MonoBehaviour
             //show button ok
             m_okRewardButton.SetActive(true);
         } else {
-            Invoke("UpdateLeaderboard", 2f);
+            m_okRewardButton.SetActive(false);
         }
         
     }
@@ -208,16 +217,34 @@ public class MenuUI : MonoBehaviour
             m_accountNumber.gameObject.GetComponent<Image>().color = Color.red;
             return;
         }
+        if (m_name.text.Trim().Equals("")) {
+            m_name.gameObject.GetComponent<Image>().color = Color.red;
+            return;
+        }
         if (m_bankName.text.Trim().Equals("")) {
             m_bankName.gameObject.GetComponent<Image>().color = Color.red;
             return;
         }
+        m_rewardPanel.SetActive(false);
+        m_confirmPanel.SetActive(true);
+        // gan text confirm;
+        m_accountNumberConfirm.text = m_accountNumber.text;
+        m_nameConfirm.text = m_name.text;
+        m_bankNameConfirm.text = m_bankName.text;
+        
+        
+    }
+    public void OnBackConfirmClick() {
+        m_rewardPanel.SetActive(true);
+        m_confirmPanel.SetActive(false);
+    }
+    public void OnConfirmClick() {
         PlayFabDatabase.Instance.SetUserData(new Dictionary<string, string> {
             {"accountNumber", m_accountNumber.text},
+            {"name", m_name.text},
             {"bankName", m_bankName.text},
         });
-        m_rewardPanel.SetActive(false);
-        
+        m_confirmPanel.SetActive(false);
     }
     public void UpdateCelLeaderboard(string username, string result, int index) {
         m_listCompetitionRank[index].GetChild(1).GetComponent<Text>().text = username;

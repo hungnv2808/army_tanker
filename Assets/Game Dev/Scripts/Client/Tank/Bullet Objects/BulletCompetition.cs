@@ -12,6 +12,7 @@ public class BulletCompetition : MonoBehaviour
         _bullet.m_rigidbody.AddForce(velocity);
     }
     private void OnTriggerEnter(Collider other) {
+        if (other.tag.Equals("Player")) return;
         if (other.tag.Equals("Target")) {
             var target = other.gameObject.GetComponent<Target>();
             Target.CheckCount();
