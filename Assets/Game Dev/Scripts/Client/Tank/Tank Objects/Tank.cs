@@ -305,6 +305,23 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
         this.DisableTrail();
         PunObjectPool.Instance.SetLocalPool(this.gameObject);
     }
+    protected void Death(string whoDamage, int whoViewID) {
+        if (this.photonView.IsMine && m_isPlayer) {
+            CameraFollow.Instance.StopFollowPlayer();
+            PunObjectPool.Instance.Allow2RevivalMine(this, whoDamage);
+            ClientManagement.Instance.UpdateAndSyncScore(m_team);
+        }
+        if (!m_isPlayer) {
+            PunObjectPool.Instance.Allow2RevivalTankBot(this);
+            ClientManagement.Instance.UpdateAndSyncScore(m_team);
+        }
+        ClientManagement.Instance.PersonalScores[this.photonView.ViewID].UpdateDeathLabel();
+        ClientManagement.Instance.PersonalScores[whoViewID].UpdateKillingLabel();
+        ArenaUI.Instance.ShowKillingNotificationLabel(whoDamage, m_playerName);
+        PunObjectPool.Instance.GetLocalPool("Prefabs/Effect/ElectricDeath", "ElectricDeath", m_transform.position + Vector3.up*2 , Quaternion.identity);
+        this.DisableTrail();
+        PunObjectPool.Instance.SetLocalPool(this.gameObject);
+    }
     public void RevivalAndSync() {
         if (this.photonView.IsMine) PunObjectPool.Instance.SendDispatch(TankEvent.EVENT_SEND_DISPATCH_REVIVAL, this.photonView.ViewID);
         m_currHealthy = m_maxHealthy;
@@ -406,7 +423,7 @@ public class Tank : MonoBehaviourPun, IEvent, IPunObservable
                 m_syncData = (object[])photonEnvent.CustomData;
                 if (this.photonView.ViewID != (int)m_syncData[0]) return;
                 // Debug.Log("TankEvent.EVENT_SEND_DISPATCH_DEATH");
-                this.DeathAndSync((string)m_syncData[1], (int)m_syncData[2]);
+                this.Death((string)m_syncData[1], (int)m_syncData[2]);
                 break;
             default:
                 break;

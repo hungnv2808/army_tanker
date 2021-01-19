@@ -40,7 +40,7 @@ public class ClientManagement : MonoBehaviourPun
         //     m_tankViewIDs = new List<int>();
         // }
         m_tankViewIDs = new List<int>();
-        this.StartGameCountDown();
+        StartCoroutine(CreatPlayers());
     }
     private void InitBotTank(int botCount) {
         List<string> botNames = GetDisplayNameRandom(botCount);
@@ -128,7 +128,7 @@ public class ClientManagement : MonoBehaviourPun
         yield return null;
     }
     public IEnumerator CreatTeam() {
-        while (m_tankViewIDs.Count < (ServerManagement.MaxPlayersInRoom - 1)) {
+        while (m_tankViewIDs.Count < ServerManagement.MaxPlayersInRoom) {
             yield return new WaitForSeconds(0.2f);
         }
         Debug.Log("m_tankViewIDs.Count" + m_tankViewIDs.Count);
@@ -137,6 +137,7 @@ public class ClientManagement : MonoBehaviourPun
         for (int i = 0; i < m_tankViewIDs.Count; i++)
         {
             var tank = PhotonView.Find(m_tankViewIDs[i]).gameObject.GetComponent<Tank>();
+            // if (tank)
             var whichTeam = this.GetTeam();
             tank.Team = whichTeam;
             tank.photonView.RPC("RPC_UpdateTeam", RpcTarget.All, m_tankViewIDs[i], whichTeam, this.GetRevivalPosition(whichTeam, tank.IsPlayer));
@@ -150,6 +151,9 @@ public class ClientManagement : MonoBehaviourPun
         Tank.LocalPlayerInstance.GetComponent<PhotonView>().RPC("Enable", RpcTarget.All, Tank.LocalPlayerInstance.GetComponent<PhotonView>().ViewID);
         Debug.Log("Tank.LocalPlayerInstance:" + Tank.LocalPlayerInstance);
         TimerClock.Instance.TurnClock();
+        this.StartGameCountDown();
+        //tắt màn hình creating team ....
+        ArenaUI.Instance.HiddenCreatingTeamPanel();
     }
     public void StartGameCountDown() {
         m_startGameCountdown = 3;
@@ -189,7 +193,17 @@ public class ClientManagement : MonoBehaviourPun
             }
         }
     }
-    
+    public IEnumerator CreatPlayers() {
+        ArenaUI.Instance.ShowCreatingTeamPanel();
+        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(CreatPlayer());
+            if (PhotonNetwork.IsMasterClient) {
+                this.InitBotTank(ServerManagement.MaxPlayersInRoom - PhotonNetwork.CurrentRoom.PlayerCount);
+                yield return StartCoroutine(this.CreatTeam());  
+                this.InitPersonalScore();
+            }
+        yield break;
+    }
     private IEnumerator StartGameCountDownCoroutine() {
         Debug.Log("######StartGameCountDown");
         yield return new WaitForSeconds(1.0f);
@@ -201,12 +215,13 @@ public class ClientManagement : MonoBehaviourPun
             yield return new WaitForSeconds(0.9f);
             ArenaUI.Instance.HideCountdownPanel();
 
-            yield return StartCoroutine(CreatPlayer());
-            if (PhotonNetwork.IsMasterClient) {
-                this.InitBotTank(ServerManagement.MaxPlayersInRoom - PhotonNetwork.CurrentRoom.PlayerCount);
-                yield return StartCoroutine(this.CreatTeam());  
-                this.InitPersonalScore();
-            }
+            // yield return StartCoroutine(CreatPlayer());
+            // if (PhotonNetwork.IsMasterClient) {
+            //     this.InitBotTank(ServerManagement.MaxPlayersInRoom - PhotonNetwork.CurrentRoom.PlayerCount);
+            //     yield return StartCoroutine(this.CreatTeam());  
+            //     this.InitPersonalScore();
+            // }
+            CameraFollow.Instance.FindPlayer();
             yield break;
         }
         StartCoroutine(StartGameCountDownCoroutine());

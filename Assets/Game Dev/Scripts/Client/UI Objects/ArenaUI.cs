@@ -30,6 +30,8 @@ public class ArenaUI : MonoBehaviour
     [SerializeField] private Button m_scorePanel;
     [SerializeField] private GameObject m_detailScoreUI;
     [SerializeField] private RectTransform[] m_killingNotiPositions;
+    [SerializeField] private GameObject m_creatingTeamPanel;
+    [SerializeField] private Animator m_creatingTeamAnimator;
     public Joystick JoytickMovement;
     public Joystick JoytickCrossHairs;
     public Joystick JoytickAssistanceSkill;
@@ -81,6 +83,15 @@ public class ArenaUI : MonoBehaviour
     public void OnNo() {
         this.m_controlPanel.SetActive(true);
         this.m_notificationPanel.SetActive(false);
+    }
+    public void ShowCreatingTeamPanel() {
+        this.m_creatingTeamPanel.SetActive(true);
+    }
+    public void HiddenCreatingTeamPanel() {
+        this.m_creatingTeamAnimator.SetBool("IsHidden", true);
+        AnimatorHelper.RunActionSequence(m_creatingTeamAnimator, 1, () => {
+            this.m_creatingTeamPanel.SetActive(false);
+        });
     }
     public void ShowCountdownPanel() {
         this.m_controlPanel.SetActive(false);

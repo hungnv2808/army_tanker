@@ -34,6 +34,7 @@ TagManager:
   - VatCan4
   - VatCan5
   - VatCan6
+  - Flight
   layers:
   - Default
   - TransparentFX

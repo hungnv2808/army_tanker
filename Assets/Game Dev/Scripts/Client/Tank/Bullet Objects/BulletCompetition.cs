@@ -23,16 +23,14 @@ public class BulletCompetition : MonoBehaviour
             CompetitionUI.Instance.ChangeTextNotiLabel(false, 0);
         }
         if (other.tag.Equals("DynamicTarget")) {
-            if (TankCompetition.Instance.RoundShoot.Equals(RoundShoot.Two)) {
-                TargetMovement.CheckCount();
-                var dynamicTarget = other.gameObject.GetComponentInParent<TargetMovement>();
-                dynamicTarget.Destroy();
-            }
-            else {
-                TargetFlight.CheckCount();
-                var dynamicTarget = other.gameObject.GetComponentInParent<TargetFlight>();
-                dynamicTarget.Destroy();
-            }
+            TargetMovement.CheckCount();
+            var dynamicTarget = other.gameObject.GetComponentInParent<TargetMovement>();
+            dynamicTarget.Destroy();
+        }
+        if (other.tag.Equals("TargetFlight")) {
+            TargetFlight.CheckCount();
+            var dynamicTarget = other.gameObject.GetComponentInParent<TargetFlight>();
+            dynamicTarget.Destroy();
         }
         TankCompetition.Instance.CheckRoundShoot();
         Instantiate(Resources.Load("Prefabs/Effect/ExplosionFireballFire"), m_transform.position, Quaternion.identity);

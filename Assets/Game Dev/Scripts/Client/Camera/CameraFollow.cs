@@ -46,13 +46,13 @@ public class CameraFollow : MonoBehaviour
         }
         s_instance = this;
     }
-    void Start()
-    {
+    // void Start()
+    // {
        
-        this.FindPlayer();
-        // this.InitCameraFollow(); //test
+    //     // this.FindPlayer();
+    //     // this.InitCameraFollow(); //test
         
-    }
+    // }
     public void FindPlayer() {
         isStopedFollowing = true;
         StartCoroutine(FindPlayerLoopCorountine());

@@ -57,6 +57,7 @@ public class TankCompetition : MonoBehaviour
         m_turretDirection = -m_tankTurret.up;
         m_joystickCrossHairsState = JoytickState.None;
         this.RefreshAxisJoytickCrossHairs();
+        CameraFollow.Instance.FindPlayer();
     }
     public void RefreshHealthy() {
         m_healthy = 3;

@@ -140,7 +140,7 @@ public class MenuUI : MonoBehaviour
         SoundManagement.Instance.PlaySoundClick();
         ShopUI.Instance.CloseClickHandle();
         m_animator.SetBool("isOpenShop", false);
-        AnimatorHelper.RunActionSequence(m_animator, () => {
+        AnimatorHelper.RunActionSequence(m_animator, 0, () => {
             m_displayModelAnimator.SetBool("isDisplayRight", false);
         });
     }

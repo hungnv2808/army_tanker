@@ -1921,10 +1921,11 @@ GameObject:
   m_Component:
   - component: {fileID: 172845991}
   - component: {fileID: 172845993}
+  - component: {fileID: 172845992}
   - component: {fileID: 172845994}
   m_Layer: 10
   m_Name: Plane (3)
-  m_TagString: DynamicTarget
+  m_TagString: TargetFlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1949,23 +1950,7 @@ Transform:
   m_Father: {fileID: 1378306642}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!54 &172845993
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172845990}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
---- !u!114 &172845994
+--- !u!114 &172845992
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1979,6 +1964,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rigbody: {fileID: 172845993}
   m_transform: {fileID: 172845991}
+--- !u!54 &172845993
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172845990}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &172845994
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172845990}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0080335, y: 1.1011345, z: 1.8314385}
+  m_Center: {x: 0.034436915, y: 0.44506922, z: -0.3195734}
 --- !u!1 &175258411
 GameObject:
   m_ObjectHideFlags: 0
@@ -4944,7 +4958,6 @@ GameObject:
   - component: {fileID: 533511819}
   - component: {fileID: 533511822}
   - component: {fileID: 533511821}
-  - component: {fileID: 533511820}
   m_Layer: 10
   m_Name: Cube
   m_TagString: DynamicTarget
@@ -4966,20 +4979,6 @@ Transform:
   m_Father: {fileID: 172845991}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &533511820
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533511818}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5495902117074765545, guid: 58eecc3483e2ac741b5fae221b0b8eb9, type: 3}
 --- !u!23 &533511821
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5410,7 +5409,6 @@ GameObject:
   - component: {fileID: 578502778}
   - component: {fileID: 578502781}
   - component: {fileID: 578502780}
-  - component: {fileID: 578502779}
   m_Layer: 10
   m_Name: Cube
   m_TagString: DynamicTarget
@@ -5432,20 +5430,6 @@ Transform:
   m_Father: {fileID: 1175428395}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &578502779
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578502777}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5495902117074765545, guid: 58eecc3483e2ac741b5fae221b0b8eb9, type: 3}
 --- !u!23 &578502780
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6700,7 +6684,7 @@ RectTransform:
   m_Children:
   - {fileID: 1403400812}
   m_Father: {fileID: 5765964085768536560}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -8713,13 +8697,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826202833}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 842538086}
-  m_Father: {fileID: 5765964085768536560}
-  m_RootOrder: 8
+  m_Father: {fileID: 1611240682}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -9046,7 +9030,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hack
+  m_Text: Cheat
 --- !u!222 &842538088
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12512,9 +12496,10 @@ GameObject:
   - component: {fileID: 1175428395}
   - component: {fileID: 1175428397}
   - component: {fileID: 1175428396}
+  - component: {fileID: 1175428398}
   m_Layer: 10
   m_Name: Plane (2)
-  m_TagString: DynamicTarget
+  m_TagString: TargetFlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12564,11 +12549,24 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1175428398
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175428394}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0080335, y: 1.1011345, z: 1.8314385}
+  m_Center: {x: 0.034436915, y: 0.44506922, z: -0.3195734}
 --- !u!1 &1182866413
 GameObject:
   m_ObjectHideFlags: 0
@@ -14535,7 +14533,7 @@ GameObject:
   - component: {fileID: 1378306642}
   m_Layer: 0
   m_Name: Flight Target
-  m_TagString: TargetFlight
+  m_TagString: Flight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17023,6 +17021,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9104078}
+  - {fileID: 826202834}
   m_Father: {fileID: 5765964085768536560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19314,7 +19313,6 @@ GameObject:
   - component: {fileID: 1862116992}
   - component: {fileID: 1862116995}
   - component: {fileID: 1862116994}
-  - component: {fileID: 1862116993}
   m_Layer: 10
   m_Name: Cube
   m_TagString: DynamicTarget
@@ -19336,20 +19334,6 @@ Transform:
   m_Father: {fileID: 2023736245}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1862116993
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1862116991}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5495902117074765545, guid: 58eecc3483e2ac741b5fae221b0b8eb9, type: 3}
 --- !u!23 &1862116994
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20552,9 +20536,10 @@ GameObject:
   - component: {fileID: 2023736245}
   - component: {fileID: 2023736247}
   - component: {fileID: 2023736246}
+  - component: {fileID: 2023736248}
   m_Layer: 10
   m_Name: Plane (1)
-  m_TagString: DynamicTarget
+  m_TagString: TargetFlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20604,11 +20589,24 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &2023736248
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023736244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0080335, y: 1.1011345, z: 1.8314385}
+  m_Center: {x: 0.034436915, y: 0.44506922, z: -0.3195734}
 --- !u!1001 &2045503752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22141,7 +22139,6 @@ GameObject:
   - component: {fileID: 5012093180146330467}
   - component: {fileID: 6881269854690439981}
   - component: {fileID: 5939852771155445395}
-  - component: {fileID: 1061410988880538159}
   m_Layer: 10
   m_Name: Cube
   m_TagString: DynamicTarget
@@ -22149,20 +22146,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1061410988880538159
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061410988880538158}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5495902117074765545, guid: 58eecc3483e2ac741b5fae221b0b8eb9, type: 3}
 --- !u!1 &1097676232997753285
 GameObject:
   m_ObjectHideFlags: 0
@@ -27794,7 +27777,6 @@ RectTransform:
   - {fileID: 5765964086206126487}
   - {fileID: 5765964084457323307}
   - {fileID: 5765964085653455649}
-  - {fileID: 826202834}
   - {fileID: 659915417}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -28479,9 +28461,10 @@ GameObject:
   - component: {fileID: 7600328117038928653}
   - component: {fileID: 6855204308771807520}
   - component: {fileID: 6855204308771807519}
+  - component: {fileID: 6855204308771807521}
   m_Layer: 10
   m_Name: Plane
-  m_TagString: DynamicTarget
+  m_TagString: TargetFlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28511,11 +28494,24 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6855204308771807521
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855204308771807518}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0080335, y: 1.1011345, z: 1.8314385}
+  m_Center: {x: 0.034436915, y: 0.44506922, z: -0.3195734}
 --- !u!212 &6857653356151210038
 SpriteRenderer:
   m_ObjectHideFlags: 0

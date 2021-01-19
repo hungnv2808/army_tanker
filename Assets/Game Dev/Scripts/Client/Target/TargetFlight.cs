@@ -28,11 +28,11 @@ public class TargetFlight : MonoBehaviour
         Count -= 1;
     }
     public static void Show() {
-        var targetFlight = GameObject.FindGameObjectWithTag("TargetFlight");
+        var targetFlight = GameObject.FindGameObjectWithTag("Flight");
         if (targetFlight != null) targetFlight.SetActive(true);
     }
     public static void Hiden() {
-        var targetFlight = GameObject.FindGameObjectWithTag("TargetFlight");
+        var targetFlight = GameObject.FindGameObjectWithTag("Flight");
         if (targetFlight != null) targetFlight.SetActive(false);
     }
 }

@@ -10,14 +10,16 @@ public class AnimatorHelper
     /// <param name="animator"></param>
     /// <param name="callback"></param>
     /// <returns></returns>
-    public static async void RunActionSequence(Animator animator, Callback callback) {
-        while(AnimatorIsPlaying(animator)) {
+    public static async void RunActionSequence(Animator animator,int layerIndex, Callback callback) {
+        while(AnimatorIsPlaying(animator, layerIndex)) {
             await Task.Yield();
-            // Debug.Log("loop AnimatorIsPlaying");
+            Debug.Log("loop AnimatorIsPlaying");
+
         }
+        Debug.Log("loop AnimatorIsStop");
         callback();
     }
-    private static bool AnimatorIsPlaying(Animator animator){
-        return animator.GetCurrentAnimatorStateInfo(0).length <= animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+    private static bool AnimatorIsPlaying(Animator animator, int layerIndex){
+        return animator.GetCurrentAnimatorStateInfo(layerIndex).length < animator.GetCurrentAnimatorStateInfo(layerIndex).normalizedTime;
     }
 }
