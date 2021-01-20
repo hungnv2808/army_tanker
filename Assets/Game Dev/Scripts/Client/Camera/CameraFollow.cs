@@ -132,6 +132,10 @@ public class CameraFollow : MonoBehaviour
         AxisCoordinateHorizontal = m_target.GetComponent<TankCompetition>().m_tankChassis.right;
         m_transform.position = m_target.GetComponent<TankCompetition>().PosCamera.position;
         m_offset = m_transform.position - m_target.position;
+        TankCompetition.Instance.m_tankChassis.localPosition = Vector3.zero;
+        TankCompetition.Instance.m_tankTurret.localPosition = new Vector3(0, 1.57f, 0);
+        TankCompetition.Instance.m_transform.eulerAngles = new Vector3(0, TankCompetition.Instance.m_transform.eulerAngles.y, 0);
+        TankCompetition.Instance.m_tankChassis.localEulerAngles = new Vector3(-90, TankCompetition.Instance.m_tankChassis.localEulerAngles.y, TankCompetition.Instance.m_tankChassis.localEulerAngles.z);
     }
     private IEnumerator CameraMovementOnStartGameCoroutine() {
         if (Vector3.Distance(m_transform.position, m_stopMovementOnStartGamePosition) > 0.0f) {

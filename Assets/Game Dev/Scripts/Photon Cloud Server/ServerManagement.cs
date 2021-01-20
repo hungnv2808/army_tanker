@@ -30,6 +30,8 @@ public class ServerManagement : MonoBehaviourPunCallbacks
         m_timeoutLoadScene -= 1;
         if (m_timeoutLoadScene <= 0) {
             CancleLoadSceneTimeout();
+            if (PhotonNetwork.IsMasterClient) PhotonNetwork.CurrentRoom.IsOpen = false; //  không cho người chơi khác vào phòng nữa
+            Debug.Log("Đang chơi game với bot");
             PhotonNetwork.LoadLevel("Main Scene");
             StartCoroutine(CheckSceneLoadingCompletelyLoopCoroutine());
         }
@@ -67,7 +69,9 @@ public class ServerManagement : MonoBehaviourPunCallbacks
                 Debug.Log("start game");
                 // #Critical
                 // Load the Scene.
+                PhotonNetwork.CurrentRoom.IsOpen = false;
                 PhotonNetwork.LoadLevel("Main Scene");
+                this.CancleLoadSceneTimeout();
                 Debug.Log("Best Region: " + PhotonNetwork.BestRegionSummaryInPreferences);
                 StartCoroutine(CheckSceneLoadingCompletelyLoopCoroutine());
             } else {
@@ -75,7 +79,6 @@ public class ServerManagement : MonoBehaviourPunCallbacks
             }
                 
         }
-        Debug.LogFormat("OnPlayerEnteredRoom: PlayerCount {0}", PhotonNetwork.CurrentRoom.PlayerCount);
     }
     /*khi 1 thằng rời phòng thì pun sẽ gọi callback là hàm này tới tất cả các người chơi khác*/
     public override void OnPlayerLeftRoom(Player otherPlayer)

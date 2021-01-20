@@ -69,7 +69,7 @@ namespace Tank3d.PhotonServer
         }
         public void JoinRoom() {
             if (PhotonNetwork.IsConnected) {
-                PhotonNetwork.JoinRandomRoom(); 
+                PhotonNetwork.JoinRandomRoom(null, ServerManagement.MaxPlayersInRoom); 
             } else {
                 this.Connect2MasterServer();// connect to server and join room
             }
@@ -95,7 +95,7 @@ namespace Tank3d.PhotonServer
             Debug.LogFormat("You JoinRandoomFailed {0}", message);
             Debug.LogFormat("Creating room...");
             /*nếu join randoom lỗi có thể là do phòng không tồn tại hoặc đã đầy, bây giờ tạo 1 phòng mới */
-            PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = ServerManagement.MaxPlayersInRoom });
+            PhotonNetwork.CreateRoom(PlayFabDatabase.Instance.DisPlayName, new RoomOptions {IsVisible = true, IsOpen = true ,MaxPlayers = ServerManagement.MaxPlayersInRoom });
         }
         /*hàm này là 1 callback và nó sẽ được gọi sau khi PhotonNetwork.JoinRandomRoom() trả về thành công*/
         public override void OnJoinedRoom()
@@ -116,6 +116,7 @@ namespace Tank3d.PhotonServer
                 //     PhotonNetwork.LoadLevel("Main Scene"); // dòng này là để test offline
                 //     ServerManagement.Instance.CancleLoadSceneTimeout();
                 // } 
+                
                 StartCoroutine(ServerManagement.Instance.CheckSceneLoadingCompletelyLoopCoroutine());
             }
         }
